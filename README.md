@@ -1,2 +1,3 @@
 # promdi-fe
-An fintech app for fillipino farmers
+# The Mobile Application for the Promdi application
+An App that enables farmers access Insurance, Crowdfunding, EduContent Services.
