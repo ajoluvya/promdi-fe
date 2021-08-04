@@ -12,6 +12,15 @@ class LoginScreen extends StatelessWidget {
         child: ListView(
           children: [
             SizedBox(height: _width / 8,),
+            Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(right: 12),
+                  child: Image.asset("name"),
+                ),
+                
+            ],
+            ),
           ]
         ),
       )
