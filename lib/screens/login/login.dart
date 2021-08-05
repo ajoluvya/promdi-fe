@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:promdi_fe/helpers/style.dart';
+import 'package:promdi_fe/widgets/custom_button.dart';
+import 'package:promdi_fe/widgets/custom_text.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -26,21 +28,25 @@ class LoginScreen extends StatelessWidget {
         const SizedBox(
           height: 30,
         ),
-        Row(
-          children: const [
-            Text('Login',
-                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
-          ],
+        Center(
+          child: Row(
+            children: const [
+              Text('Login',
+                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
+            ],
+          ),
         ),
         const SizedBox(
           height: 10,
         ),
         Row(
-          children: const [
-            Text(
-              'Welcome back!.',
-              style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold),
-            ),
+          children: [
+            Center(
+              child: CustomText(
+                text: 'Welcome back',
+                color: lightGrey,
+              ),
+            )
           ],
         ),
         const SizedBox(
@@ -57,11 +63,50 @@ class LoginScreen extends StatelessWidget {
         TextField(
           obscureText: true,
           decoration: InputDecoration(
-            labelText: 'Password',
-            border: OutlineInputBorder(borderRadius: BorderRadius.circular(20))
-          ),
+              labelText: 'Password',
+              border:
+                  OutlineInputBorder(borderRadius: BorderRadius.circular(20))),
         ),
-        const SizedBox(height: 15,),
+        const SizedBox(
+          height: 15,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              children: [
+                Checkbox(value: true, onChanged: (value) {}),
+                const CustomText(
+                  text: 'Remeber Me',
+                ),
+              ],
+            ),
+            CustomText(
+              text: 'Forgot Password',
+              color: active,
+            )
+          ],
+        ),
+        const SizedBox(
+          height: 15,
+        ),
+        CustomButton(
+          onTap: () {},
+          title: 'Login',
+        ),
+        const SizedBox(
+          height: 15,
+        ),
+        GestureDetector(
+          onTap: () {},
+          child: RichText(
+              text: TextSpan(children: [
+            const TextSpan(
+                text: 'Do not have an account yet?',
+                style: TextStyle(color: Colors.black)),
+            TextSpan(text: 'Create account!', style: TextStyle(color: active))
+          ])),
+        )
       ]),
     ));
   }
