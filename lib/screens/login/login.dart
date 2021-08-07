@@ -9,105 +9,93 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
+    double _height = MediaQuery.of(context).size.height;
+
     return Scaffold(
-        body: Container(
-      padding: const EdgeInsets.all(24),
-      child: ListView(children: [
-        SizedBox(
-          height: _width / 8,
-        ),
-        Row(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(right: 12),
-              child: Image.asset("name"),
+        body: SafeArea(
+      child: SingleChildScrollView(
+        child: Container(
+          width: _width,
+          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 5),
+          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+            SizedBox(
+              height: _height * 0.15,
             ),
-            Expanded(child: Container()),
-          ],
-        ),
-        const SizedBox(
-          height: 30,
-        ),
-        Center(
-          child: Row(
-            children: const [
-              Text('Login',
-                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
-            ],
-          ),
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-        Row(
-          children: [
-            Center(
-              child: CustomText(
-                text: 'Welcome back',
-                color: lightGrey,
-              ),
-            )
-          ],
-        ),
-        const SizedBox(
-          height: 15,
-        ),
-        TextField(
-          decoration: InputDecoration(
-              labelText: 'Email',
-              hintText: 'abc@domain.com',
-              border:
-                  OutlineInputBorder(borderRadius: BorderRadius.circular(20))),
-        ),
-        const SizedBox(height: 15),
-        TextField(
-          obscureText: true,
-          decoration: InputDecoration(
-              labelText: 'Password',
-              border:
-                  OutlineInputBorder(borderRadius: BorderRadius.circular(20))),
-        ),
-        const SizedBox(
-          height: 15,
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
+            const Text('Welcome Back',
+                style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold)),
+
+            const Text(
+              'Sing in with your email and Password',
+              textAlign: TextAlign.center,
+            ),
+
+            const SizedBox(
+              height: 30,
+            ),
+          
+            TextField(
+              decoration: InputDecoration(
+                  labelText: 'Email',
+                  hintText: 'Enter your Email',
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20))),
+            ),
+            const SizedBox(height: 10),
+            TextField(
+              obscureText: true,
+              decoration: InputDecoration(
+                  labelText: 'Password',
+                  hintText: 'Enter your Password',
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20))),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Checkbox(value: true, onChanged: (value) {}),
-                const CustomText(
-                  text: 'Remeber Me',
+                Row(
+                  children: [
+                    Checkbox(value: false, onChanged: (value) {}),
+                    const CustomText(
+                      text: 'Remeber Me',
+                    ),
+                  ],
                 ),
+                CustomText(
+                  text: 'Forgot Password',
+                  color: lightBlue,
+                )
               ],
             ),
-            CustomText(
-              text: 'Forgot Password',
-              color: active,
+            const SizedBox(
+              height: 15,
+            ),
+            CustomButton(
+              onTap: () {},
+              title: 'Login',
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            GestureDetector(
+              onTap: () {},
+              child: RichText(
+                  text: TextSpan(children: [
+                const TextSpan(
+                    text: 'Do not have an account yet?',
+                    style: TextStyle(color: Colors.black)),
+                TextSpan(
+                    text: 'Create account!', style: TextStyle(color: lightBlue))
+              ])),
             )
-          ],
+          ]),
         ),
-        const SizedBox(
-          height: 15,
-        ),
-        CustomButton(
-          onTap: () {},
-          title: 'Login',
-        ),
-        const SizedBox(
-          height: 15,
-        ),
-        GestureDetector(
-          onTap: () {},
-          child: RichText(
-              text: TextSpan(children: [
-            const TextSpan(
-                text: 'Do not have an account yet?',
-                style: TextStyle(color: Colors.black)),
-            TextSpan(text: 'Create account!', style: TextStyle(color: active))
-          ])),
-        )
-      ]),
+      ),
     ));
   }
 }
