@@ -21,6 +21,14 @@ class LoginScreen extends StatelessWidget {
             SizedBox(
               height: _height * 0.15,
             ),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(15.0),
+              child: Image.asset(
+                "assets/icons/logo.png",
+                height: 100.0,
+                width: 100.0,
+              ),
+            ),
             const Text('Welcome Back',
                 style: TextStyle(
                     color: Colors.black,
