@@ -31,15 +31,11 @@ class LoginScreen extends StatelessWidget {
                 width: 100.0,
               ),
             ),
-            const Text('Welcome Back',
+            const Text('Promdi Farm',
                 style: TextStyle(
                     color: Colors.black,
-                    fontSize: 25,
+                    fontSize: 15,
                     fontWeight: FontWeight.bold)),
-            const Text(
-              'Sing in with your email and Password',
-              textAlign: TextAlign.center,
-            ),
             const SizedBox(
               height: 30,
             ),
@@ -61,6 +57,11 @@ class LoginScreen extends StatelessWidget {
               decoration: InputDecoration(
                 labelText: 'Password',
                 hintText: 'Enter your Password',
+                labelStyle: TextStyle(color: outLineBorder),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: outLineBorder),
+                  borderRadius: BorderRadius.circular(20),
+                ),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(20),
                 ),
@@ -68,23 +69,6 @@ class LoginScreen extends StatelessWidget {
             ),
             const SizedBox(
               height: 10,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: [
-                    Checkbox(value: false, onChanged: (value) {}),
-                    const CustomText(
-                      text: 'Remember Me',
-                    ),
-                  ],
-                ),
-                CustomText(
-                  text: 'Forgot Password',
-                  color: lightBlue,
-                )
-              ],
             ),
             const SizedBox(
               height: 15,
@@ -95,6 +79,23 @@ class LoginScreen extends StatelessWidget {
             ),
             const SizedBox(
               height: 30,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    CustomText(
+                      text: 'Forgot Password',
+                      color: lightBlue,
+                    )
+                  ],
+                ),
+                CustomText(
+                  text: 'Sign Up',
+                  color: outLineBorder,
+                )
+              ],
             ),
             GestureDetector(
               onTap: () {},
