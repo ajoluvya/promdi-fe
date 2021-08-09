@@ -6,6 +6,8 @@ import 'package:promdi_fe/widgets/custom_text.dart';
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
+  get decoration => null;
+
   @override
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
@@ -42,20 +44,27 @@ class LoginScreen extends StatelessWidget {
               height: 30,
             ),
             TextField(
-              decoration: InputDecoration(
-                  labelText: 'Email',
-                  hintText: 'Enter your Email',
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20))),
-            ),
+                decoration: InputDecoration(
+              labelText: 'Email',
+              hintText: 'Enter your Email',
+              labelStyle: TextStyle(color: outLineBorder),
+              focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: outLineBorder),
+                borderRadius: BorderRadius.circular(20),
+              ),
+              border:
+                  OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
+            )),
             const SizedBox(height: 10),
             TextField(
               obscureText: true,
               decoration: InputDecoration(
-                  labelText: 'Password',
-                  hintText: 'Enter your Password',
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20))),
+                labelText: 'Password',
+                hintText: 'Enter your Password',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+              ),
             ),
             const SizedBox(
               height: 10,
