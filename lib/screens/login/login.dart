@@ -84,10 +84,10 @@ class LoginScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Row(
-                  children: [
+                  children: const [
                     CustomText(
                       text: 'Forgot Password',
-                      color: lightBlue,
+                      color: Colors.black,
                     )
                   ],
                 ),
@@ -97,17 +97,27 @@ class LoginScreen extends StatelessWidget {
                 )
               ],
             ),
-            GestureDetector(
-              onTap: () {},
-              child: RichText(
-                  text: TextSpan(children: [
-                const TextSpan(
-                    text: 'Do not have an account yet?',
-                    style: TextStyle(color: Colors.black)),
-                TextSpan(
-                    text: 'Create account!', style: TextStyle(color: lightBlue))
-              ])),
+
+            const SizedBox(
+              height: 40,
+            ),
+
+            const CustomText(
+              text: 'or use one of your social profile',
+              color: Colors.black,
             )
+
+            // GestureDetector(
+            //   onTap: () {},
+            //   child: RichText(
+            //       text: TextSpan(children: [
+            //     const TextSpan(
+            //         text: 'Do not have an account yet?',
+            //         style: TextStyle(color: Colors.black)),
+            //     TextSpan(
+            //         text: 'Create account!', style: TextStyle(color: lightBlue))
+            //   ])),
+            // )
           ]),
         ),
       ),
