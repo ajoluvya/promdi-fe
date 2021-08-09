@@ -26,16 +26,13 @@ class LoginScreen extends StatelessWidget {
                     color: Colors.black,
                     fontSize: 25,
                     fontWeight: FontWeight.bold)),
-
             const Text(
               'Sing in with your email and Password',
               textAlign: TextAlign.center,
             ),
-
             const SizedBox(
               height: 30,
             ),
-          
             TextField(
               decoration: InputDecoration(
                   labelText: 'Email',
@@ -62,7 +59,7 @@ class LoginScreen extends StatelessWidget {
                   children: [
                     Checkbox(value: false, onChanged: (value) {}),
                     const CustomText(
-                      text: 'Remeber Me',
+                      text: 'Remember Me',
                     ),
                   ],
                 ),
