@@ -4,7 +4,6 @@ import 'package:promdi_fe/widgets/custom_button.dart';
 import 'package:promdi_fe/widgets/custom_text.dart';
 import 'package:promdi_fe/widgets/social_card.dart';
 
-
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
@@ -13,7 +12,6 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double _width = MediaQuery.of(context).size.width;
-    double _height = MediaQuery.of(context).size.height;
 
     return Scaffold(
         body: SafeArea(
@@ -22,8 +20,8 @@ class LoginScreen extends StatelessWidget {
           width: _width,
           padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 5),
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-            SizedBox(
-              height: _height * 0.15,
+            const SizedBox(
+              height: 50,
             ),
             ClipRRect(
               borderRadius: BorderRadius.circular(15.0),
@@ -80,7 +78,30 @@ class LoginScreen extends StatelessWidget {
               title: 'Login',
             ),
             const SizedBox(
+              height: 40,
+            ),
+            const CustomText(
+              text: 'or use one of your social profile',
+              color: Colors.black,
+            ),
+            const SizedBox(
               height: 30,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SocialCard(
+                  icon: 'assets/icons/google-icon.svg',
+                  press: () {},
+                ),
+                SocialCard(
+                  icon: 'assets/icons/facebook-2.svg',
+                  press: () {},
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 50,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -88,7 +109,7 @@ class LoginScreen extends StatelessWidget {
                 Row(
                   children: const [
                     CustomText(
-                      text: 'Forgot Password',
+                      text: 'Forgot Password?',
                       color: Colors.black,
                     )
                   ],
@@ -99,27 +120,6 @@ class LoginScreen extends StatelessWidget {
                 )
               ],
             ),
-
-            const SizedBox(
-              height: 40,
-            ),
-
-            const CustomText(
-              text: 'or use one of your social profile',
-              color: Colors.black,
-            )
-
-            // GestureDetector(
-            //   onTap: () {},
-            //   child: RichText(
-            //       text: TextSpan(children: [
-            //     const TextSpan(
-            //         text: 'Do not have an account yet?',
-            //         style: TextStyle(color: Colors.black)),
-            //     TextSpan(
-            //         text: 'Create account!', style: TextStyle(color: lightBlue))
-            //   ])),
-            // )
           ]),
         ),
       ),
