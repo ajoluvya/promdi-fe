@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:promdi_fe/helpers/style.dart';
 import 'package:promdi_fe/widgets/custom_button.dart';
 import 'package:promdi_fe/widgets/custom_text.dart';
+import 'package:promdi_fe/widgets/social_card.dart';
+
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
