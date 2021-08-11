@@ -30,7 +30,23 @@ class Body extends StatelessWidget {
                       color: Colors.black,
                       fontSize: 15,
                       fontWeight: FontWeight.bold)),
-                      
+              SizedBox(height: SizeConfig.screenHeight! * 0.08),
+              //call the sign up class here....
+              SizedBox(height: SizeConfig.screenHeight! * 0.08),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SocialCard(
+                    icon: 'assets/icons/google-icon.svg',
+                    press: () {},
+                  ),
+                  SocialCard(
+                    icon: 'assets/icons/facebook-2.svg',
+                    press: () {},
+                  ),
+                ],
+              ),
+               SizedBox(height: getProportionateScreenHeight(20)),
             ]),
           ),
         ),
