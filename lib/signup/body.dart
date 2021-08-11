@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:promdi_fe/widgets/social_card.dart';
 import 'package:promdi_fe/helpers/style.dart';
 import 'package:promdi_fe/size_config.dart';
+import 'package:promdi_fe/widgets/custom_text.dart';
 
 class Body extends StatelessWidget {
   const Body({Key? key}) : super(key: key);
@@ -47,6 +48,23 @@ class Body extends StatelessWidget {
                 ],
               ),
                SizedBox(height: getProportionateScreenHeight(20)),
+               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: const [
+                      CustomText(
+                        text: 'Have an Account?',
+                        color: Colors.black,
+                      )
+                    ],
+                  ),
+                  CustomText(
+                    text: 'Sign In',
+                    color: outLineBorder,
+                  )
+                ],
+              ),
             ]),
           ),
         ),
