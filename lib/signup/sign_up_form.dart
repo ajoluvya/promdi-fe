@@ -77,6 +77,25 @@ class _SignUpFormState extends State<SignUpForm> {
                   OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
             ),
           ),
+          SizedBox(height: getProportionateScreenHeight(30)),
+          TextFormField(
+            obscureText: true,
+            decoration: InputDecoration(
+              labelText: "Confirm Password",
+              hintText: "Re-enter your password",
+              labelStyle: TextStyle(color: outLineBorder),
+              focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: outLineBorder),
+                borderRadius: BorderRadius.circular(20),
+              ),
+              border:
+                  OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
+            ),
+          ),
+          CustomButton(
+            onTap: () {},
+            title: 'Sign Up',
+          )
         ],
       ),
     );
