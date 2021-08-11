@@ -38,7 +38,36 @@ class _SignUpFormState extends State<SignUpForm> {
           TextFormField(
             decoration: InputDecoration(
               labelText: 'Last Name',
-              hintText: 'Enter your First Name',
+              hintText: 'Enter your Last Name',
+              labelStyle: TextStyle(color: outLineBorder),
+              focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: outLineBorder),
+                borderRadius: BorderRadius.circular(20),
+              ),
+              border:
+                  OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
+            ),
+          ),
+          SizedBox(height: getProportionateScreenHeight(30)),
+          TextFormField(
+            decoration: InputDecoration(
+              labelText: 'Email',
+              hintText: 'Enter your Email',
+              labelStyle: TextStyle(color: outLineBorder),
+              focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: outLineBorder),
+                borderRadius: BorderRadius.circular(20),
+              ),
+              border:
+                  OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
+            ),
+          ),
+          SizedBox(height: getProportionateScreenHeight(30)),
+          TextFormField(
+            obscureText: true,
+            decoration: InputDecoration(
+              labelText: 'Password',
+              hintText: 'Enter your Password',
               labelStyle: TextStyle(color: outLineBorder),
               focusedBorder: OutlineInputBorder(
                 borderSide: BorderSide(color: outLineBorder),
