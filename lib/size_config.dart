@@ -9,23 +9,21 @@ class SizeConfig {
 
   void init(BuildContext context) {
     _mediaQueryData = MediaQuery.of(context);
-    screenWidth = _mediaQueryData!.size.width;
-    screenHeight = _mediaQueryData!.size.height;
-    orientation = _mediaQueryData!.orientation;
+    screenWidth = _mediaQueryData?.size.width;
+    screenHeight = _mediaQueryData?.size.height;
+    orientation = _mediaQueryData?.orientation;
   }
 }
 
 // Get proportionate height as per screen
-double getProportionateScreenHeight(double inputHeight) {
-  double? screenHeight = SizeConfig.screenHeight;
+double getProportionateScreenHeight(inputHeight) {
+  double? screenHeight = SizeConfig.screenWidth;
 
-  return (inputHeight / 812.0) * screenHeight!;
+  return (inputHeight / 812.0) * screenHeight;
 }
 
-double getProportionateScreenWidth(double inputWidth) {
+double getProportionateScreenWidth(inputWidth) {
   double? screenWidth = SizeConfig.screenWidth;
 
-  return (inputWidth / 375.0) * screenWidth!;
+  return (inputWidth / 375.0) * screenWidth;
 }
-
-

@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:promdi_fe/widgets/custom_button.dart';
-import 'package:promdi_fe/widgets/custom_text.dart';
 import 'package:promdi_fe/helpers/style.dart';
 
-import '../size_config.dart';
 
 class SignUpForm extends StatefulWidget {
   const SignUpForm({Key? key}) : super(key: key);
@@ -20,8 +18,14 @@ class _SignUpFormState extends State<SignUpForm> {
       key: _formKey,
       child: Column(
         children: [
-          SizedBox(height: getProportionateScreenHeight(30)),
+          const SizedBox(height: 10),
           TextFormField(
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'Please enter your name';
+              }
+              return null;
+            },
             decoration: InputDecoration(
               labelText: 'First Name',
               hintText: 'Enter your First Name',
@@ -34,8 +38,14 @@ class _SignUpFormState extends State<SignUpForm> {
                   OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
             ),
           ),
-          SizedBox(height: getProportionateScreenHeight(30)),
+          const SizedBox(height: 10),
           TextFormField(
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'Please enter your name';
+              }
+              return null;
+            },
             decoration: InputDecoration(
               labelText: 'Last Name',
               hintText: 'Enter your Last Name',
@@ -48,8 +58,14 @@ class _SignUpFormState extends State<SignUpForm> {
                   OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
             ),
           ),
-          SizedBox(height: getProportionateScreenHeight(30)),
+          const SizedBox(height: 10),
           TextFormField(
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'Please enter your name';
+              }
+              return null;
+            },
             decoration: InputDecoration(
               labelText: 'Email',
               hintText: 'Enter your Email',
@@ -62,8 +78,14 @@ class _SignUpFormState extends State<SignUpForm> {
                   OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
             ),
           ),
-          SizedBox(height: getProportionateScreenHeight(30)),
+          const SizedBox(height: 10),
           TextFormField(
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'Please enter your name';
+              }
+              return null;
+            },
             obscureText: true,
             decoration: InputDecoration(
               labelText: 'Password',
@@ -77,8 +99,14 @@ class _SignUpFormState extends State<SignUpForm> {
                   OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
             ),
           ),
-          SizedBox(height: getProportionateScreenHeight(30)),
+          const SizedBox(height: 10),
           TextFormField(
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'Please enter your name';
+              }
+              return null;
+            },
             obscureText: true,
             decoration: InputDecoration(
               labelText: "Confirm Password",
@@ -92,6 +120,7 @@ class _SignUpFormState extends State<SignUpForm> {
                   OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
             ),
           ),
+          const SizedBox(height: 10),
           CustomButton(
             onTap: () {},
             title: 'Sign Up',

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:promdi_fe/widgets/social_card.dart';
 import 'package:promdi_fe/helpers/style.dart';
-import 'package:promdi_fe/size_config.dart';
 import 'package:promdi_fe/widgets/custom_text.dart';
+
+import 'sign_up_form.dart';
 
 class Body extends StatelessWidget {
   const Body({Key? key}) : super(key: key);
@@ -13,11 +14,10 @@ class Body extends StatelessWidget {
       child: SizedBox(
         width: double.infinity,
         child: Padding(
-          padding:
-              EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
+          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 5),
           child: SingleChildScrollView(
             child: Column(children: [
-              SizedBox(height: SizeConfig.screenHeight! * 0.04),
+              const SizedBox(height: 5),
               ClipRRect(
                 borderRadius: BorderRadius.circular(15),
                 child: Image.asset(
@@ -31,9 +31,10 @@ class Body extends StatelessWidget {
                       color: Colors.black,
                       fontSize: 15,
                       fontWeight: FontWeight.bold)),
-              SizedBox(height: SizeConfig.screenHeight! * 0.08),
+              const SizedBox(height: 30),
               //call the sign up class here....
-              SizedBox(height: SizeConfig.screenHeight! * 0.08),
+              const SignUpForm(),
+              const SizedBox(height: 30),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -47,8 +48,8 @@ class Body extends StatelessWidget {
                   ),
                 ],
               ),
-               SizedBox(height: getProportionateScreenHeight(20)),
-               Row(
+              const SizedBox(height: 20),
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Row(
