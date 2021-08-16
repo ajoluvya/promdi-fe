@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:promdi_fe/helpers/style.dart';
+import 'package:promdi_fe/screens/signup/signup_page.dart';
 import 'package:promdi_fe/widgets/custom_button.dart';
 import 'package:promdi_fe/widgets/custom_text.dart';
 import 'package:promdi_fe/widgets/social_card.dart';
@@ -114,9 +115,17 @@ class LoginScreen extends StatelessWidget {
                     )
                   ],
                 ),
-                CustomText(
-                  text: 'Sign Up',
-                  color: outLineBorder,
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => SignUp()),
+                    );
+                  },
+                  child: CustomText(
+                    text: 'Sign Up',
+                    color: outLineBorder,
+                  ),
                 )
               ],
             ),
