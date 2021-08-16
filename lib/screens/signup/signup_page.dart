@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:promdi_fe/helpers/style.dart';
 import 'package:promdi_fe/screens/login/login.dart';
 import 'package:promdi_fe/widgets/custom_button.dart';
 import 'package:promdi_fe/widgets/date_picker.dart';
@@ -212,6 +213,7 @@ class _SignUpState extends State<SignUp> {
                     child: CustomButton(
                       onTap: doSignUp,
                       title: 'Sign Up',
+                      customcolor: green,
                     ),
                   ),
                 ),

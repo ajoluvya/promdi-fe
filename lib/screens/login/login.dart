@@ -77,6 +77,7 @@ class LoginScreen extends StatelessWidget {
             CustomButton(
               onTap: () {},
               title: 'Login',
+              customcolor: outLineBorder,
             ),
             const SizedBox(
               height: 40,
