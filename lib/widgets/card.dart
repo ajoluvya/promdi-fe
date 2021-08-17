@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:promdi_fe/helpers/style.dart';
 
 class CustomCard extends StatelessWidget {
   final String text;
@@ -17,26 +18,29 @@ class CustomCard extends StatelessWidget {
     final height = MediaQuery.of(context).size.height;
     return Container(
       child: GestureDetector(
-        // child: Card(
-        child: Column(
-          // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            ClipOval(
-              child: Image.asset(
-                image,
-                fit: BoxFit.contain,
-                height: height * 0.12,
-                width: width * 0.23,
+        child: Card(
+          color: lightGrey,
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+          child: Column(
+            children: [
+              ClipOval(
+                child: Image.asset(
+                  image,
+                  fit: BoxFit.contain,
+                  height: height * 0.12,
+                  width: width * 0.23,
+                ),
               ),
-            ),
-            SizedBox(height: 5),
-            Text(
-              text,
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
-            )
-          ],
+              SizedBox(height: 5),
+              Text(
+                text,
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+              ),
+              SizedBox(height: 5),
+            ],
+          ),
         ),
-        // ),
         onTap: onClick,
       ),
     );
