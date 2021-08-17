@@ -19,7 +19,7 @@ class CustomCard extends StatelessWidget {
     return Container(
       child: GestureDetector(
         child: Card(
-          color: lightGrey,
+          color: light,
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
           child: Column(
@@ -33,9 +33,14 @@ class CustomCard extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 5),
-              Text(
-                text,
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+              SizedBox(
+                height: height * 0.05,
+                width: width * 0.27,
+                child: Text(
+                  text,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                ),
               ),
               SizedBox(height: 5),
             ],
