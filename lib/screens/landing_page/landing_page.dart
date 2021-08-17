@@ -73,7 +73,7 @@ class _LandingPageState extends State<LandingPage> {
                   Column(
                     children: [
                       CustomCard(
-                        text: 'Sell/Buy Agro-inputs',
+                        text: 'Sell/Buy',
                         image: 'assets/images/money (1).png',
                         onClick: () {
                           print('Sell/Buy');
@@ -114,7 +114,7 @@ class _LandingPageState extends State<LandingPage> {
                   Column(
                     children: [
                       CustomCard(
-                        text: 'Chat insurance',
+                        text: 'Support',
                         image: 'assets/images/chat.png',
                         onClick: () {
                           print('object');

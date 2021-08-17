@@ -34,7 +34,7 @@ class CustomCard extends StatelessWidget {
               ),
               SizedBox(height: 5),
               SizedBox(
-                height: height * 0.05,
+                height: height * 0.04,
                 width: width * 0.27,
                 child: Text(
                   text,
