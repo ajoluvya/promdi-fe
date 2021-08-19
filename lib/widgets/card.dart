@@ -4,6 +4,7 @@ import 'package:promdi_fe/helpers/style.dart';
 class CustomCard extends StatelessWidget {
   final String text;
   final String text2;
+  final String text3;
   final String image;
   final double? top;
   final double? bottom;
@@ -17,31 +18,40 @@ class CustomCard extends StatelessWidget {
   final double? bottomtext2;
   final double? righttext2;
   final double? lefttext2;
+  final double? toptext3;
+  final double? bottomtext3;
+  final double? righttext3;
+  final double? lefttext3;
   final Color color;
   final Color textColor;
 
   final VoidCallback onClick;
-  const CustomCard(
-      {Key? key,
-      required this.text,
-      required this.text2,
-      required this.image,
-      required this.onClick,
-      this.top,
-      this.bottom,
-      this.right,
-      this.left,
-      this.toptext,
-      this.bottomtext,
-      this.righttext,
-      this.lefttext,
-      required this.color,
-      required this.textColor,
-      this.toptext2,
-      this.bottomtext2,
-      this.righttext2,
-      this.lefttext2})
-      : super(key: key);
+  const CustomCard({
+    Key? key,
+    required this.text,
+    required this.text2,
+    required this.text3,
+    required this.image,
+    required this.onClick,
+    this.top,
+    this.bottom,
+    this.right,
+    this.left,
+    this.toptext,
+    this.bottomtext,
+    this.righttext,
+    this.lefttext,
+    required this.color,
+    required this.textColor,
+    this.toptext2,
+    this.bottomtext2,
+    this.righttext2,
+    this.lefttext2,
+    this.toptext3,
+    this.bottomtext3,
+    this.righttext3,
+    this.lefttext3,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -114,6 +124,27 @@ class CustomCard extends StatelessWidget {
                           color: textColor,
                           fontWeight: FontWeight.bold,
                           fontSize: 10),
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                top: toptext3,
+                left: lefttext3,
+                bottom: bottomtext3,
+                right: righttext3,
+                child: Padding(
+                  padding: const EdgeInsets.all(5.0),
+                  child: SizedBox(
+                    height: size.height * 0.08,
+                    width: size.width * 0.15,
+                    child: Text(
+                      text3,
+                      textAlign: TextAlign.start,
+                      style: TextStyle(
+                          color: textColor,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 8),
                     ),
                   ),
                 ),

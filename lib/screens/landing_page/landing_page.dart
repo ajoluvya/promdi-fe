@@ -64,7 +64,7 @@ class _LandingPageState extends State<LandingPage> {
                               fontSize: 20),
                         ),
                         SizedBox(height: 5),
-                        Text('${DateFormat.MMMEd().format(DateTime.now())}',
+                        Text('${DateFormat.yMMMd().format(DateTime.now())}',
                             style: TextStyle(
                               color: light,
                             )),
@@ -93,7 +93,7 @@ class _LandingPageState extends State<LandingPage> {
                             children: [
                               CustomCard(
                                 text: 'CROWDFUNDING',
-                                image: 'assets/images/money (1).png',
+                                image: 'assets/images/money.png',
                                 onClick: () {
                                   print('Sell/Buy');
                                 },
@@ -103,8 +103,12 @@ class _LandingPageState extends State<LandingPage> {
                                 color: Colors.yellow,
                                 toptext2: 30,
                                 lefttext2: 0,
+                                bottomtext3: 0,
+                                lefttext3: 0,
                                 textColor: dark,
                                 text2: 'HELP INVEST HARVEST',
+                                text3:
+                                    'Helping farmers by investing on their dreams!',
                               ),
                             ],
                           ),
@@ -113,7 +117,7 @@ class _LandingPageState extends State<LandingPage> {
                             children: [
                               CustomCard(
                                 text: 'E-COMMERCE',
-                                image: 'assets/images/money.png',
+                                image: 'assets/images/money (1).png',
                                 onClick: () {
                                   print('Invest');
                                 },
@@ -121,9 +125,13 @@ class _LandingPageState extends State<LandingPage> {
                                 left: 0,
                                 toptext: 0,
                                 toptext2: 30,
+                                bottomtext3: 0,
+                                righttext3: 0,
                                 color: Colors.pink,
                                 textColor: light,
                                 text2: 'BUY & SELL',
+                                text3:
+                                    'Buy and sell your daily household and agri needs!',
                               ),
                             ],
                           )
@@ -145,9 +153,12 @@ class _LandingPageState extends State<LandingPage> {
                                 right: 0,
                                 bottomtext: 0,
                                 bottomtext2: 2,
+                                toptext3: 0,
+                                lefttext3: 0,
                                 color: greenCustom,
                                 textColor: light,
                                 text2: 'ENROLL & ENJOY',
+                                text3: 'Learn from the comfort of your home!',
                               ),
                             ],
                           ),
@@ -164,9 +175,13 @@ class _LandingPageState extends State<LandingPage> {
                                 left: 0,
                                 bottomtext: 0,
                                 bottomtext2: 5,
+                                toptext3: 0,
+                                righttext3: 0,
                                 color: Colors.purple,
                                 textColor: light,
                                 text2: 'APPLY AND UPDATE',
+                                text3:
+                                    'Worry no more about your application and claims!',
                               ),
                             ],
                           )
