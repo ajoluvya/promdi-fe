@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Promdi',
       theme: ThemeData(
-        primarySwatch: MaterialColor(0xff539626, color),
+        primarySwatch: MaterialColor(0xFF246794, color),
       ),
       home: const LandingPage(),
     );
