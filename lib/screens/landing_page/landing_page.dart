@@ -50,9 +50,20 @@ class _LandingPageState extends State<LandingPage> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Image.asset(
-                      'assets/images/cloudy.png',
-                      height: height * 0.1,
+                    Column(
+                      children: [
+                        Image.asset(
+                          'assets/images/cloudy.png',
+                          height: height * 0.08,
+                        ),
+                        Text(
+                          'Cloudy',
+                          style: TextStyle(
+                            color: light,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
                     ),
                     Column(
                       children: [
@@ -63,7 +74,7 @@ class _LandingPageState extends State<LandingPage> {
                               fontWeight: FontWeight.bold,
                               fontSize: 20),
                         ),
-                        SizedBox(height: 5),
+                        SizedBox(height: 10),
                         Text('${DateFormat.yMMMd().format(DateTime.now())}',
                             style: TextStyle(
                               color: light,
@@ -108,11 +119,10 @@ class _LandingPageState extends State<LandingPage> {
                                 textColor: dark,
                                 text2: 'HELP INVEST HARVEST',
                                 text3:
-                                    'Helping farmers by investing on their dreams!',
+                                    'Helping farmers by investing in their dreams!',
                               ),
                             ],
                           ),
-                          // SizedBox(height: 10),
                           Column(
                             children: [
                               CustomCard(
@@ -127,7 +137,7 @@ class _LandingPageState extends State<LandingPage> {
                                 toptext2: 30,
                                 bottomtext3: 0,
                                 righttext3: 0,
-                                color: Colors.pink,
+                                color: outLineBorder,
                                 textColor: light,
                                 text2: 'BUY & SELL',
                                 text3:
@@ -162,7 +172,6 @@ class _LandingPageState extends State<LandingPage> {
                               ),
                             ],
                           ),
-                          // SizedBox(width: 20),
                           Column(
                             children: [
                               CustomCard(
@@ -187,21 +196,10 @@ class _LandingPageState extends State<LandingPage> {
                           )
                         ],
                       ),
-                      SizedBox(height: 10),
-                      GestureDetector(
-                        child: Card(
-                          color: lightBlue,
-                          child: Padding(
-                            padding: EdgeInsets.all(10),
-                            child: Text(
-                              'e-pay Farmers one Click',
-                              style: TextStyle(color: light, fontSize: 15),
-                            ),
-                          ),
-                        ),
-                        onTap: () {
-                          print('E-pay');
-                        },
+                      SizedBox(height: 40),
+                      Text(
+                        'Helping farmers one click at a time',
+                        style: TextStyle(color: dark, fontSize: 15),
                       ),
                       SizedBox(height: height * 0.05),
                       Row(
@@ -254,7 +252,11 @@ class _LandingPageState extends State<LandingPage> {
                       ),
                       SizedBox(height: height * 0.07),
                       Center(
-                        child: Text('PROMDI FARM'),
+                        child: Text(
+                          'PROMDI FARM',
+                          style: TextStyle(
+                              color: lightBlue, fontWeight: FontWeight.bold),
+                        ),
                       )
                     ],
                   ),

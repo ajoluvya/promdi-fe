@@ -60,7 +60,7 @@ class CustomCard extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     return Container(
       height: height * 0.2,
-      width: width * 0.4,
+      width: width * 0.42,
       child: GestureDetector(
         child: Card(
           color: color,
@@ -137,7 +137,7 @@ class CustomCard extends StatelessWidget {
                   padding: const EdgeInsets.all(5.0),
                   child: SizedBox(
                     height: size.height * 0.08,
-                    width: size.width * 0.15,
+                    width: size.width * 0.16,
                     child: Text(
                       text3,
                       textAlign: TextAlign.start,
