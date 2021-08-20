@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:promdi_fe/screens/login/login.dart';
+import 'package:promdi_fe/helpers/style.dart';
+import 'package:promdi_fe/screens/landing_page/landing_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -8,18 +9,16 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Promdi',
       theme: ThemeData(
-       
-        primarySwatch: Colors.blue,
+        primaryColor: lightBlue,
       ),
-      home: const LoginScreen(),
+      home: const LandingPage(),
     );
   }
 }
-
