@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:promdi_fe/helpers/style.dart';
+import 'package:promdi_fe/screens/e_commerce/e_commerce_page.dart';
 import 'package:promdi_fe/screens/login/login.dart';
 import 'package:promdi_fe/screens/signup/signup_page.dart';
 import 'package:promdi_fe/widgets/card.dart';
@@ -129,7 +130,11 @@ class _LandingPageState extends State<LandingPage> {
                                 text: 'E-COMMERCE',
                                 image: 'assets/images/money (1).png',
                                 onClick: () {
-                                  print('Invest');
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => Ecommerce()),
+                                  );
                                 },
                                 bottom: 0,
                                 left: 0,
