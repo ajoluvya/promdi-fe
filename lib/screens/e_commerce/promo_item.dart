@@ -44,7 +44,7 @@ class PromoItem extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8.0),
                   image: DecorationImage(
-                    image: AssetImage('assets/images/harvest.png'),
+                    image: AssetImage('assets/images/carrot.png'),
                     fit: BoxFit.fill,
                   ),
                 ),
@@ -56,7 +56,7 @@ class PromoItem extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8.0),
                   image: DecorationImage(
-                    image: AssetImage('assets/images/harvest.png'),
+                    image: AssetImage('assets/images/fruits.png'),
                     fit: BoxFit.fill,
                   ),
                 ),

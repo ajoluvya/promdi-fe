@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:promdi_fe/screens/e_commerce/categories.dart';
 import 'package:promdi_fe/screens/e_commerce/eWidgets/productCard.dart';
+import 'package:promdi_fe/screens/e_commerce/product_detail.dart';
 import 'package:promdi_fe/screens/e_commerce/promo_item.dart';
 
 class Shop extends StatefulWidget {
@@ -60,13 +61,21 @@ class _ShopState extends State<Shop> {
                 ],
               ),
               Container(
-                height: size.height * 0.8,
+                height: size.height * 0.51,
                 child: GridView.count(
                   crossAxisCount: 2,
                   physics: NeverScrollableScrollPhysics(),
                   // Generate 100 widgets that display their index in the List.
-                  children: List.generate(6, (index) {
-                    return ProductCard();
+                  children: List.generate(4, (index) {
+                    return ProductCard(
+                      onClick: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ProductDetail()),
+                        );
+                      },
+                    );
                   }),
                 ),
               ),

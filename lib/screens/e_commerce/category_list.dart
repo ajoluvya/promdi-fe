@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:promdi_fe/screens/e_commerce/category_item.dart';
 import 'package:promdi_fe/screens/e_commerce/product_list.dart';
 
 class CategoryList extends StatefulWidget {
@@ -12,37 +11,42 @@ class CategoryList extends StatefulWidget {
 class _CategoryListState extends State<CategoryList> {
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 3,
-      child: Scaffold(
-        appBar: AppBar(
-          automaticallyImplyLeading: false,
-          flexibleSpace: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              TabBar(
-                tabs: [
-                  Tab(
-                    text: 'All',
-                  ),
-                  Tab(
-                    text: 'For You',
-                  ),
-                  Tab(
-                    text: 'Beans',
-                  ),
-                ],
-              )
-            ],
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Cabagges'),
+      ),
+      body: DefaultTabController(
+        length: 3,
+        child: Scaffold(
+          appBar: AppBar(
+            automaticallyImplyLeading: false,
+            flexibleSpace: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                TabBar(
+                  tabs: [
+                    Tab(
+                      text: 'All',
+                    ),
+                    Tab(
+                      text: 'For You',
+                    ),
+                    Tab(
+                      text: 'Beans',
+                    ),
+                  ],
+                )
+              ],
+            ),
           ),
-        ),
-        body: Container(
-          child: TabBarView(
-            children: [
-              ProductList(),
-              CategoryItem(),
-              ProductList(),
-            ],
+          body: Container(
+            child: TabBarView(
+              children: [
+                ProductList(),
+                ProductList(),
+                ProductList(),
+              ],
+            ),
           ),
         ),
       ),

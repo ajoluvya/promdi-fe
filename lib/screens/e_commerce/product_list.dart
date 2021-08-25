@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:promdi_fe/screens/e_commerce/eWidgets/productCard.dart';
+import 'package:promdi_fe/screens/e_commerce/product_detail.dart';
 
 class ProductList extends StatefulWidget {
   const ProductList({Key? key}) : super(key: key);
@@ -18,7 +19,14 @@ class _ProductListState extends State<ProductList> {
         crossAxisCount: 2,
         // Generate 100 widgets that display their index in the List.
         children: List.generate(8, (index) {
-          return ProductCard();
+          return ProductCard(
+            onClick: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ProductDetail()),
+              );
+            },
+          );
         }),
       ),
     );
