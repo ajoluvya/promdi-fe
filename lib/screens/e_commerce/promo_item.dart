@@ -1,66 +1,79 @@
 import 'package:flutter/material.dart';
-import 'package:promdi_fe/helpers/style.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 
 class PromoItem extends StatelessWidget {
   const PromoItem({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final height = MediaQuery.of(context).size.height;
+    Size size = MediaQuery.of(context).size;
     return Container(
-      color: lightGrey,
-      height: height * 0.20,
+      // color: lightGrey,
+      height: size.height * 0.26,
+      // width: width * 2,
       child: ListView(
-        scrollDirection: Axis.horizontal,
-        children: <Widget>[
-          // promo items
-          Card(
-            child: Container(
-              width: 160.0,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15.0),
+        children: [
+          CarouselSlider(
+            items: [
+              //1st Image of Slider
+              Container(
+                // margin: EdgeInsets.all(6.0),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8.0),
                   image: DecorationImage(
-                      fit: BoxFit.cover,
-                      image: AssetImage('assets/images/agriculture(1).png'))),
-              child: Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Text('Promo item 1'),
+                    image: AssetImage('assets/images/harvest.png'),
+                    fit: BoxFit.fill,
+                  ),
+                ),
               ),
-            ),
-            margin:
-                EdgeInsets.only(left: 10.0, right: 10.0, top: 5.0, bottom: 5.0),
-          ),
-          Card(
-            child: Container(
-              width: 160.0,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15.0),
+
+              //2nd Image of Slider
+              Container(
+                // margin: EdgeInsets.all(6.0),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8.0),
                   image: DecorationImage(
-                      fit: BoxFit.cover,
-                      image: AssetImage('assets/images/corn.png'))),
-              child: Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Text('Promo item 2'),
+                    image: AssetImage('assets/images/harvest.png'),
+                    fit: BoxFit.fill,
+                  ),
+                ),
               ),
-            ),
-            margin:
-                EdgeInsets.only(left: 10.0, right: 10.0, top: 5.0, bottom: 5.0),
-          ),
-          Card(
-            child: Container(
-              width: 160.0,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15.0),
+              //3rd Image of Slider
+              Container(
+                margin: EdgeInsets.all(6.0),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8.0),
                   image: DecorationImage(
-                      fit: BoxFit.cover,
-                      image: AssetImage('assets/images/tractor.png'))),
-              child: Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Text('Promo item 3'),
+                    image: AssetImage('assets/images/harvest.png'),
+                    fit: BoxFit.fill,
+                  ),
+                ),
               ),
+
+              //4th Image of Slider
+              Container(
+                margin: EdgeInsets.all(6.0),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8.0),
+                  image: DecorationImage(
+                    image: AssetImage('assets/images/harvest.png'),
+                    fit: BoxFit.fill,
+                  ),
+                ),
+              ),
+            ],
+
+            //Slider Container properties
+            options: CarouselOptions(
+              height: 180.0,
+              enlargeCenterPage: true,
+              autoPlay: true,
+              aspectRatio: 16 / 9,
+              autoPlayCurve: Curves.fastOutSlowIn,
+              enableInfiniteScroll: true,
+              autoPlayAnimationDuration: Duration(milliseconds: 800),
+              viewportFraction: 0.8,
             ),
-            margin:
-                EdgeInsets.only(left: 10.0, right: 10.0, top: 5.0, bottom: 5.0),
           ),
         ],
       ),

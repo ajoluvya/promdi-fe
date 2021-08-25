@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:promdi_fe/helpers/style.dart';
+import 'package:promdi_fe/screens/e_commerce/eWidgets/catCard.dart';
 
 class CategoryItem extends StatelessWidget {
   const CategoryItem({Key? key}) : super(key: key);
@@ -46,21 +47,10 @@ class CategoryItem extends StatelessWidget {
             margin:
                 EdgeInsets.only(left: 10.0, right: 10.0, top: 5.0, bottom: 5.0),
           ),
-          Card(
-            child: Container(
-              width: 160.0,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15.0),
-                  image: DecorationImage(
-                      fit: BoxFit.cover,
-                      image: AssetImage('assets/images/agriculture.png'))),
-              child: Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Text('Category 1'),
-              ),
-            ),
-            margin:
-                EdgeInsets.only(left: 10.0, right: 10.0, top: 5.0, bottom: 5.0),
+          Ecard(
+            image: 'assets/images/agriculture.png',
+            text: 'Fruits',
+            onClick: () {},
           ),
         ],
       ),

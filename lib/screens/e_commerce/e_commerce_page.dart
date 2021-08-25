@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:promdi_fe/helpers/style.dart';
+import 'package:promdi_fe/screens/e_commerce/product_list.dart';
 import 'package:promdi_fe/screens/e_commerce/shop.dart';
 
 class Ecommerce extends StatefulWidget {
@@ -14,7 +15,7 @@ class _EcommerceState extends State<Ecommerce> {
     Shop(),
     Text('Icons.cart,'),
     Text('Icons.myOrder,'),
-    Text('Icons.account,'),
+    ProductList(),
   ];
   int _selectedIndex = 0;
   @override
