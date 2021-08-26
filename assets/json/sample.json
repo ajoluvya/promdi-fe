@@ -1,0 +1,25 @@
+[
+    
+      {
+        "id": "p1",
+        "name": "carrot",
+        "description": "The carrots are particulary sweet and good for food, with an often yellowish peel and a bright carrot",
+        "image": "assets/images/carrot.png",
+        "price": "$12000"
+    },
+      {
+        "id": "p2",
+        "name": "cabbage",
+        "description": "The cabbage are particulary sweet and good for food, with an often greenish peel and a bright cabbage",
+        "image": "assets/images/broccoli.png",
+        "price": "$42000"
+      },
+      {
+        "id": "p3",
+        "name": "banana",
+        "description": "The banana are particulary sweet and good for food, with an often yellowish peel and a bright banana",
+        "image": "assets/images/fruits.png",
+        "price": "$1250"
+      }
+    
+    ]

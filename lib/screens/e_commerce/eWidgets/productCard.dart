@@ -3,7 +3,18 @@ import 'package:promdi_fe/helpers/style.dart';
 
 class ProductCard extends StatelessWidget {
   final VoidCallback onClick;
-  const ProductCard({Key? key, required this.onClick}) : super(key: key);
+  final String image;
+  final String price;
+  final String name;
+  final String? description;
+  const ProductCard(
+      {Key? key,
+      required this.onClick,
+      required this.image,
+      required this.price,
+      required this.name,
+      this.description})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +28,7 @@ class ProductCard extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Image.asset(
-                    "assets/images/carrot.png",
+                    image,
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -27,7 +38,7 @@ class ProductCard extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
-                      "Fruit",
+                      name,
                       style:
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
                     ),
@@ -40,7 +51,7 @@ class ProductCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "12200",
+                      price,
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 12,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:promdi_fe/screens/e_commerce/category_list.dart';
-import 'package:promdi_fe/screens/e_commerce/eWidgets/catCard.dart';
+import 'package:promdi_fe/screens/e_commerce/eWidgets/cardCategory.dart';
 
 class Categories extends StatefulWidget {
   const Categories({Key? key}) : super(key: key);

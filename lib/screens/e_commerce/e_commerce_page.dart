@@ -1,28 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:promdi_fe/helpers/style.dart';
-import 'package:promdi_fe/screens/e_commerce/product_list.dart';
+import 'package:promdi_fe/screens/e_commerce/myOrder.dart';
 import 'package:promdi_fe/screens/e_commerce/shop.dart';
 
 class Ecommerce extends StatefulWidget {
-  const Ecommerce({Key? key}) : super(key: key);
-
+  const Ecommerce({
+    Key? key,
+  }) : super(key: key);
   @override
   _EcommerceState createState() => _EcommerceState();
 }
 
 class _EcommerceState extends State<Ecommerce> {
+  late String _title;
   static const List<Widget> _pages = <Widget>[
     Shop(),
     Text('Icons.cart,'),
-    Text('Icons.myOrder,'),
-    ProductList(),
+    MyOrder(),
+    Text('Account'),
+    // ProductList(),
   ];
   int _selectedIndex = 0;
+  @override
+  initState() {
+    _title = 'Buy / Sell';
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('E Commerce'),
+        title: Text(_title),
       ),
       body: Center(
         child: _pages.elementAt(_selectedIndex),
@@ -58,6 +66,28 @@ class _EcommerceState extends State<Ecommerce> {
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
+      switch (index) {
+        case 0:
+          {
+            _title = 'Buy / Sell';
+          }
+          break;
+        case 1:
+          {
+            _title = 'Cart';
+          }
+          break;
+        case 2:
+          {
+            _title = 'MyOrder';
+          }
+          break;
+        case 3:
+          {
+            _title = 'Account';
+          }
+          break;
+      }
     });
   }
 }

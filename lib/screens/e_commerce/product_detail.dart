@@ -3,13 +3,14 @@ import 'package:promdi_fe/helpers/style.dart';
 import 'package:promdi_fe/widgets/custom_button.dart';
 
 class ProductDetail extends StatelessWidget {
-  const ProductDetail({Key? key}) : super(key: key);
+  final productDetail;
+  const ProductDetail({Key? key, this.productDetail}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Product Detail'),
+        title: Text(productDetail['name']),
         actions: [
           IconButton(
             onPressed: () {},
@@ -28,7 +29,7 @@ class ProductDetail extends StatelessWidget {
                     bottomRight: Radius.circular(30),
                   ),
                   image: DecorationImage(
-                    image: AssetImage('assets/images/carrot.png'),
+                    image: AssetImage(productDetail['image']),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -44,13 +45,13 @@ class ProductDetail extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Carrot Thailand',
+                          productDetail['name'],
                           style: TextStyle(
                             fontSize: 15,
                           ),
                         ),
                         Text(
-                          '3000.48',
+                          productDetail['price'],
                           style: TextStyle(
                             color: Colors.lightBlueAccent,
                             fontSize: 22,
@@ -58,7 +59,7 @@ class ProductDetail extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          'The carrots are particulary sweet and good for food, with an often yellowish peel and a bright carrot',
+                          productDetail['description'],
                           style: TextStyle(
                             color: dark,
                             fontSize: 13,
