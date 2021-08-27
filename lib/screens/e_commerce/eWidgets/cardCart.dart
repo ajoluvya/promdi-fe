@@ -33,9 +33,15 @@ class CartCard extends StatelessWidget {
               SizedBox(width: size.width * 0.011),
               Column(
                 children: [
-                  Text(name),
+                  Text(
+                    name,
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
                   Text(grams),
-                  Text(price),
+                  Text(
+                    price,
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
                 ],
               ),
               SizedBox(width: size.width * 0.12),

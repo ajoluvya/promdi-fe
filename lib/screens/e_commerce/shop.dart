@@ -78,8 +78,8 @@ class _ShopState extends State<Shop> {
                 ],
               ),
               Container(
-                height: size.height * 0.8,
                 child: GridView.builder(
+                    shrinkWrap: true,
                     physics: NeverScrollableScrollPhysics(),
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2),
