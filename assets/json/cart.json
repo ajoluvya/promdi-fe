@@ -1,0 +1,52 @@
+[
+    
+    {
+        "id": "0",
+      "image": "assets/images/fish.png",
+      "name": "fish",
+      "price": "$120",
+      "grams": "5/100",
+      "quantity": "2"
+  },
+    {
+        "id": "1",
+        "image": "assets/images/fruits.png",
+        "name": "banana",
+        "price": "$120",
+      "grams": "5/100",
+      "quantity": "1"
+    },
+    {
+        "id": "2",
+        "image": "assets/images/bread.png",
+        "name": "bread",
+        "price": "$120",
+      "grams": "5/100",
+      "quantity": "2"
+    },
+    {
+        "id": "3",
+        "image": "assets/images/broccoli.png",
+        "name": "broccoli",
+        "price": "$120",
+      "grams": "5/100",
+      "quantity": "2"
+    },
+    {
+        "id": "4",
+        "image": "assets/images/meat.png",
+        "name": "meat",
+        "price": "$120",
+      "grams": "5/100",
+      "quantity": "2"
+    },
+    {
+        "id": "5",
+        "image": "assets/images/milk.png",
+        "name": "milk",
+        "price": "$120",
+      "grams": "5/100",
+      "quantity": "5"
+    }
+  
+  ]

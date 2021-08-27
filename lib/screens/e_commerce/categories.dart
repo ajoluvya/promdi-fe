@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:promdi_fe/screens/e_commerce/category_list.dart';
 import 'package:promdi_fe/screens/e_commerce/eWidgets/cardCategory.dart';
 
@@ -10,63 +13,51 @@ class Categories extends StatefulWidget {
 }
 
 class _CategoriesState extends State<Categories> {
+  // Fetch data from json file
+  List categoryData = [];
+
+  Future<String> loadJsonData() async {
+    var jsonText = await rootBundle.loadString('assets/json/category.json');
+    setState(() {
+      categoryData = json.decode(jsonText);
+    });
+    return 'success';
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    this.loadJsonData();
+  }
+
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
     return Container(
       // color: lightGrey,
       height: height * 0.26,
-      child: GridView.count(
+      child: GridView.builder(
+        physics: NeverScrollableScrollPhysics(),
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 4,
-          physics: NeverScrollableScrollPhysics(),
-          // Generate 100 widgets that display their index in the List.
-          children: [
-            Ecard(
-              image: 'assets/images/fruits.png',
-              text: 'Fruits',
-              onClick: () {},
-            ),
-            Ecard(
-              image: 'assets/images/broccoli.png',
-              text: 'Vegatables',
-              onClick: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => CategoryList()),
-                );
-              },
-            ),
-            Ecard(
-              image: 'assets/images/milk.png',
-              text: 'Diary Food',
-              onClick: () {},
-            ),
-            Ecard(
-              image: 'assets/images/fish.png',
-              text: 'SeaFoods',
-              onClick: () {},
-            ),
-            Ecard(
-              image: 'assets/images/bread.png',
-              text: 'Bakery',
-              onClick: () {},
-            ),
-            Ecard(
-              image: 'assets/images/herbs.png',
-              text: 'Herbs',
-              onClick: () {},
-            ),
-            Ecard(
-              image: 'assets/images/meat.png',
-              text: 'Meats',
-              onClick: () {},
-            ),
-            Ecard(
-              image: 'assets/images/carrot.png',
-              text: 'FrozenFood',
-              onClick: () {},
-            ),
-          ]),
+        ),
+        itemCount: categoryData == null ? 0 : categoryData.length,
+        itemBuilder: (context, index) {
+          return Ecard(
+            image: categoryData[index]['image'],
+            text: categoryData[index]['name'],
+            onClick: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => CategoryList(
+                          categoryItem: categoryData[index],
+                        )),
+              );
+            },
+          );
+        },
+      ),
     );
   }
 }

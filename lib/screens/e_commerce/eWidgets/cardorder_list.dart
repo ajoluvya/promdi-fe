@@ -2,7 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:promdi_fe/screens/e_commerce/order_detail.dart';
 
 class OrderCard extends StatelessWidget {
-  const OrderCard({Key? key}) : super(key: key);
+  final String orderstatus;
+  final String date;
+  final String transactionID;
+  final String cost;
+  const OrderCard(
+      {Key? key,
+      required this.date,
+      required this.transactionID,
+      required this.cost,
+      required this.orderstatus})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,8 +24,8 @@ class OrderCard extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Text('Waiting For Payment'),
-                  Text('08/09/2021'),
+                  Text(orderstatus),
+                  Text(date),
                 ],
               ),
               SizedBox(height: 10),
@@ -25,7 +35,7 @@ class OrderCard extends StatelessWidget {
                   numberButton(
                     context,
                     'TransactionID',
-                    '#32IDERS',
+                    transactionID,
                   ),
                   SizedBox(width: 20),
                   numberButton(
@@ -37,7 +47,7 @@ class OrderCard extends StatelessWidget {
                   numberButton(
                     context,
                     'Total Payment',
-                    '1204',
+                    cost,
                   ),
                 ],
               ),

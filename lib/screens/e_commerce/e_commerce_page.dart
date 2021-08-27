@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:promdi_fe/helpers/style.dart';
+import 'package:promdi_fe/screens/e_commerce/cart_list.dart';
 import 'package:promdi_fe/screens/e_commerce/myOrder.dart';
 import 'package:promdi_fe/screens/e_commerce/shop.dart';
 
@@ -15,7 +16,7 @@ class _EcommerceState extends State<Ecommerce> {
   late String _title;
   static const List<Widget> _pages = <Widget>[
     Shop(),
-    Text('Icons.cart,'),
+    CartList(),
     MyOrder(),
     Text('Account'),
     // ProductList(),

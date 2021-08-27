@@ -13,7 +13,7 @@ class _MyOrderState extends State<MyOrder> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: DefaultTabController(
-        length: 2,
+        length: 3,
         child: Scaffold(
           appBar: AppBar(
             automaticallyImplyLeading: false,
@@ -23,10 +23,13 @@ class _MyOrderState extends State<MyOrder> {
                 TabBar(
                   tabs: [
                     Tab(
-                      text: 'Ongoing',
+                      text: 'Completed',
                     ),
                     Tab(
-                      text: 'History',
+                      text: 'On Progress',
+                    ),
+                    Tab(
+                      text: 'Canceled',
                     ),
                   ],
                 )
@@ -36,6 +39,7 @@ class _MyOrderState extends State<MyOrder> {
           body: Container(
             child: TabBarView(
               children: [
+                OrderList(),
                 OrderList(),
                 OrderList(),
               ],

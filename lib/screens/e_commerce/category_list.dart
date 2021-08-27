@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:promdi_fe/screens/e_commerce/product_list.dart';
 
 class CategoryList extends StatefulWidget {
-  const CategoryList({Key? key}) : super(key: key);
+  final categoryItem;
+  const CategoryList({Key? key, required this.categoryItem}) : super(key: key);
 
   @override
   _CategoryListState createState() => _CategoryListState();
@@ -13,7 +14,7 @@ class _CategoryListState extends State<CategoryList> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Cabagges'),
+        title: Text(widget.categoryItem['name']),
       ),
       body: DefaultTabController(
         length: 3,

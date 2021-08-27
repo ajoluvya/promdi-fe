@@ -15,16 +15,18 @@ class Shop extends StatefulWidget {
 }
 
 class _ShopState extends State<Shop> {
-  List _items = [];
+  List productData = [];
 
-  // Fetch content from the json file
-  Future<void> readJson() async {
-    final String response =
-        await rootBundle.loadString('assets/json/sample.json');
-    final data = await json.decode(response);
-    setState(() {
-      _items = data["products"];
-    });
+  Future<String> loadJsonData() async {
+    var jsonText = await rootBundle.loadString('assets/json/product.json');
+    setState(() => productData = json.decode(jsonText));
+    return 'success';
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    this.loadJsonData();
   }
 
   @override
@@ -78,24 +80,23 @@ class _ShopState extends State<Shop> {
               Container(
                 height: size.height * 0.8,
                 child: GridView.builder(
-                    gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                      maxCrossAxisExtent: 200,
-                      crossAxisSpacing: 10,
-                      mainAxisSpacing: 10,
-                    ),
-                    itemCount: _items.length,
+                    physics: NeverScrollableScrollPhysics(),
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2),
+                    itemCount: productData == null ? 0 : productData.length,
                     itemBuilder: (context, index) {
                       return ProductCard(
                         onClick: () {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => ProductDetail()),
+                                builder: (context) => ProductDetail(
+                                    productDetail: productData[index])),
                           );
                         },
-                        image: _items[index].image,
-                        name: _items[index].name,
-                        price: _items[index].price,
+                        image: productData[index]['image'],
+                        name: productData[index]['name'],
+                        price: productData[index]['price'],
                       );
                     }),
               ),

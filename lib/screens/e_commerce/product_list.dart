@@ -40,18 +40,18 @@ class ProductList extends StatefulWidget {
 
 class _ProductListState extends State<ProductList> {
   // Fetch content from the json file
-  late List data;
+  List productData = [];
 
-  Future<String> loadJsonData() async {
-    var jsonText = await rootBundle.loadString('assets/json/sample.json');
-    setState(() => data = json.decode(jsonText));
+  Future<String> productJsonData() async {
+    var jsonText = await rootBundle.loadString('assets/json/product.json');
+    setState(() => productData = json.decode(jsonText));
     return 'success';
   }
 
   @override
   void initState() {
     super.initState();
-    this.loadJsonData();
+    this.productJsonData();
   }
 
   // late Future<Product> futureAlbum;
@@ -65,7 +65,7 @@ class _ProductListState extends State<ProductList> {
         child: GridView.builder(
             gridDelegate:
                 SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-            itemCount: data == null ? 0 : data.length,
+            itemCount: productData == null ? 0 : productData.length,
             itemBuilder: (context, index) {
               return ProductCard(
                 onClick: () {
@@ -73,12 +73,12 @@ class _ProductListState extends State<ProductList> {
                     context,
                     MaterialPageRoute(
                         builder: (context) =>
-                            ProductDetail(productDetail: data[index])),
+                            ProductDetail(productDetail: productData[index])),
                   );
                 },
-                image: data[index]['image'],
-                name: data[index]['name'],
-                price: data[index]['price'],
+                image: productData[index]['image'],
+                name: productData[index]['name'],
+                price: productData[index]['price'],
               );
             }),
       ),
