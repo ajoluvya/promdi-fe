@@ -6,14 +6,20 @@ class CartCard extends StatelessWidget {
   final String name;
   final String grams;
   final String price;
-  final String quantity;
-  const CartCard({
+  final int? quantity;
+  final int? itemCount;
+  final VoidCallback increment;
+  final VoidCallback decrement;
+  CartCard({
     Key? key,
     required this.image,
     required this.name,
     required this.grams,
     required this.price,
-    required this.quantity,
+    this.quantity = 0,
+    required this.increment,
+    required this.decrement,
+    this.itemCount,
   }) : super(key: key);
 
   @override
@@ -46,14 +52,14 @@ class CartCard extends StatelessWidget {
               ),
               SizedBox(width: size.width * 0.12),
               IconButton(
-                onPressed: () {},
+                onPressed: decrement,
                 icon: Icon(Icons.remove),
                 color: redCustom,
               ),
-              Text(quantity),
+              Text('$quantity'),
               IconButton(
                 alignment: Alignment.center,
-                onPressed: () {},
+                onPressed: increment,
                 icon: Icon(Icons.add),
                 color: greenCustom,
               ),

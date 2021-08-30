@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:promdi_fe/helpers/style.dart';
+import 'package:promdi_fe/screens/e_commerce/checkout.dart';
 import 'package:promdi_fe/screens/e_commerce/eWidgets/cardCart.dart';
 
 import 'dart:convert';
@@ -18,6 +19,7 @@ class CartList extends StatefulWidget {
 class _CartListState extends State<CartList> {
   // Fetch content from the json file
   List cartData = [];
+  int itemCount = 0;
 
   Future<String> productJsonData() async {
     var jsonText = await rootBundle.loadString('assets/json/cart.json');
@@ -31,11 +33,8 @@ class _CartListState extends State<CartList> {
     this.productJsonData();
   }
 
-  // late Future<Product> futureAlbum;
-
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -50,9 +49,33 @@ class _CartListState extends State<CartList> {
                     name: cartData[index]['name'],
                     price: cartData[index]['price'],
                     grams: cartData[index]['grams'],
-                    quantity: cartData[index]['quantity'],
+                    quantity: cartData[index]['quantity'] = itemCount,
+                    decrement: () => setState(() => itemCount--),
+                    increment: () => setState(() => itemCount++),
                   );
                 }),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(40, 10, 40, 10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Total',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                    ),
+                  ),
+                  Text(
+                    '25',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                    ),
+                  ),
+                ],
+              ),
+            ),
             Divider(
               color: dark,
               thickness: 2,
@@ -124,7 +147,13 @@ class _CartListState extends State<CartList> {
             Padding(
               padding: const EdgeInsets.all(20.0),
               child: CustomButton(
-                title: 'Continue',
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => CheckOutPage()),
+                  );
+                },
+                title: 'Checkout',
                 customcolor: greenCustom,
               ),
             )
