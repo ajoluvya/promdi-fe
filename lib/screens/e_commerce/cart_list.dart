@@ -19,7 +19,7 @@ class CartList extends StatefulWidget {
 class _CartListState extends State<CartList> {
   // Fetch content from the json file
   List cartData = [];
-  int itemCount = 0;
+  bool _show = true;
 
   Future<String> productJsonData() async {
     var jsonText = await rootBundle.loadString('assets/json/cart.json');
@@ -35,6 +35,7 @@ class _CartListState extends State<CartList> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -49,9 +50,11 @@ class _CartListState extends State<CartList> {
                     name: cartData[index]['name'],
                     price: cartData[index]['price'],
                     grams: cartData[index]['grams'],
-                    quantity: cartData[index]['quantity'] = itemCount,
-                    decrement: () => setState(() => itemCount--),
-                    increment: () => setState(() => itemCount++),
+                    quantity: cartData[index]['quantity'],
+                    decrement: () =>
+                        setState(() => cartData[index]['quantity']--),
+                    increment: () =>
+                        setState(() => cartData[index]['quantity']++),
                   );
                 }),
             Padding(
@@ -67,7 +70,7 @@ class _CartListState extends State<CartList> {
                     ),
                   ),
                   Text(
-                    '25',
+                    '${oCcy.format(25)}',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 16,
@@ -125,7 +128,7 @@ class _CartListState extends State<CartList> {
                   ),
                 ),
                 Text(
-                  '2.00',
+                  '${oCcy.format(20)}',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 16,
@@ -137,29 +140,71 @@ class _CartListState extends State<CartList> {
               color: dark,
               thickness: 2,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Text('Total Payment'),
-                Text('250'),
-              ],
-            ),
-            Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: CustomButton(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => CheckOutPage()),
-                  );
-                },
-                title: 'Checkout',
-                customcolor: greenCustom,
-              ),
+            SizedBox(
+              height: size.height * 0.16,
             )
           ],
         ),
       ),
+      bottomSheet: _showBottomSheet(),
     );
+  }
+
+  Widget? _showBottomSheet() {
+    Size size = MediaQuery.of(context).size;
+    if (_show) {
+      return BottomSheet(
+        onClosing: () {},
+        builder: (context) {
+          return Container(
+              height: size.height * 0.15,
+              width: double.infinity,
+              color: lightGrey,
+              alignment: Alignment.center,
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Text(
+                          'Total Payment',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                          ),
+                        ),
+                        Text(
+                          '${oCcy.format(250)}',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: CustomButton(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => CheckOutPage()),
+                        );
+                      },
+                      title: 'Checkout',
+                      customcolor: greenCustom,
+                    ),
+                  ),
+                ],
+              ));
+        },
+      );
+    } else {
+      return null;
+    }
   }
 }

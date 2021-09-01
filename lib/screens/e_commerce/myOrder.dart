@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:promdi_fe/helpers/style.dart';
 import 'package:promdi_fe/screens/e_commerce/order_list.dart';
 
 class MyOrder extends StatefulWidget {
@@ -39,9 +40,15 @@ class _MyOrderState extends State<MyOrder> {
           body: Container(
             child: TabBarView(
               children: [
-                OrderList(),
-                OrderList(),
-                OrderList(),
+                OrderList(
+                  status: 'Completed',
+                ),
+                OrderList(
+                  status: 'Progress',
+                ),
+                OrderList(
+                  status: 'Canceled',
+                ),
               ],
             ),
           ),

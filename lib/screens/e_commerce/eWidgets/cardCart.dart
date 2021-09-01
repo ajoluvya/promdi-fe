@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:promdi_fe/helpers/style.dart';
+import 'package:intl/intl.dart';
+
+final oCcy = new NumberFormat("#,##0.0", "en_US");
 
 class CartCard extends StatelessWidget {
   final String image;
   final String name;
   final String grams;
-  final String price;
+  final int price;
   final int? quantity;
-  final int? itemCount;
   final VoidCallback increment;
   final VoidCallback decrement;
   CartCard({
@@ -19,7 +21,6 @@ class CartCard extends StatelessWidget {
     this.quantity = 0,
     required this.increment,
     required this.decrement,
-    this.itemCount,
   }) : super(key: key);
 
   @override
@@ -45,7 +46,7 @@ class CartCard extends StatelessWidget {
                   ),
                   Text(grams),
                   Text(
-                    price,
+                    '${oCcy.format(price)}',
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ],
@@ -56,7 +57,7 @@ class CartCard extends StatelessWidget {
                 icon: Icon(Icons.remove),
                 color: redCustom,
               ),
-              Text('$quantity'),
+              Text('${quantity}'),
               IconButton(
                 alignment: Alignment.center,
                 onPressed: increment,

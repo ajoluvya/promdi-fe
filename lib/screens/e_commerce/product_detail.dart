@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:promdi_fe/helpers/style.dart';
 import 'package:promdi_fe/widgets/custom_button.dart';
+
+final oCcy = new NumberFormat("#,##0.0", "en_US");
 
 class ProductDetail extends StatelessWidget {
   final productDetail;
@@ -51,7 +54,7 @@ class ProductDetail extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          productDetail['price'],
+                          oCcy.format(productDetail['price']),
                           style: TextStyle(
                             color: Colors.lightBlueAccent,
                             fontSize: 22,

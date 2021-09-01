@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:promdi_fe/screens/e_commerce/eWidgets/order_status.dart';
 
 class OrderDetail extends StatefulWidget {
-  const OrderDetail({Key? key}) : super(key: key);
+  final String transactionID;
+  const OrderDetail({Key? key, required this.transactionID}) : super(key: key);
 
   @override
   _OrderDetailState createState() => _OrderDetailState();
@@ -13,7 +14,7 @@ class _OrderDetailState extends State<OrderDetail> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('ID G123KTN'),
+        title: Text(widget.transactionID),
       ),
       body: Container(
         padding: EdgeInsets.all(5.0),

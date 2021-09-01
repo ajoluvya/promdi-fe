@@ -3,32 +3,32 @@
     {
         "id": "0",
       "image": "assets/images/fish.png",
-      "name": "fish",
-      "price": "$120",
+      "name": "Fish",
+      "price": 10,
       "grams": "5/100",
       "quantity": 2
   },
     {
         "id": "1",
         "image": "assets/images/fruits.png",
-        "name": "banana",
-        "price": "$120",
+        "name": "Banana",
+        "price": 100,
       "grams": "5/100",
       "quantity": 1
     },
     {
         "id": "2",
         "image": "assets/images/bread.png",
-        "name": "bread",
-        "price": "$120",
+        "name": "Bread",
+        "price": 300,
       "grams": "5/100",
       "quantity": 2
     },
     {
         "id": "3",
         "image": "assets/images/broccoli.png",
-        "name": "broccoli",
-        "price": "$120",
+        "name": "Broccoli",
+        "price": 250,
       "grams": "5/100",
       "quantity": 2
     }

@@ -3,23 +3,44 @@
     {
         "id": "1",
       "transactionID": "#321DERS",
-      "orderstatus": "completed",
+      "orderstatus": "Completed",
       "date": "12/2/2020",
       "cost": "$12000"
   },
     {
         "id": "2",
       "transactionID": "#300DERS",
-      "orderstatus": "In Progress",
+      "orderstatus": "Progress",
       "date": "12/2/2020",
       "cost": "$42000"
     },
     {
         "id": "3",
-      "transactionID": "#327EEES",
-      "orderstatus": "canceled",
+      "transactionID": "#327CES",
+      "orderstatus": "Canceled",
       "date": "12/2/2020",
-      "cost": "$1250"
-    }
+      "cost": "1250"
+    },
+    {
+      "id": "4",
+    "transactionID": "#027FFS",
+    "orderstatus": "Canceled",
+    "date": "12/2/2020",
+    "cost": "1250"
+  },
+  {
+    "id": "5",
+  "transactionID": "#027DDG",
+  "orderstatus": "Completed",
+  "date": "11/5/2020",
+  "cost": "7550"
+},
+{
+  "id": "6",
+"transactionID": "#167HRS",
+"orderstatus": "Completed",
+"date": "15/3/2021",
+"cost": "8550"
+}
   
   ]

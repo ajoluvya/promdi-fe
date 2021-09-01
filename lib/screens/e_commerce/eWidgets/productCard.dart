@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:promdi_fe/helpers/style.dart';
+import 'package:intl/intl.dart';
+
+final oCcy = new NumberFormat("#,##0.0", "en_US");
 
 class ProductCard extends StatelessWidget {
   final VoidCallback onClick;
   final String image;
-  final String price;
+  final int price;
   final String name;
   final String? description;
   const ProductCard(
@@ -51,7 +54,7 @@ class ProductCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      price,
+                      '${oCcy.format(price)}',
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 12,

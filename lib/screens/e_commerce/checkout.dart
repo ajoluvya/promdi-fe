@@ -22,7 +22,7 @@ class _CheckOutPageState extends State<CheckOutPage> {
         title: Text('Checkout'),
       ),
       body: Container(
-        color: light,
+        color: lightGrey,
         child: SingleChildScrollView(
           child: Column(
             children: [
@@ -33,13 +33,16 @@ class _CheckOutPageState extends State<CheckOutPage> {
               Padding(
                 padding: const EdgeInsets.all(2.0),
                 child: Card(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Text('Cecilia chapman 711-2280 Nulla St.'),
-                      Text('Manakato Mississippi 96522.'),
-                      Text('255 553-7652')
-                    ],
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Text('Cecilia chapman 711-2280 Nulla St.'),
+                        Text('Manakato Mississippi 96522.'),
+                        Text('255 553-7652')
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -48,30 +51,35 @@ class _CheckOutPageState extends State<CheckOutPage> {
                 child: Column(
                   children: [
                     Card(
-                      child: Column(
-                        children: [
-                          Row(
-                            children: [
-                              Icon(Icons.watch),
-                              Text('Fri, Jun 17,2020-12.30'),
-                              SizedBox(
-                                width: size.width * 0.25,
-                              ),
-                              Icon(Icons.skip_next)
-                            ],
-                          ),
-                          SizedBox(height: 20),
-                          Row(
-                            children: [
-                              Icon(Icons.watch_rounded),
-                              Text('Pick Up Time 30-40 Min'),
-                              SizedBox(
-                                width: size.width * 0.25,
-                              ),
-                              Icon(Icons.skip_next)
-                            ],
-                          ),
-                        ],
+                      child: Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Icon(Icons.watch),
+                                Text('Fri, Jun 17,2020-12.30'),
+                                SizedBox(
+                                  width: size.width * 0.25,
+                                ),
+                                Icon(Icons.skip_next)
+                              ],
+                            ),
+                            SizedBox(height: 20),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Icon(Icons.watch_rounded),
+                                Text('Pick Up Time 30-40 Min'),
+                                SizedBox(
+                                  width: size.width * 0.25,
+                                ),
+                                Icon(Icons.skip_next)
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                     Padding(
@@ -94,47 +102,62 @@ class _CheckOutPageState extends State<CheckOutPage> {
                       padding: const EdgeInsets.all(8.0),
                       child: Text('Payment Method'),
                     ),
-                    TextFormField(
-                      enabled: false,
-                      autofocus: false,
-                      validator: (value) => value!.isEmpty ? 'ApplePay' : null,
-                      onSaved: (value) => applepay = value!,
-                      decoration: buildInputDecoration(
-                        'Apple Pay',
-                        Icons.card_giftcard,
-                      ),
-                    ),
-                    TextFormField(
-                      enabled: false,
-                      autofocus: false,
-                      validator: (value) => value!.isEmpty ? 'Visa' : null,
-                      onSaved: (value) => visa = value!,
-                      decoration: buildInputDecoration(
-                        'Visa ***586',
-                        Icons.card_giftcard,
-                      ),
-                    ),
-                    OutlinedButton(
-                      style: OutlinedButton.styleFrom(
-                        side: BorderSide(
-                          width: 2.0,
-                          color: greenCustom,
-                        ),
-                      ),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => Payment()),
-                        );
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Text(
-                          'Add payment method',
-                          style: TextStyle(
-                            color: dark,
+                    Card(
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(6.0),
+                            child: TextFormField(
+                              enabled: false,
+                              autofocus: false,
+                              validator: (value) =>
+                                  value!.isEmpty ? 'ApplePay' : null,
+                              onSaved: (value) => applepay = value!,
+                              decoration: buildInputDecoration(
+                                'Apple Pay',
+                                Icons.card_giftcard,
+                              ),
+                            ),
                           ),
-                        ),
+                          Padding(
+                            padding: const EdgeInsets.all(6.0),
+                            child: TextFormField(
+                              enabled: false,
+                              autofocus: false,
+                              validator: (value) =>
+                                  value!.isEmpty ? 'Visa' : null,
+                              onSaved: (value) => visa = value!,
+                              decoration: buildInputDecoration(
+                                'Visa ***586',
+                                Icons.card_giftcard,
+                              ),
+                            ),
+                          ),
+                          OutlinedButton(
+                            style: OutlinedButton.styleFrom(
+                              side: BorderSide(
+                                width: 2.0,
+                                color: greenCustom,
+                              ),
+                            ),
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Payment()),
+                              );
+                            },
+                            child: Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: Text(
+                                'Add payment method',
+                                style: TextStyle(
+                                  color: dark,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                     Padding(
