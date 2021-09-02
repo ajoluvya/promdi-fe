@@ -10,18 +10,18 @@ class OrderStatusState extends State<OrderStatus> {
   int current_step = 0;
   List<Step> steps = [
     Step(
-      title: Text('Step 1'),
-      content: Text('Hello!'),
+      title: Text('Preparing order'),
+      content: Text('packaging!'),
       isActive: true,
     ),
     Step(
-      title: Text('Step 2'),
-      content: Text('World!'),
+      title: Text('Ready to collect'),
+      content: Text('almost out of store!'),
       isActive: true,
     ),
     Step(
-      title: Text('Step 3'),
-      content: Text('Hello World!'),
+      title: Text('Delivery order'),
+      content: Text('out for delivery!'),
       state: StepState.complete,
       isActive: true,
     ),

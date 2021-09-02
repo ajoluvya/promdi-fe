@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:promdi_fe/helpers/style.dart';
 import 'package:promdi_fe/screens/e_commerce/order_detail.dart';
 import 'package:intl/intl.dart';
 
@@ -9,60 +10,49 @@ class OrderCard extends StatelessWidget {
   final String date;
   final String transactionID;
   final String cost;
+  final Color statuscolor;
   const OrderCard(
       {Key? key,
       required this.date,
       required this.transactionID,
       required this.cost,
-      required this.orderstatus})
+      required this.orderstatus,
+      required this.statuscolor})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return IntrinsicHeight(
-      child: Card(
-        child: GestureDetector(
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
+      child: Padding(
+        padding: const EdgeInsets.all(1.0),
+        child: Card(
+          shadowColor: dark,
+          child: GestureDetector(
             child: Column(
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Text(orderstatus),
-                    Text(date),
-                  ],
-                ),
                 SizedBox(height: 10),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    numberButton(
-                      context,
-                      'TransactionID',
-                      transactionID,
-                    ),
-                    SizedBox(width: 20),
-                    numberButton(
-                      context,
-                      'Delivered to',
-                      'My Home',
-                    ),
-                    SizedBox(width: 20),
-                    numberButton(context, 'Total Payment', '${cost}'),
-                  ],
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: numberButton(
+                    context,
+                    transactionID,
+                    date,
+                    'Home',
+                    cost,
+                  ),
                 ),
+                SizedBox(width: 20),
               ],
             ),
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        OrderDetail(transactionID: '${transactionID}'),
+                  ));
+            },
           ),
-          onTap: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) =>
-                      OrderDetail(transactionID: '${transactionID}'),
-                ));
-          },
         ),
       ),
     );
@@ -70,28 +60,39 @@ class OrderCard extends StatelessWidget {
 
   Widget numberButton(
     BuildContext context,
-    String value,
-    String text,
+    String text1,
+    String text2,
+    String text3,
+    String text4,
   ) {
     return Material(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.start,
+      // color: lightGrey,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Text(
-            value,
+            text1,
             style: TextStyle(
               fontSize: 13,
               fontWeight: FontWeight.bold,
             ),
           ),
-          SizedBox(
-            height: 6,
+          Text(
+            text2,
+            style: TextStyle(
+              fontSize: 13,
+            ),
           ),
           Text(
-            text,
+            text3,
             style: TextStyle(
-              fontSize: 12,
+              fontSize: 13,
+            ),
+          ),
+          Text(
+            text4,
+            style: TextStyle(
+              fontSize: 13,
             ),
           ),
         ],

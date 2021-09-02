@@ -60,7 +60,12 @@ class ProductCard extends StatelessWidget {
                           fontSize: 12,
                           color: lightBlue),
                     ),
-                    Icon(Icons.add_shopping_cart),
+                    GestureDetector(
+                      child: Icon(Icons.add_shopping_cart),
+                      onTap: () {
+                        print('cart');
+                      },
+                    ),
                   ],
                 ),
               ),

@@ -36,9 +36,57 @@ class _OrderListState extends State<OrderList> {
   Widget build(BuildContext context) {
     if (widget.status == 'Completed') {
       return Scaffold(
-          body: Container(
-              color: lightGrey,
+          body: Column(
+        children: [
+          Container(
+            color: greenCustom,
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Container(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Text(
+                      'TransactionID',
+                      style: TextStyle(
+                        fontSize: 13,
+                        color: light,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text(
+                      'Date',
+                      style: TextStyle(
+                        fontSize: 13,
+                        color: light,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text(
+                      'Delivery To',
+                      style: TextStyle(
+                        fontSize: 13,
+                        color: light,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text(
+                      'Total Pay',
+                      style: TextStyle(
+                        fontSize: 13,
+                        color: light,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          Container(
+              // color: lightGrey,
               child: ListView.builder(
+                  shrinkWrap: true,
                   itemCount: data == null ? 0 : data.length,
                   itemBuilder: (context, index) {
                     if (data[index]['orderstatus'] == widget.status) {
@@ -47,49 +95,150 @@ class _OrderListState extends State<OrderList> {
                         date: data[index]['date'],
                         orderstatus: data[index]['orderstatus'],
                         transactionID: data[index]['transactionID'],
+                        statuscolor: greenCustom,
                       );
                     } else {
-                      return Text('');
+                      return SizedBox.shrink();
                     }
-                  })));
+                  })),
+        ],
+      ));
     } else if (widget.status == 'Progress') {
       return Scaffold(
-        body: Container(
-          color: lightGrey,
-          child: ListView.builder(
-              itemCount: data == null ? 0 : data.length,
-              itemBuilder: (context, index) {
-                if (data[index]['orderstatus'] == widget.status) {
-                  return OrderCard(
-                    cost: data[index]['cost'],
-                    date: data[index]['date'],
-                    orderstatus: data[index]['orderstatus'],
-                    transactionID: data[index]['transactionID'],
-                  );
-                } else {
-                  return SizedBox.shrink();
-                }
-              }),
+        body: Column(
+          children: [
+            Container(
+              color: Colors.lightBlue,
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Text(
+                      'TransactionID',
+                      style: TextStyle(
+                        fontSize: 13,
+                        color: dark,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text(
+                      'Date',
+                      style: TextStyle(
+                        fontSize: 13,
+                        color: dark,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text(
+                      'Delivery To',
+                      style: TextStyle(
+                        fontSize: 13,
+                        color: dark,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text(
+                      'Total Pay',
+                      style: TextStyle(
+                        fontSize: 13,
+                        color: dark,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Container(
+              color: lightGrey,
+              child: ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: data == null ? 0 : data.length,
+                  itemBuilder: (context, index) {
+                    if (data[index]['orderstatus'] == widget.status) {
+                      return OrderCard(
+                        cost: data[index]['cost'],
+                        date: data[index]['date'],
+                        orderstatus: data[index]['orderstatus'],
+                        transactionID: data[index]['transactionID'],
+                        statuscolor: Colors.lightBlue,
+                      );
+                    } else {
+                      return SizedBox.shrink();
+                    }
+                  }),
+            ),
+          ],
         ),
       );
     } else {
       return Scaffold(
-          body: Container(
-        color: lightGrey,
-        child: ListView.builder(
-            itemCount: data == null ? 0 : data.length,
-            itemBuilder: (context, index) {
-              if (data[index]['orderstatus'] == widget.status) {
-                return OrderCard(
-                  cost: data[index]['cost'],
-                  date: data[index]['date'],
-                  orderstatus: data[index]['orderstatus'],
-                  transactionID: data[index]['transactionID'],
-                );
-              } else {
-                return SizedBox.shrink();
-              }
-            }),
+          body: Column(
+        children: [
+          Container(
+            color: redCustom,
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Text(
+                    'TransactionID',
+                    style: TextStyle(
+                      fontSize: 13,
+                      color: light,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Text(
+                    'Date',
+                    style: TextStyle(
+                      fontSize: 13,
+                      color: light,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Text(
+                    'Delivery To',
+                    style: TextStyle(
+                      fontSize: 13,
+                      color: light,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Text(
+                    'Total Pay',
+                    style: TextStyle(
+                      fontSize: 13,
+                      color: light,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          Container(
+            // color: lightGrey,
+            child: ListView.builder(
+                shrinkWrap: true,
+                itemCount: data == null ? 0 : data.length,
+                itemBuilder: (context, index) {
+                  if (data[index]['orderstatus'] == widget.status) {
+                    return OrderCard(
+                      cost: data[index]['cost'],
+                      date: data[index]['date'],
+                      orderstatus: data[index]['orderstatus'],
+                      transactionID: data[index]['transactionID'],
+                      statuscolor: redCustom,
+                    );
+                  } else {
+                    return SizedBox.shrink();
+                  }
+                }),
+          ),
+        ],
       ));
     }
   }

@@ -31,7 +31,6 @@ class _ShopState extends State<Shop> {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: Container(
         // height: size.height * 0.7,
@@ -83,6 +82,7 @@ class _ShopState extends State<Shop> {
                     physics: NeverScrollableScrollPhysics(),
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2),
+                    // ignore: unnecessary_null_comparison
                     itemCount: productData == null ? 0 : productData.length,
                     itemBuilder: (context, index) {
                       return ProductCard(

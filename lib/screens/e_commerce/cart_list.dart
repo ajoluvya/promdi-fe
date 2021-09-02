@@ -10,7 +10,10 @@ import 'package:promdi_fe/widgets/custom_button.dart';
 
 class CartList extends StatefulWidget {
   final List? data;
-  const CartList({Key? key, this.data}) : super(key: key);
+  const CartList({
+    Key? key,
+    this.data,
+  }) : super(key: key);
 
   @override
   _CartListState createState() => _CartListState();
@@ -20,6 +23,7 @@ class _CartListState extends State<CartList> {
   // Fetch content from the json file
   List cartData = [];
   bool _show = true;
+  int total = 0;
 
   Future<String> productJsonData() async {
     var jsonText = await rootBundle.loadString('assets/json/cart.json');
@@ -31,6 +35,9 @@ class _CartListState extends State<CartList> {
   void initState() {
     super.initState();
     this.productJsonData();
+    setState(() {
+      this.total;
+    });
   }
 
   @override
@@ -45,10 +52,16 @@ class _CartListState extends State<CartList> {
                 physics: BouncingScrollPhysics(),
                 itemCount: cartData != null ? cartData.length : 0,
                 itemBuilder: (context, index) {
+                  if (cartData[index] == 1) {
+                    total = cartData[index]['price'] + total;
+                  } else {
+                    Null;
+                  }
                   return CartCard(
                     image: cartData[index]['image'],
                     name: cartData[index]['name'],
-                    price: cartData[index]['price'],
+                    price:
+                        cartData[index]['price'] * cartData[index]['quantity'],
                     grams: cartData[index]['grams'],
                     quantity: cartData[index]['quantity'],
                     decrement: () =>
@@ -70,7 +83,7 @@ class _CartListState extends State<CartList> {
                     ),
                   ),
                   Text(
-                    '${oCcy.format(25)}',
+                    '${oCcy.format(total)}',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 16,
@@ -128,7 +141,7 @@ class _CartListState extends State<CartList> {
                   ),
                 ),
                 Text(
-                  '${oCcy.format(20)}',
+                  '${oCcy.format(16)}',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 16,
@@ -176,7 +189,7 @@ class _CartListState extends State<CartList> {
                           ),
                         ),
                         Text(
-                          '${oCcy.format(250)}',
+                          '${oCcy.format(total + (16))}',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 16,

@@ -24,6 +24,7 @@ class _OrderDetailState extends State<OrderDetail> {
               children: [Text('16 June, 11:30AM')],
             ),
             OrderStatus(),
+            Divider(),
             Text('Destination'),
             Text('554 West 142nd Street, New York, NY 10031'),
             Text('Courir'),
