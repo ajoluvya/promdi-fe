@@ -1,0 +1,37 @@
+[
+    
+    {
+        "id": "0",
+      "image": "assets/images/fish.png",
+      "name": "Fish",
+      "price": 10,
+      "grams": "5/100",
+      "quantity": 2
+  },
+    {
+        "id": "1",
+        "image": "assets/images/fruits.png",
+        "name": "Banana",
+        "price": 100,
+      "grams": "5/100",
+      "quantity": 1
+    },
+    {
+        "id": "2",
+        "image": "assets/images/bread.png",
+        "name": "Bread",
+        "price": 300,
+      "grams": "5/100",
+      "quantity": 2
+    },
+    {
+        "id": "3",
+        "image": "assets/images/broccoli.png",
+        "name": "Broccoli",
+        "price": 250,
+      "grams": "5/100",
+      "quantity": 2
+    }
+    
+  
+  ]
