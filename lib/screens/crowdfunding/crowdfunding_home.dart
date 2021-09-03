@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:promdi_fe/helpers/style.dart';
 import 'package:promdi_fe/screens/crowdfunding/crowdfund_widgets/fund_card.dart';
+import 'package:promdi_fe/screens/crowdfunding/user_profile.dart';
 
 class CrowdfundingPage extends StatefulWidget {
   const CrowdfundingPage({Key? key}) : super(key: key);
@@ -38,13 +39,19 @@ class _CrowdState extends State<CrowdfundingPage> {
                 padRight: 0.6,
                 profileimage: 'assets/images/fish.png',
                 about:
-                    'Farmer of all seasons, well vasted with mordern farming, use of fintech',
+                    'Farmer of all seasons, well versed with modern farming, use of fintech',
                 area: '2 hect',
                 crop: 'Rice',
                 harvest: '180 days',
                 investment: '60,000',
                 location: 'Kayunga',
                 roi: '3.4%',
+                onClick: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => PartnerProfile()),
+                  );
+                },
               );
             }),
           ))

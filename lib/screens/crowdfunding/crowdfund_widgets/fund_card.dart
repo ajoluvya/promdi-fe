@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:promdi_fe/helpers/style.dart';
 import 'package:percent_indicator/percent_indicator.dart';
+import 'package:promdi_fe/widgets/custom_button.dart';
 
 class CrowdFundCard extends StatefulWidget {
   final double padLeft;
@@ -14,6 +15,7 @@ class CrowdFundCard extends StatefulWidget {
   final String harvest;
   final String roi;
   final String about;
+  final VoidCallback onClick;
   const CrowdFundCard(
       {Key? key,
       required this.padLeft,
@@ -26,7 +28,8 @@ class CrowdFundCard extends StatefulWidget {
       required this.harvest,
       required this.roi,
       required this.investment,
-      required this.about})
+      required this.about,
+      required this.onClick})
       : super(key: key);
 
   @override
@@ -36,6 +39,7 @@ class CrowdFundCard extends StatefulWidget {
 class _CrowdFundCardState extends State<CrowdFundCard> {
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Container(
       // color: lightGrey,
       child: Card(
@@ -45,7 +49,7 @@ class _CrowdFundCardState extends State<CrowdFundCard> {
           children: [
             ListTile(
               leading: GestureDetector(
-                onTap: () {},
+                onTap: widget.onClick,
                 child: Container(
                   width: 50,
                   height: 50,
@@ -82,6 +86,7 @@ class _CrowdFundCardState extends State<CrowdFundCard> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Text(
                                 'Land Area',
@@ -185,24 +190,19 @@ class _CrowdFundCardState extends State<CrowdFundCard> {
                       progressColor: greenCustom,
                     ),
                   ),
-                  OutlinedButton(
-                    style: OutlinedButton.styleFrom(
-                      side: BorderSide(
-                        width: 2.0,
-                        color: Colors.yellow,
-                      ),
-                    ),
-                    onPressed: () {},
-                    child: Container(
-                      color: greenCustom,
-                      child: Text(
-                        'INVEST',
-                        style: TextStyle(
-                          color: light,
+                  SizedBox(width: size.width * 0.16),
+                  Expanded(
+                    child: TextButton(
+                        onPressed: () {},
+                        child: Text(
+                          'INVEST',
+                          style: TextStyle(color: light),
                         ),
-                      ),
-                    ),
-                  ),
+                        style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStateProperty.all<Color>(greenCustom),
+                        )),
+                  )
                 ],
               ),
             ),
