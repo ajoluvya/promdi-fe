@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:promdi_fe/helpers/style.dart';
 
 class ProfileTile extends StatelessWidget {
   final IconData icon;
@@ -11,17 +12,20 @@ class ProfileTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Card(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Icon(icon),
-            Text(text),
-            IconButton(
-              onPressed: onClick,
-              icon: Icon(Icons.skip_next),
-            ),
-          ],
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Card(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Icon(icon),
+              Text(text),
+              IconButton(
+                onPressed: onClick,
+                icon: Icon(Icons.skip_next),
+              ),
+            ],
+          ),
         ),
       ),
     );

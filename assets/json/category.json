@@ -27,7 +27,7 @@
     },
     {
         "id": "c5",
-        "image": "assets/images/herbs.png",
+        "image": "assets/images/frozen-food.png",
         "name": "FrozenFood"
     },
     {
@@ -38,7 +38,7 @@
     {
         "id": "c7",
         "image": "assets/images/milk.png",
-        "name": "DiaryFood"
+        "name": "DairyFood"
     }
   
   ]

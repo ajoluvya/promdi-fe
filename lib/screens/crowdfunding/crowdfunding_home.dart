@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:promdi_fe/helpers/style.dart';
 import 'package:promdi_fe/screens/crowdfunding/crowdfund_widgets/fund_card.dart';
 import 'package:promdi_fe/screens/crowdfunding/user_profile.dart';
@@ -11,6 +14,21 @@ class CrowdfundingPage extends StatefulWidget {
 }
 
 class _CrowdState extends State<CrowdfundingPage> {
+  // Fetch content from the json file
+  List partnerData = [];
+
+  Future<String> partnerJsonData() async {
+    var jsonText = await rootBundle.loadString('assets/json/partners.json');
+    setState(() => partnerData = json.decode(jsonText));
+    return 'success';
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    this.partnerJsonData();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,29 +49,33 @@ class _CrowdState extends State<CrowdfundingPage> {
                   color: greenCustom),
             ),
           ),
-          Expanded(child: Container(
-            child: ListView.builder(itemBuilder: (context, index) {
-              return CrowdFundCard(
-                name: 'Tatay Pedro',
-                padLeft: 0.6,
-                padRight: 0.6,
-                profileimage: 'assets/images/fish.png',
-                about:
-                    'Farmer of all seasons, well versed with modern farming, use of fintech',
-                area: '2 hect',
-                crop: 'Rice',
-                harvest: '180 days',
-                investment: '60,000',
-                location: 'Kayunga',
-                roi: '3.4%',
-                onClick: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => PartnerProfile()),
+          Expanded(
+              child: Container(
+            child: ListView.builder(
+                shrinkWrap: true,
+                itemCount: partnerData == null ? 0 : partnerData.length,
+                itemBuilder: (context, index) {
+                  return CrowdFundCard(
+                    name: partnerData[index]['name'],
+                    padLeft: 0.6,
+                    padRight: 0.6,
+                    profileimage: partnerData[index]['profileimage'],
+                    about: partnerData[index]['about'],
+                    area: partnerData[index]['area'],
+                    crop: partnerData[index]['crop'],
+                    harvest: partnerData[index]['harvest'],
+                    investment: partnerData[index]['investment'],
+                    location: partnerData[index]['location'],
+                    roi: partnerData[index]['roi'],
+                    onClick: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => PartnerProfile()),
+                      );
+                    },
                   );
-                },
-              );
-            }),
+                }),
           ))
         ],
       )),

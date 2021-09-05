@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:promdi_fe/screens/crowdfunding/contact_info.dart';
 import 'package:promdi_fe/screens/crowdfunding/crowdfund_widgets/profile_cover.dart';
 import 'package:promdi_fe/screens/crowdfunding/crowdfund_widgets/profile_tile.dart';
 
@@ -22,7 +23,12 @@ class _PartnerProfileState extends State<PartnerProfile> {
           ProfileCover(profileimage: 'assets/images/carrot.png'),
           ProfileTile(
             icon: Icons.contact_page,
-            onClick: () {},
+            onClick: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ContactInfo()),
+              );
+            },
             text: 'Contact Info',
           ),
           ProfileTile(

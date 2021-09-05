@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:promdi_fe/helpers/style.dart';
 
 class ProfileCover extends StatelessWidget {
   final String profileimage;
@@ -8,6 +9,13 @@ class ProfileCover extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Container(
+      decoration: new BoxDecoration(
+        gradient: new RadialGradient(
+            colors: [greenCustom, light],
+            center: Alignment(1.0, 0.0),
+            radius: 1.6,
+            tileMode: TileMode.clamp),
+      ),
       child: Column(
         children: [
           Positioned(
@@ -19,19 +27,25 @@ class ProfileCover extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Card(
-                    child: Column(
-                      children: [
-                        Text('Wallet Balance:'),
-                        Text('P 10,000'),
-                      ],
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        children: [
+                          Text('Wallet Balance:'),
+                          Text('P 10,000'),
+                        ],
+                      ),
                     ),
                   ),
                   Card(
-                    child: Column(
-                      children: [
-                        Text('Investment'),
-                        Text('P 15,000'),
-                      ],
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        children: [
+                          Text('Investment'),
+                          Text('P 15,000'),
+                        ],
+                      ),
                     ),
                   ),
                 ],
@@ -58,12 +72,15 @@ class ProfileCover extends StatelessWidget {
                   ),
                   SizedBox(width: size.width * 0.06),
                   Card(
-                    child: Column(
-                      children: [
-                        Text('Jaime Dela Cruz'),
-                        Text('Jamesdc@gmail.com'),
-                        Text('Rookie investor'),
-                      ],
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        children: [
+                          Text('Jaime Dela Cruz'),
+                          Text('Jamesdc@gmail.com'),
+                          Text('Rookie investor'),
+                        ],
+                      ),
                     ),
                   )
                 ],
