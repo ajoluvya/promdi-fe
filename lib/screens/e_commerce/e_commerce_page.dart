@@ -18,7 +18,7 @@ class _EcommerceState extends State<Ecommerce> {
     Shop(),
     CartList(),
     MyOrder(),
-    Text('Account'),
+    // Text('Account'),
     // ProductList(),
   ];
   int _selectedIndex = 0;

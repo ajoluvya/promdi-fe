@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:promdi_fe/helpers/style.dart';
@@ -6,6 +8,8 @@ import 'package:promdi_fe/screens/e_commerce/e_commerce_page.dart';
 import 'package:promdi_fe/screens/login/login.dart';
 import 'package:promdi_fe/screens/signup/signup_page.dart';
 import 'package:promdi_fe/widgets/card.dart';
+import 'package:promdi_fe/widgets/weather.dart';
+import 'package:http/http.dart' as http;
 
 class LandingPage extends StatefulWidget {
   const LandingPage({Key? key}) : super(key: key);
@@ -49,41 +53,22 @@ class _LandingPageState extends State<LandingPage> {
               ),
               child: Padding(
                 padding: EdgeInsets.all(10),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Column(
-                      children: [
-                        Image.asset(
-                          'assets/images/cloudy.png',
-                          height: height * 0.08,
-                        ),
-                        Text(
-                          'Cloudy',
-                          style: TextStyle(
-                            color: light,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        Text(
-                          '25c',
-                          style: TextStyle(
-                              color: light,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20),
-                        ),
-                        SizedBox(height: 10),
-                        Text('${DateFormat.yMMMd().format(DateTime.now())}',
-                            style: TextStyle(
-                              color: light,
-                            )),
-                      ],
-                    )
-                  ],
+                child: FutureBuilder(
+                  builder: (context, AsyncSnapshot snapshot) {
+                    if (snapshot.data != null) {
+                      Weather _weather = snapshot.data;
+                      if (_weather == null) {
+                        return Text("Error getting weater");
+                      } else {
+                        return weatherBox(_weather);
+                      }
+                    } else {
+                      return CircularProgressIndicator(
+                        strokeWidth: 1,
+                      );
+                    }
+                  },
+                  future: getCurrentWeather(),
                 ),
               ),
             ),
@@ -278,5 +263,53 @@ class _LandingPageState extends State<LandingPage> {
         ),
       ),
     );
+  }
+
+  Widget weatherBox(Weather _weather) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        Column(
+          children: [
+            Image.asset(
+              'assets/images/cloudy.png',
+              height: MediaQuery.of(context).size.height * 0.08,
+            ),
+            Text("${_weather.description}",
+                style: TextStyle(color: light, fontSize: 15)),
+          ],
+        ),
+        Column(
+          children: [
+            Text("${_weather.temp}C",
+                style: TextStyle(color: light, fontSize: 20)),
+            SizedBox(height: 10),
+            Text('${DateFormat.yMMMd().format(DateTime.now())}',
+                style: TextStyle(
+                  color: light,
+                )),
+          ],
+        )
+      ],
+    );
+  }
+
+  Future getCurrentWeather() async {
+    Weather weather;
+    String city = "Kampala";
+    String apiKey = "bcc9a0078d0df0e6581ca5571d55fb41";
+    var url =
+        "https://api.openweathermap.org/data/2.5/weather?q=$city&appid=$apiKey&units=metric";
+
+    final response = await http.get(Uri.parse(url));
+
+    if (response.statusCode == 200) {
+      weather = Weather.fromJson(jsonDecode(response.body));
+      print('Success 200');
+      return weather;
+    } else {
+      // TODO: THROW error here
+
+    }
   }
 }
