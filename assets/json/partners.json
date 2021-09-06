@@ -1,0 +1,62 @@
+[
+    
+    {
+        "id": "1",
+      "name": "Tadeo Pedro",
+      "profileimage": "assets/images/fish.png",
+      "area": "2 hect",
+      "crop": "Rice",
+      "harvest": "180 days",
+      "investment": "60,000",
+      "location": "Kayunga",
+      "roi": "3.45%",
+      "about": "Farmer of all seasons, well versed with modern farming, use of fintech"
+  },
+  {
+    "id": "2",
+  "name": "Matado Leo",
+  "profileimage": "assets/images/fish.png",
+  "area": "1 hect",
+  "crop": "Posho",
+  "harvest": "80 days",
+  "investment": "30,000",
+  "location": "Serere",
+  "roi": "7.45%",
+  "about": "Farmer of all seasons, well versed with modern farming, use of fintech"
+},{
+    "id": "3",
+  "name": "Popeye Look",
+  "profileimage": "assets/images/fish.png",
+  "area": "10 hect",
+  "crop": "Millet",
+  "harvest": "100 days",
+  "investment": "25,000",
+  "location": "Masaka",
+  "roi": "10.45%",
+  "about": "Farmer of all seasons, well versed with modern farming, use of fintech"
+},{
+    "id": "4",
+  "name": "Job Mat",
+  "profileimage": "assets/images/fish.png",
+  "area": "5 hect",
+  "crop": "Banana",
+  "harvest": "210 days",
+  "investment": "30,000",
+  "location": "Kumi",
+  "roi": "3.45%",
+  "about": "Farmer of all seasons, well versed with modern farming, use of fintech"
+},
+{
+    "id": "5",
+  "name": "Lind Bee",
+  "profileimage": "assets/images/fish.png",
+  "area": "7 hect",
+  "crop": "Flour",
+  "harvest": "90 days",
+  "investment": "15,000",
+  "location": "Mayuge",
+  "roi": "6.45%",
+  "about": "Farmer of all seasons, well versed with modern farming, use of fintech"
+}
+  
+  ]

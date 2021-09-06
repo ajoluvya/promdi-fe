@@ -200,16 +200,18 @@ class _CartListState extends State<CartList> {
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: CustomButton(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => CheckOutPage()),
-                        );
-                      },
-                      title: 'Checkout',
-                      customcolor: greenCustom,
+                    child: Expanded(
+                      child: CustomButton(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => CheckOutPage()),
+                          );
+                        },
+                        title: 'Checkout',
+                        customcolor: greenCustom,
+                      ),
                     ),
                   ),
                 ],

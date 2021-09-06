@@ -1,44 +1,42 @@
 [
-    
-    {
-        "id": "c0",
-      "image": "assets/images/fish.png",
-      "name": "Seafoods"
+  {
+    "id": "c0",
+    "image": "assets/images/fish.png",
+    "name": "Seafoods"
   },
-    {
-        "id": "c1",
-        "image": "assets/images/fruits.png",
-        "name": "Fruits"
-    },
-    {
-        "id": "c2",
-        "image": "assets/images/bread.png",
-        "name": "Bakery"
-    },
-    {
-        "id": "c3",
-        "image": "assets/images/broccoli.png",
-        "name": "Vegetable"
-    },
-    {
-        "id": "c4",
-        "image": "assets/images/meat.png",
-        "name": "Meats"
-    },
-    {
-        "id": "c5",
-        "image": "assets/images/herbs.png",
-        "name": "FrozenFood"
-    },
-    {
-        "id": "c6",
-        "image": "assets/images/herbs.png",
-        "name": "Herbs"
-    },
-    {
-        "id": "c7",
-        "image": "assets/images/milk.png",
-        "name": "DiaryFood"
-    }
-  
-  ]
+  {
+    "id": "c1",
+    "image": "assets/images/fruits.png",
+    "name": "Fruits"
+  },
+  {
+    "id": "c2",
+    "image": "assets/images/bread.png",
+    "name": "Bakery"
+  },
+  {
+    "id": "c3",
+    "image": "assets/images/broccoli.png",
+    "name": "Vegetable"
+  },
+  {
+    "id": "c4",
+    "image": "assets/images/meat.png",
+    "name": "Meats"
+  },
+  {
+    "id": "c5",
+    "image": "assets/images/frozen-food.png",
+    "name": "Frozen Food"
+  },
+  {
+    "id": "c6",
+    "image": "assets/images/herbs.png",
+    "name": "Herbs"
+  },
+  {
+    "id": "c7",
+    "image": "assets/images/milk.png",
+    "name": "Dairy Food"
+  }
+]

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:promdi_fe/helpers/style.dart';
+import 'package:promdi_fe/screens/crowdfunding/crowdfunding_home.dart';
 import 'package:promdi_fe/screens/e_commerce/e_commerce_page.dart';
 import 'package:promdi_fe/screens/login/login.dart';
 import 'package:promdi_fe/screens/signup/signup_page.dart';
@@ -107,7 +108,12 @@ class _LandingPageState extends State<LandingPage> {
                                 text: 'CROWDFUNDING',
                                 image: 'assets/images/money.png',
                                 onClick: () {
-                                  print('Sell/Buy');
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            CrowdfundingPage()),
+                                  );
                                 },
                                 bottom: 0,
                                 right: 0,
