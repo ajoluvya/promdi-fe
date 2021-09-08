@@ -10,6 +10,7 @@ import 'package:promdi_fe/screens/signup/signup_page.dart';
 import 'package:promdi_fe/widgets/card.dart';
 import 'package:promdi_fe/widgets/weather.dart';
 import 'package:http/http.dart' as http;
+// import 'package:geolocator/geolocator.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({Key? key}) : super(key: key);
@@ -19,6 +20,23 @@ class LandingPage extends StatefulWidget {
 }
 
 class _LandingPageState extends State<LandingPage> {
+  // Geolocator geolocator = Geolocator();
+  // late Position userLocation;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    // _getLocation().then((position) {
+    //   // userLocation = position;
+    // });
+    // this._getLocation().then((value) {
+    //   setState(() {
+    //     // userLocation = value;
+    //   });
+    // });
+  }
+
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
@@ -271,9 +289,9 @@ class _LandingPageState extends State<LandingPage> {
       children: [
         Column(
           children: [
-            Image.asset(
-              'assets/images/cloudy.png',
-              height: MediaQuery.of(context).size.height * 0.08,
+            Image.network(
+              'http://openweathermap.org/img/w/${_weather.icon}',
+              height: MediaQuery.of(context).size.height * 0.07,
             ),
             Text("${_weather.description}",
                 style: TextStyle(color: light, fontSize: 15)),
@@ -281,7 +299,7 @@ class _LandingPageState extends State<LandingPage> {
         ),
         Column(
           children: [
-            Text("${_weather.temp}C",
+            Text("${_weather.temp}°C",
                 style: TextStyle(color: light, fontSize: 20)),
             SizedBox(height: 10),
             Text('${DateFormat.yMMMd().format(DateTime.now())}',
@@ -296,20 +314,34 @@ class _LandingPageState extends State<LandingPage> {
 
   Future getCurrentWeather() async {
     Weather weather;
-    String city = "Kampala";
+    String city = "Manila";
     String apiKey = "bcc9a0078d0df0e6581ca5571d55fb41";
+
     var url =
         "https://api.openweathermap.org/data/2.5/weather?q=$city&appid=$apiKey&units=metric";
+    // 'https://api.openweathermap.org/data/2.5/weather?lat=35&lon=31&appid=$apiKey&units=metric';
 
     final response = await http.get(Uri.parse(url));
 
     if (response.statusCode == 200) {
       weather = Weather.fromJson(jsonDecode(response.body));
       print('Success 200');
+      // print(userLocation);
       return weather;
     } else {
       // TODO: THROW error here
 
     }
   }
+
+  // Future<Position> _getLocation() async {
+  //   var currentLocation;
+  //   try {
+  //     currentLocation = await Geolocator.getCurrentPosition(
+  //         desiredAccuracy: LocationAccuracy.best);
+  //   } catch (e) {
+  //     currentLocation = null;
+  //   }
+  //   return currentLocation;
+  // }
 }

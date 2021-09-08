@@ -1,0 +1,81 @@
+[
+    
+    {
+        "id": "0",
+      "name": "Farm A",
+      "established": "2020",
+      "worker": "25",
+      "division": "central",
+      "municipality": "central",
+      "province": "central",
+      "crops":[{
+        "id": "0",
+        "name": "Rice",
+        "description": "up land rice"
+      },
+      {
+        "id": "1",
+        "name": "Wheat",
+        "description": "central wheat"
+      },
+      {
+        "id": "2",
+        "name": "Maize",
+        "description": "yellow hard grain maize"
+      }
+    ]
+  },
+  {
+    "id": "1",
+  "name": "Farm B",
+  "established": "2019",
+  "worker": "15",
+  "division": "East",
+  "municipality": "East",
+  "province": "East",
+  "crops":[{
+    "id": "0",
+    "name": "Rice",
+    "description": "up land rice"
+  },
+  {
+    "id": "1",
+    "name": "Carrots",
+    "description": "With yellow inner root"
+  },
+  {
+    "id": "2",
+    "name": "Vegetables",
+    "description": "Greens, green papper "
+  }
+]
+
+},
+{
+    "id": "2",
+  "name": "Farm C",
+  "established": "2021",
+  "worker": "20",
+  "division": "central",
+  "municipality": "central",
+  "province": "central",
+  "crops":[{
+    "id": "0",
+    "name": "Rice",
+    "description": "up land rice"
+  },
+  {
+    "id": "1",
+    "name": "Coffee",
+    "description": "central Coffee"
+  },
+  {
+    "id": "2",
+    "name": "SimSim",
+    "description": "yellow hard grain sim sim"
+  }
+]
+}
+    
+  
+  ]

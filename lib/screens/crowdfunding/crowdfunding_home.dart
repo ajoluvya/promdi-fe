@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:promdi_fe/helpers/style.dart';
 import 'package:promdi_fe/screens/crowdfunding/crowdfund_widgets/fund_card.dart';
 import 'package:promdi_fe/screens/crowdfunding/user_profile.dart';
+import 'package:promdi_fe/widgets/drawer.dart';
 
 class CrowdfundingPage extends StatefulWidget {
   const CrowdfundingPage({Key? key}) : super(key: key);
@@ -35,6 +36,7 @@ class _CrowdState extends State<CrowdfundingPage> {
       appBar: AppBar(
         title: Text('Partners'),
       ),
+      drawer: AppDrawer(),
       body: SafeArea(
           child: Column(
         children: [

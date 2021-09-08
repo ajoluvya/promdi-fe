@@ -3,6 +3,7 @@ import 'package:promdi_fe/helpers/style.dart';
 import 'package:promdi_fe/screens/e_commerce/cart_list.dart';
 import 'package:promdi_fe/screens/e_commerce/myOrder.dart';
 import 'package:promdi_fe/screens/e_commerce/shop.dart';
+import 'package:promdi_fe/widgets/drawer.dart';
 
 class Ecommerce extends StatefulWidget {
   const Ecommerce({
@@ -33,6 +34,7 @@ class _EcommerceState extends State<Ecommerce> {
       appBar: AppBar(
         title: Text(_title),
       ),
+      drawer: AppDrawer(),
       body: Center(
         child: _pages.elementAt(_selectedIndex),
       ),
