@@ -12,14 +12,16 @@ class _FarmProfileState extends State<FarmProfile> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(widget.farmDetail['name']),
-          Text(widget.farmDetail['established']),
-          Text(widget.farmDetail['worker']),
-          Text(widget.farmDetail['province']),
-        ],
+      child: Card(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(widget.farmDetail['name']),
+            Text(widget.farmDetail['established']),
+            Text(widget.farmDetail['worker']),
+            Text(widget.farmDetail['province']),
+          ],
+        ),
       ),
     );
   }

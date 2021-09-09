@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:promdi_fe/helpers/style.dart';
 import 'package:promdi_fe/screens/drawer_pages/farm_List.dart';
+import 'package:promdi_fe/screens/drawer_pages/my_products.dart';
+import 'package:promdi_fe/screens/drawer_pages/store.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({Key? key}) : super(key: key);
@@ -32,12 +34,22 @@ class AppDrawer extends StatelessWidget {
             _createDrawerItem(
               icon: Icons.store,
               text: 'My Stores',
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => MyStore()),
+                );
+              },
             ),
             _createDrawerItem(
                 icon: Icons.production_quantity_limits,
                 text: 'My Products',
-                onTap: () {}),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => MyProducts()),
+                  );
+                }),
             Divider(),
             _createDrawerItem(
               icon: Icons.chat,
