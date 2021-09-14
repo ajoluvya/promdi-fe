@@ -8,7 +8,7 @@ import 'package:promdi_fe/screens/e_commerce/eWidgets/cardorder_list.dart';
 
 class OrderList extends StatefulWidget {
   final String status;
-  OrderList({
+  const OrderList({
     Key? key,
     required this.status,
   }) : super(key: key);
@@ -29,7 +29,7 @@ class _OrderListState extends State<OrderList> {
   @override
   void initState() {
     super.initState();
-    this.loadJsonData();
+    loadJsonData();
   }
 
   @override
@@ -42,65 +42,62 @@ class _OrderListState extends State<OrderList> {
             color: greenCustom,
             child: Padding(
               padding: const EdgeInsets.all(10.0),
-              child: Container(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Text(
-                      'TransactionID',
-                      style: TextStyle(
-                        fontSize: 13,
-                        color: light,
-                        fontWeight: FontWeight.bold,
-                      ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Text(
+                    'TransactionID',
+                    style: TextStyle(
+                      fontSize: 13,
+                      color: light,
+                      fontWeight: FontWeight.bold,
                     ),
-                    Text(
-                      'Date',
-                      style: TextStyle(
-                        fontSize: 13,
-                        color: light,
-                        fontWeight: FontWeight.bold,
-                      ),
+                  ),
+                  Text(
+                    'Date',
+                    style: TextStyle(
+                      fontSize: 13,
+                      color: light,
+                      fontWeight: FontWeight.bold,
                     ),
-                    Text(
-                      'Delivery To',
-                      style: TextStyle(
-                        fontSize: 13,
-                        color: light,
-                        fontWeight: FontWeight.bold,
-                      ),
+                  ),
+                  Text(
+                    'Delivery To',
+                    style: TextStyle(
+                      fontSize: 13,
+                      color: light,
+                      fontWeight: FontWeight.bold,
                     ),
-                    Text(
-                      'Total Pay',
-                      style: TextStyle(
-                        fontSize: 13,
-                        color: light,
-                        fontWeight: FontWeight.bold,
-                      ),
+                  ),
+                  Text(
+                    'Total Pay',
+                    style: TextStyle(
+                      fontSize: 13,
+                      color: light,
+                      fontWeight: FontWeight.bold,
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ),
-          Container(
-              // color: lightGrey,
-              child: ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: data == null ? 0 : data.length,
-                  itemBuilder: (context, index) {
-                    if (data[index]['orderstatus'] == widget.status) {
-                      return OrderCard(
-                        cost: data[index]['cost'],
-                        date: data[index]['date'],
-                        orderstatus: data[index]['orderstatus'],
-                        transactionID: data[index]['transactionID'],
-                        statuscolor: greenCustom,
-                      );
-                    } else {
-                      return SizedBox.shrink();
-                    }
-                  })),
+          ListView.builder(
+              shrinkWrap: true,
+              // ignore: unnecessary_null_comparison
+              itemCount: data == null ? 0 : data.length,
+              itemBuilder: (context, index) {
+                if (data[index]['orderstatus'] == widget.status) {
+                  return OrderCard(
+                    cost: data[index]['cost'],
+                    date: data[index]['date'],
+                    orderstatus: data[index]['orderstatus'],
+                    transactionID: data[index]['transactionID'],
+                    statuscolor: greenCustom,
+                  );
+                } else {
+                  return const SizedBox.shrink();
+                }
+              }),
         ],
       ));
     } else if (widget.status == 'Progress') {
@@ -154,6 +151,7 @@ class _OrderListState extends State<OrderList> {
               color: lightGrey,
               child: ListView.builder(
                   shrinkWrap: true,
+                  // ignore: unnecessary_null_comparison
                   itemCount: data == null ? 0 : data.length,
                   itemBuilder: (context, index) {
                     if (data[index]['orderstatus'] == widget.status) {
@@ -165,7 +163,7 @@ class _OrderListState extends State<OrderList> {
                         statuscolor: Colors.lightBlue,
                       );
                     } else {
-                      return SizedBox.shrink();
+                      return const SizedBox.shrink();
                     }
                   }),
             ),
@@ -219,25 +217,23 @@ class _OrderListState extends State<OrderList> {
               ),
             ),
           ),
-          Container(
-            // color: lightGrey,
-            child: ListView.builder(
-                shrinkWrap: true,
-                itemCount: data == null ? 0 : data.length,
-                itemBuilder: (context, index) {
-                  if (data[index]['orderstatus'] == widget.status) {
-                    return OrderCard(
-                      cost: data[index]['cost'],
-                      date: data[index]['date'],
-                      orderstatus: data[index]['orderstatus'],
-                      transactionID: data[index]['transactionID'],
-                      statuscolor: redCustom,
-                    );
-                  } else {
-                    return SizedBox.shrink();
-                  }
-                }),
-          ),
+          ListView.builder(
+              shrinkWrap: true,
+              // ignore: unnecessary_null_comparison
+              itemCount: data == null ? 0 : data.length,
+              itemBuilder: (context, index) {
+                if (data[index]['orderstatus'] == widget.status) {
+                  return OrderCard(
+                    cost: data[index]['cost'],
+                    date: data[index]['date'],
+                    orderstatus: data[index]['orderstatus'],
+                    transactionID: data[index]['transactionID'],
+                    statuscolor: redCustom,
+                  );
+                } else {
+                  return const SizedBox.shrink();
+                }
+              }),
         ],
       ));
     }

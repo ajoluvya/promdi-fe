@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:promdi_fe/helpers/style.dart';
 import 'package:intl/intl.dart';
 
+// ignore: unnecessary_new
 final oCcy = new NumberFormat("#,##0.0", "en_US");
 
 class CartCard extends StatelessWidget {
@@ -12,7 +13,7 @@ class CartCard extends StatelessWidget {
   final int? quantity;
   final VoidCallback increment;
   final VoidCallback decrement;
-  CartCard({
+  const CartCard({
     Key? key,
     required this.image,
     required this.name,
@@ -27,7 +28,7 @@ class CartCard extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Container(
-      padding: EdgeInsets.all(8),
+      padding: const EdgeInsets.all(8),
       child: Column(
         children: [
           Row(
@@ -42,26 +43,26 @@ class CartCard extends StatelessWidget {
                 children: [
                   Text(
                     name,
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
                   Text(grams),
                   Text(
-                    '${oCcy.format(price)}',
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    oCcy.format(price),
+                    style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ],
               ),
               SizedBox(width: size.width * 0.12),
               IconButton(
                 onPressed: decrement,
-                icon: Icon(Icons.remove),
+                icon: const Icon(Icons.remove),
                 color: redCustom,
               ),
-              Text('${quantity}'),
+              Text('$quantity'),
               IconButton(
                 alignment: Alignment.center,
                 onPressed: increment,
-                icon: Icon(Icons.add),
+                icon: const Icon(Icons.add),
                 color: greenCustom,
               ),
             ],

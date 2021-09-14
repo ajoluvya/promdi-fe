@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:promdi_fe/helpers/style.dart';
 import 'package:promdi_fe/screens/e_commerce/checkout.dart';
-import 'package:promdi_fe/screens/e_commerce/eWidgets/cardCart.dart';
+import 'package:promdi_fe/screens/e_commerce/eWidgets/card_cart.dart';
 
 import 'dart:convert';
 
@@ -22,7 +22,7 @@ class CartList extends StatefulWidget {
 class _CartListState extends State<CartList> {
   // Fetch content from the json file
   List cartData = [];
-  bool _show = true;
+  final bool _show = true;
   int total = 0;
 
   Future<String> productJsonData() async {
@@ -34,9 +34,9 @@ class _CartListState extends State<CartList> {
   @override
   void initState() {
     super.initState();
-    this.productJsonData();
+    productJsonData();
     setState(() {
-      this.total;
+      total;
     });
   }
 
@@ -49,7 +49,8 @@ class _CartListState extends State<CartList> {
           children: [
             ListView.builder(
                 shrinkWrap: true,
-                physics: BouncingScrollPhysics(),
+                physics: const BouncingScrollPhysics(),
+                // ignore: unnecessary_null_comparison
                 itemCount: cartData != null ? cartData.length : 0,
                 itemBuilder: (context, index) {
                   if (cartData[index] == 1) {
@@ -75,7 +76,7 @@ class _CartListState extends State<CartList> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
+                  const Text(
                     'Total',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
@@ -83,8 +84,8 @@ class _CartListState extends State<CartList> {
                     ),
                   ),
                   Text(
-                    '${oCcy.format(total)}',
-                    style: TextStyle(
+                    oCcy.format(total),
+                    style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 16,
                     ),
@@ -99,7 +100,7 @@ class _CartListState extends State<CartList> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Text(
+                const Text(
                   'Delivered to',
                   style: TextStyle(
                     fontSize: 13,
@@ -117,7 +118,7 @@ class _CartListState extends State<CartList> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Column(
-                children: [
+                children: const [
                   Text(
                     "Parent's House",
                     style: TextStyle(
@@ -133,7 +134,7 @@ class _CartListState extends State<CartList> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Text(
+                const Text(
                   'Delivery Fee',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
@@ -141,8 +142,8 @@ class _CartListState extends State<CartList> {
                   ),
                 ),
                 Text(
-                  '${oCcy.format(16)}',
-                  style: TextStyle(
+                  oCcy.format(16),
+                  style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 16,
                   ),
@@ -181,7 +182,7 @@ class _CartListState extends State<CartList> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        Text(
+                        const Text(
                           'Total Payment',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
@@ -189,8 +190,8 @@ class _CartListState extends State<CartList> {
                           ),
                         ),
                         Text(
-                          '${oCcy.format(total + (16))}',
-                          style: TextStyle(
+                          oCcy.format(total + (16)),
+                          style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 16,
                           ),
@@ -206,7 +207,7 @@ class _CartListState extends State<CartList> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => CheckOutPage()),
+                                builder: (context) => const CheckOutPage()),
                           );
                         },
                         title: 'Checkout',

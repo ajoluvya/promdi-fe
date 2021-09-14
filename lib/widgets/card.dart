@@ -58,7 +58,7 @@ class CustomCard extends StatelessWidget {
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
     Size size = MediaQuery.of(context).size;
-    return Container(
+    return SizedBox(
       height: height * 0.2,
       width: width * 0.42,
       child: GestureDetector(

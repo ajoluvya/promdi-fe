@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:promdi_fe/helpers/style.dart';
 import 'package:promdi_fe/screens/crowdfunding/crowdfund_widgets/fund_card.dart';
 import 'package:promdi_fe/screens/crowdfunding/user_profile.dart';
+import 'package:promdi_fe/widgets/drawer.dart';
 
 class CrowdfundingPage extends StatefulWidget {
   const CrowdfundingPage({Key? key}) : super(key: key);
@@ -26,19 +27,20 @@ class _CrowdState extends State<CrowdfundingPage> {
   @override
   void initState() {
     super.initState();
-    this.partnerJsonData();
+    partnerJsonData();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Partners'),
+        title: const Text('Partners'),
       ),
+      drawer: const AppDrawer(),
       body: SafeArea(
           child: Column(
         children: [
-          SizedBox(height: 25),
+          const SizedBox(height: 25),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
@@ -50,33 +52,32 @@ class _CrowdState extends State<CrowdfundingPage> {
             ),
           ),
           Expanded(
-              child: Container(
-            child: ListView.builder(
-                shrinkWrap: true,
-                itemCount: partnerData == null ? 0 : partnerData.length,
-                itemBuilder: (context, index) {
-                  return CrowdFundCard(
-                    name: partnerData[index]['name'],
-                    padLeft: 0.6,
-                    padRight: 0.6,
-                    profileimage: partnerData[index]['profileimage'],
-                    about: partnerData[index]['about'],
-                    area: partnerData[index]['area'],
-                    crop: partnerData[index]['crop'],
-                    harvest: partnerData[index]['harvest'],
-                    investment: partnerData[index]['investment'],
-                    location: partnerData[index]['location'],
-                    roi: partnerData[index]['roi'],
-                    onClick: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => PartnerProfile()),
-                      );
-                    },
-                  );
-                }),
-          ))
+              child: ListView.builder(
+                  shrinkWrap: true,
+                  // ignore: unnecessary_null_comparison
+                  itemCount: partnerData == null ? 0 : partnerData.length,
+                  itemBuilder: (context, index) {
+                    return CrowdFundCard(
+                      name: partnerData[index]['name'],
+                      padLeft: 0.6,
+                      padRight: 0.6,
+                      profileimage: partnerData[index]['profileimage'],
+                      about: partnerData[index]['about'],
+                      area: partnerData[index]['area'],
+                      crop: partnerData[index]['crop'],
+                      harvest: partnerData[index]['harvest'],
+                      investment: partnerData[index]['investment'],
+                      location: partnerData[index]['location'],
+                      roi: partnerData[index]['roi'],
+                      onClick: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const PartnerProfile()),
+                        );
+                      },
+                    );
+                  }))
         ],
       )),
     );

@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:promdi_fe/helpers/style.dart';
 import 'package:intl/intl.dart';
 
-final oCcy = new NumberFormat("#,##0.0", "en_US");
+final oCcy = NumberFormat("#,##0.0", "en_US");
 
 class ProductCard extends StatelessWidget {
   final VoidCallback onClick;
   final String image;
-  final int price;
+  final int? price;
   final String name;
   final String? description;
   const ProductCard(
@@ -42,8 +42,8 @@ class ProductCard extends StatelessWidget {
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
                       name,
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                      style: const TextStyle(
+                          fontWeight: FontWeight.bold, fontSize: 15),
                     ),
                   ),
                 ],
@@ -54,17 +54,15 @@ class ProductCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      '${oCcy.format(price)}',
+                      oCcy.format(price),
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 12,
                           color: lightBlue),
                     ),
                     GestureDetector(
-                      child: Icon(Icons.add_shopping_cart),
-                      onTap: () {
-                        print('cart');
-                      },
+                      child: const Icon(Icons.add_shopping_cart),
+                      onTap: () {},
                     ),
                   ],
                 ),

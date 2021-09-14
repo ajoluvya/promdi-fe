@@ -1,0 +1,44 @@
+[
+    
+    {
+        "id": "0",
+      "name": "Farm A",
+      "established": "2020",
+      "worker": "25",
+      "division": "central",
+      "municipality": "central",
+      "province": "central",
+      "equipment": "tractors, cultivators",
+      "area": "20 hect",
+      "baranguay": "South West"
+      
+  },
+  {
+    "id": "1",
+  "name": "Farm B",
+  "established": "2019",
+  "worker": "15",
+  "division": "East",
+  "municipality": "East",
+  "province": "East",
+  "equipment": "tractors, mowers, planters",
+      "area": "25 hect",
+      "baranguay": "South West"
+
+},
+{
+    "id": "2",
+  "name": "Farm C",
+  "established": "2021",
+  "worker": "20",
+  "division": "central",
+  "municipality": "central",
+  "province": "central",
+  "equipment": "tractors, sparyers",
+      "area": "30 hect",
+      "baranguay": "South West"
+  
+}
+    
+  
+  ]

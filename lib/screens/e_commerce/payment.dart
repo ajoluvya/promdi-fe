@@ -15,7 +15,7 @@ class _PaymentState extends State<Payment> {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        title: Text('Payment'),
+        title: const Text('Payment'),
       ),
       body: Container(
         color: lightGrey,
@@ -26,7 +26,7 @@ class _PaymentState extends State<Payment> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
-                  children: [
+                  children: const [
                     Text('Payment Method'),
                   ],
                 ),
@@ -45,15 +45,16 @@ class _PaymentState extends State<Payment> {
                               'assets/images/apple-pay.png',
                               height: size.height * 0.06,
                             ),
-                            Text('Apple Pay'),
+                            const Text('Apple Pay'),
                             IconButton(
                                 onPressed: () {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => AddCard()));
+                                          builder: (context) =>
+                                              const AddCard()));
                                 },
-                                icon: Icon(Icons.skip_next)),
+                                icon: const Icon(Icons.skip_next)),
                           ],
                         ),
                       ),
@@ -66,15 +67,16 @@ class _PaymentState extends State<Payment> {
                               'assets/images/visa.png',
                               height: size.height * 0.06,
                             ),
-                            Text('Credit or Debit Card'),
+                            const Text('Credit or Debit Card'),
                             IconButton(
                                 onPressed: () {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => AddCard()));
+                                          builder: (context) =>
+                                              const AddCard()));
                                 },
-                                icon: Icon(Icons.skip_next)),
+                                icon: const Icon(Icons.skip_next)),
                           ],
                         ),
                       ),
@@ -87,15 +89,16 @@ class _PaymentState extends State<Payment> {
                               'assets/images/paypal.png',
                               height: size.height * 0.1,
                             ),
-                            Text('Paypal'),
+                            const Text('Paypal'),
                             IconButton(
                                 onPressed: () {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => AddCard()));
+                                          builder: (context) =>
+                                              const AddCard()));
                                 },
-                                icon: Icon(Icons.skip_next)),
+                                icon: const Icon(Icons.skip_next)),
                           ],
                         ),
                       ),
@@ -108,15 +111,16 @@ class _PaymentState extends State<Payment> {
                               'assets/images/money (2).png',
                               height: size.height * 0.06,
                             ),
-                            Text('Cash'),
+                            const Text('Cash'),
                             IconButton(
                                 onPressed: () {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => AddCard()));
+                                          builder: (context) =>
+                                              const AddCard()));
                                 },
-                                icon: Icon(Icons.skip_next)),
+                                icon: const Icon(Icons.skip_next)),
                           ],
                         ),
                       ),
@@ -127,7 +131,7 @@ class _PaymentState extends State<Payment> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
-                  children: [
+                  children: const [
                     Text('Vouchers'),
                   ],
                 ),
@@ -140,7 +144,7 @@ class _PaymentState extends State<Payment> {
                       Padding(
                         padding: const EdgeInsets.all(10.0),
                         child: Row(
-                          children: [
+                          children: const [
                             Icon(Icons.arrow_forward),
                             Text('My Voucher'),
                           ],
@@ -149,7 +153,7 @@ class _PaymentState extends State<Payment> {
                       Padding(
                         padding: const EdgeInsets.all(10.0),
                         child: Row(
-                          children: [
+                          children: const [
                             Icon(Icons.arrow_forward),
                             Text('Gift Card'),
                           ],

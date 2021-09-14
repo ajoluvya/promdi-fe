@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:promdi_fe/helpers/style.dart';
@@ -6,6 +8,8 @@ import 'package:promdi_fe/screens/e_commerce/e_commerce_page.dart';
 import 'package:promdi_fe/screens/login/login.dart';
 import 'package:promdi_fe/screens/signup/signup_page.dart';
 import 'package:promdi_fe/widgets/card.dart';
+import 'package:promdi_fe/widgets/weather.dart';
+import 'package:http/http.dart' as http;
 
 class LandingPage extends StatefulWidget {
   const LandingPage({Key? key}) : super(key: key);
@@ -16,12 +20,20 @@ class LandingPage extends StatefulWidget {
 
 class _LandingPageState extends State<LandingPage> {
   @override
+  void initState() {
+    // ignore: todo
+    // TODO: implement initState
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: lightBlue,
         centerTitle: true,
-        title: Text('Promdi App'),
+        title: const Text('Promdi App'),
         leading: ClipOval(
           child: Image.asset(
             'assets/icons/logo.png',
@@ -36,69 +48,50 @@ class _LandingPageState extends State<LandingPage> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Container(
-              padding: EdgeInsets.symmetric(
+              padding: const EdgeInsets.symmetric(
                 horizontal: 20,
                 vertical: 5,
               ),
               decoration: BoxDecoration(
                 color: lightBlue,
-                borderRadius: BorderRadius.only(
+                borderRadius: const BorderRadius.only(
                   bottomLeft: Radius.circular(100),
                   bottomRight: Radius.circular(100),
                 ),
               ),
               child: Padding(
-                padding: EdgeInsets.all(10),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Column(
-                      children: [
-                        Image.asset(
-                          'assets/images/cloudy.png',
-                          height: height * 0.08,
-                        ),
-                        Text(
-                          'Cloudy',
-                          style: TextStyle(
-                            color: light,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        Text(
-                          '25c',
-                          style: TextStyle(
-                              color: light,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20),
-                        ),
-                        SizedBox(height: 10),
-                        Text('${DateFormat.yMMMd().format(DateTime.now())}',
-                            style: TextStyle(
-                              color: light,
-                            )),
-                      ],
-                    )
-                  ],
+                padding: const EdgeInsets.all(10),
+                child: FutureBuilder(
+                  builder: (context, AsyncSnapshot snapshot) {
+                    if (snapshot.data != null) {
+                      Weather _weather = snapshot.data;
+                      // ignore: unnecessary_null_comparison
+                      if (_weather == null) {
+                        return const Text("Error getting weater");
+                      } else {
+                        return weatherBox(_weather);
+                      }
+                    } else {
+                      return const CircularProgressIndicator(
+                        strokeWidth: 1,
+                      );
+                    }
+                  },
+                  future: getCurrentWeather(),
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Expanded(
               child: Container(
-                  child: Container(
                 height: height,
                 color: light,
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
@@ -112,7 +105,7 @@ class _LandingPageState extends State<LandingPage> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
-                                            CrowdfundingPage()),
+                                            const CrowdfundingPage()),
                                   );
                                 },
                                 bottom: 0,
@@ -139,7 +132,8 @@ class _LandingPageState extends State<LandingPage> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => Ecommerce()),
+                                        builder: (context) =>
+                                            const Ecommerce()),
                                   );
                                 },
                                 bottom: 0,
@@ -158,7 +152,7 @@ class _LandingPageState extends State<LandingPage> {
                           )
                         ],
                       ),
-                      SizedBox(height: 5),
+                      const SizedBox(height: 5),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
@@ -167,9 +161,7 @@ class _LandingPageState extends State<LandingPage> {
                               CustomCard(
                                 text: 'E-Learning',
                                 image: 'assets/images/online-learning.png',
-                                onClick: () {
-                                  print('E-Learning');
-                                },
+                                onClick: () {},
                                 top: 0,
                                 right: 0,
                                 bottomtext: 0,
@@ -188,9 +180,7 @@ class _LandingPageState extends State<LandingPage> {
                               CustomCard(
                                 text: 'AGRI-INSURANCE',
                                 image: 'assets/images/chat.png',
-                                onClick: () {
-                                  print('Support');
-                                },
+                                onClick: () {},
                                 top: 0,
                                 left: 0,
                                 bottomtext: 0,
@@ -207,7 +197,7 @@ class _LandingPageState extends State<LandingPage> {
                           )
                         ],
                       ),
-                      SizedBox(height: 40),
+                      const SizedBox(height: 40),
                       Text(
                         'Helping farmers one click at a time',
                         style: TextStyle(color: dark, fontSize: 15),
@@ -227,7 +217,7 @@ class _LandingPageState extends State<LandingPage> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => LoginScreen()),
+                                    builder: (context) => const LoginScreen()),
                               );
                             },
                             child: Text(
@@ -237,7 +227,7 @@ class _LandingPageState extends State<LandingPage> {
                               ),
                             ),
                           ),
-                          SizedBox(width: 20),
+                          const SizedBox(width: 20),
                           OutlinedButton(
                             style: OutlinedButton.styleFrom(
                               side: BorderSide(
@@ -249,7 +239,7 @@ class _LandingPageState extends State<LandingPage> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => SignUp()),
+                                    builder: (context) => const SignUp()),
                               );
                             },
                             child: Text(
@@ -272,11 +262,61 @@ class _LandingPageState extends State<LandingPage> {
                     ],
                   ),
                 ),
-              )),
+              ),
             ),
           ],
         ),
       ),
     );
+  }
+
+  Widget weatherBox(Weather _weather) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        Column(
+          children: [
+            Image.network(
+              'http://openweathermap.org/img/w/${_weather.icon}',
+              height: MediaQuery.of(context).size.height * 0.07,
+            ),
+            Text(_weather.description,
+                style: TextStyle(color: light, fontSize: 15)),
+          ],
+        ),
+        Column(
+          children: [
+            Text("${_weather.temp}°C",
+                style: TextStyle(color: light, fontSize: 20)),
+            const SizedBox(height: 10),
+            Text(DateFormat.yMMMd().format(DateTime.now()),
+                style: TextStyle(
+                  color: light,
+                )),
+          ],
+        )
+      ],
+    );
+  }
+
+  Future getCurrentWeather() async {
+    Weather weather;
+    String city = "Manila";
+    String apiKey = "bcc9a0078d0df0e6581ca5571d55fb41";
+
+    var url =
+        "https://api.openweathermap.org/data/2.5/weather?q=$city&appid=$apiKey&units=metric";
+    // 'https://api.openweathermap.org/data/2.5/weather?lat=35&lon=31&appid=$apiKey&units=metric';
+
+    final response = await http.get(Uri.parse(url));
+
+    if (response.statusCode == 200) {
+      weather = Weather.fromJson(jsonDecode(response.body));
+      return weather;
+    } else {
+      // ignore: todo
+      // TODO: THROW error here
+
+    }
   }
 }

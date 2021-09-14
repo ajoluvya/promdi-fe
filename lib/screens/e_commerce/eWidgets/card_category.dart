@@ -32,7 +32,8 @@ class Ecard extends StatelessWidget {
               padding: const EdgeInsets.all(2.0),
               child: Text(
                 text,
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
+                style:
+                    const TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
               ),
             ),
           ],

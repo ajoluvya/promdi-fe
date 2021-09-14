@@ -1,0 +1,47 @@
+[{
+    "id": "0",
+    "name": "Rice",
+    "description": "up land rice can be grown and harvested extensively for profit or subsistence.[1] Crops may refer either to the harvested parts or to the harvest in a more refined state. Most crops are cultivated in agriculture ",
+    "image":"assets/images/rice.png",
+    "time":" its takes upto 4 years tobe fully"
+  },
+  {
+    "id": "1",
+    "name": "Coffee",
+    "description": "central Coffee can be grown and harvested extensively for profit or subsistence.[1] Crops may refer either to the harvested parts or to the harvest in a more refined state. Most crops are cultivated in agriculture ",
+    "image":"assets/images/coffee-plant.png",
+    "time":"its takes upto 3 years tobe fully"
+  },
+  {
+    "id": "1",
+    "name": "Carrots",
+    "description": "With yellow inner root",
+    "image":"assets/images/carrot.png"
+    ,
+    "time":"its takes upto 4 months tobe fully"
+  },
+  {
+    "id": "2",
+    "name": "Vegetables",
+    "description": "Greens, green papper can be grown and harvested extensively for profit or subsistence.[1] Crops may refer either to the harvested parts or to the harvest in a more refined state. Most crops are cultivated in agriculture  ",
+    "image":"assets/images/broccoli.png"
+    ,
+    "time":"its takes upto 4 weeks tobe fully"
+  },
+  {
+    "id": "1",
+    "name": "Wheat",
+    "description": "can be grown and harvested extensively for profit or subsistence.[1] Crops may refer either to the harvested parts or to the harvest in a more refined state. Most crops are cultivated in agriculture ",
+    "image":"assets/images/grain.png"
+    ,
+    "time":"its takes upto 1 years tobe fully"
+  },
+  {
+    "id": "2",
+    "name": "Maize",
+    "description": "yellow hard grain maize can be grown and harvested extensively for profit or subsistence.[1] Crops may refer either to the harvested parts or to the harvest in a more refined state. Most crops are cultivated in agriculture ",
+    "image":"assets/images/maize.png"
+    ,
+    "time":"its takes upto 2 months tobe fully"
+  }
+]

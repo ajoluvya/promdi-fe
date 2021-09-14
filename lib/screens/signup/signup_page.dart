@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:promdi_fe/helpers/style.dart';
@@ -5,6 +7,7 @@ import 'package:promdi_fe/screens/login/login.dart';
 import 'package:promdi_fe/widgets/custom_button.dart';
 import 'package:promdi_fe/widgets/date_picker.dart';
 import 'package:promdi_fe/widgets/text_decoration.dart';
+import 'package:image_picker/image_picker.dart';
 
 final formKey = GlobalKey<FormState>();
 
@@ -34,32 +37,43 @@ class _SignUpState extends State<SignUp> {
           _isVisible = !_isVisible;
         } else {
           _isVisible = !_isVisible;
-          ;
         }
       });
 
   // ignore: top_level_function_literal_block
   Future<void> doSignUp() async {
-    print('on SignUp');
     // print(username);
     final form = formKey.currentState;
     if (form!.validate()) {
       form.save();
-      print(firstname);
       // check confirm password
       if (password.endsWith(confirmpassword)) {
         // create auth provider
       } else {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
           content: Text('Passwords do not match'),
           duration: Duration(seconds: 6),
         ));
       }
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         content: Text('Please complete form'),
         duration: Duration(seconds: 6),
       ));
+    }
+  }
+
+  File? image;
+  Future pickImage(ImageSource source) async {
+    try {
+      final image = await ImagePicker().pickImage(source: source);
+      if (image == null) return;
+
+      final imageTemporary = File(image.path);
+      setState(() => this.image = imageTemporary);
+    } on PlatformException catch (e) {
+      // ignore: avoid_print
+      print('Failed to pick image: $e');
     }
   }
 
@@ -70,7 +84,7 @@ class _SignUpState extends State<SignUp> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
-            padding: EdgeInsets.all(20.0),
+            padding: const EdgeInsets.all(20.0),
             child: Form(
               key: formKey,
               child: Column(
@@ -84,10 +98,30 @@ class _SignUpState extends State<SignUp> {
                         height: height * 0.04,
                         fit: BoxFit.cover,
                       ),
-                      Text('Promdi App'),
+                      const Text('Promdi App'),
                     ],
                   ),
-                  SizedBox(height: 15.0),
+                  const SizedBox(height: 20.0),
+                  image != null
+                      ? Center(
+                          child: ClipOval(
+                            child: Image.file(
+                              image!,
+                              width: 100,
+                              height: 100,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        )
+                      : const Center(child: Text('Profile Image')),
+                  Center(
+                    child: TextButton(
+                        onPressed: () {
+                          pickImage(ImageSource.gallery);
+                        },
+                        child: const Text('Pick Profile Image')),
+                  ),
+                  const SizedBox(height: 15.0),
                   TextFormField(
                     autofocus: false,
                     validator: (value) =>
@@ -96,7 +130,7 @@ class _SignUpState extends State<SignUp> {
                     decoration:
                         buildInputDecoration('Enter Firstname', Icons.person),
                   ),
-                  SizedBox(height: 10.0),
+                  const SizedBox(height: 10.0),
                   TextFormField(
                     autofocus: false,
                     validator: (value) =>
@@ -105,7 +139,7 @@ class _SignUpState extends State<SignUp> {
                     decoration:
                         buildInputDecoration('Enter Lastname', Icons.person),
                   ),
-                  SizedBox(height: 10.0),
+                  const SizedBox(height: 10.0),
                   TextFormField(
                     autofocus: false,
                     // validator: (value) => value!.isEmpty ? 'Please enter Middle name' : null,
@@ -113,17 +147,17 @@ class _SignUpState extends State<SignUp> {
                     decoration:
                         buildInputDecoration('Enter Middlename', Icons.person),
                   ),
-                  SizedBox(height: 2.0),
+                  const SizedBox(height: 2.0),
                   Row(
                     children: [
-                      Text(
+                      const Text(
                         "Sex",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
                         ),
                       ),
-                      SizedBox(width: 40),
+                      const SizedBox(width: 40),
                       DropdownButton<String>(
                         value: dropdownValue,
                         onChanged: (String? newValue) {
@@ -141,8 +175,8 @@ class _SignUpState extends State<SignUp> {
                       ),
                     ],
                   ),
-                  DatePicker(),
-                  SizedBox(height: 10),
+                  const DatePicker(),
+                  const SizedBox(height: 10),
                   TextFormField(
                     autofocus: false,
                     keyboardType: TextInputType.number,
@@ -156,7 +190,7 @@ class _SignUpState extends State<SignUp> {
                     decoration:
                         buildInputDecoration('Enter number', Icons.dialpad),
                   ),
-                  SizedBox(height: 10.0),
+                  const SizedBox(height: 10.0),
                   TextFormField(
                     autofocus: false,
                     validator: (value) =>
@@ -165,7 +199,7 @@ class _SignUpState extends State<SignUp> {
                     decoration:
                         buildInputDecoration('Enter Email', Icons.email),
                   ),
-                  SizedBox(height: 10.0),
+                  const SizedBox(height: 10.0),
                   TextFormField(
                     autofocus: false,
                     validator: (value) =>
@@ -174,7 +208,7 @@ class _SignUpState extends State<SignUp> {
                     decoration:
                         buildInputDecoration('Enter Password', Icons.lock),
                   ),
-                  SizedBox(height: 10.0),
+                  const SizedBox(height: 10.0),
                   TextFormField(
                     autofocus: false,
                     validator: (value) =>
@@ -183,14 +217,14 @@ class _SignUpState extends State<SignUp> {
                     decoration:
                         buildInputDecoration('Confirm Password', Icons.lock),
                   ),
-                  SizedBox(height: 15.0),
+                  const SizedBox(height: 15.0),
                   Row(
                     children: [
                       Checkbox(
-                        value: this.checkBoxValue,
+                        value: checkBoxValue,
                         onChanged: onRememberMeChanged,
                       ),
-                      Expanded(
+                      const Expanded(
                           child: Text(
                               'I agree to terms of service and refund policy'))
                     ],
@@ -199,17 +233,18 @@ class _SignUpState extends State<SignUp> {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => LoginScreen()),
+                        MaterialPageRoute(
+                            builder: (context) => const LoginScreen()),
                       );
                     },
-                    child: Center(
+                    child: const Center(
                       child: Text(
                         'Already have account?',
                         style: TextStyle(color: Colors.blue),
                       ),
                     ),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   Visibility(
                     visible: _isVisible,
                     child: Center(

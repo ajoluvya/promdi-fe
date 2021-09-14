@@ -5,6 +5,7 @@ import 'dart:convert';
 
 import 'package:promdi_fe/screens/e_commerce/eWidgets/product_Card.dart';
 import 'package:promdi_fe/screens/e_commerce/product_detail.dart';
+import 'package:promdi_fe/widgets/floating_action_button.dart';
 
 class Product {
   String? id;
@@ -30,15 +31,15 @@ class Product {
   }
 }
 
-class ProductList extends StatefulWidget {
+class MyProducts extends StatefulWidget {
   final List? data;
-  const ProductList({Key? key, this.data}) : super(key: key);
+  const MyProducts({Key? key, this.data}) : super(key: key);
 
   @override
-  _ProductListState createState() => _ProductListState();
+  _MyProductsState createState() => _MyProductsState();
 }
 
-class _ProductListState extends State<ProductList> {
+class _MyProductsState extends State<MyProducts> {
   // Fetch content from the json file
   List productData = [];
 
@@ -60,6 +61,19 @@ class _ProductListState extends State<ProductList> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      floatingActionButton: FloatingButton(
+        onClicked: () {
+          // Navigator.push(
+          //   context,
+          //   MaterialPageRoute(builder: (context) => AddProduct()),
+          // );
+        },
+        iconData: Icons.add,
+      ),
+      appBar: AppBar(
+        title: const Text('My Products'),
+      ),
       body: SizedBox(
         height: size.height * 0.8,
         child: GridView.builder(
