@@ -23,7 +23,7 @@ class _CategoryListState extends State<CategoryList> {
             automaticallyImplyLeading: false,
             flexibleSpace: Column(
               mainAxisAlignment: MainAxisAlignment.end,
-              children: [
+              children: const [
                 TabBar(
                   tabs: [
                     Tab(
@@ -40,14 +40,12 @@ class _CategoryListState extends State<CategoryList> {
               ],
             ),
           ),
-          body: Container(
-            child: TabBarView(
-              children: [
-                ProductList(),
-                ProductList(),
-                ProductList(),
-              ],
-            ),
+          body: const TabBarView(
+            children: [
+              ProductList(),
+              ProductList(),
+              ProductList(),
+            ],
           ),
         ),
       ),

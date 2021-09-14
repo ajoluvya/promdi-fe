@@ -7,7 +7,7 @@ class PromoItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return Container(
+    return SizedBox(
       // color: lightGrey,
       height: size.height * 0.26,
       // width: width * 2,
@@ -20,7 +20,7 @@ class PromoItem extends StatelessWidget {
                 // margin: EdgeInsets.all(6.0),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8.0),
-                  image: DecorationImage(
+                  image: const DecorationImage(
                     image: AssetImage('assets/images/harvest.png'),
                     fit: BoxFit.fill,
                   ),
@@ -32,7 +32,7 @@ class PromoItem extends StatelessWidget {
                 // margin: EdgeInsets.all(6.0),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8.0),
-                  image: DecorationImage(
+                  image: const DecorationImage(
                     image: AssetImage('assets/images/harvest.png'),
                     fit: BoxFit.fill,
                   ),
@@ -40,10 +40,10 @@ class PromoItem extends StatelessWidget {
               ),
               //3rd Image of Slider
               Container(
-                margin: EdgeInsets.all(6.0),
+                margin: const EdgeInsets.all(6.0),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8.0),
-                  image: DecorationImage(
+                  image: const DecorationImage(
                     image: AssetImage('assets/images/carrot.png'),
                     fit: BoxFit.fill,
                   ),
@@ -52,10 +52,10 @@ class PromoItem extends StatelessWidget {
 
               //4th Image of Slider
               Container(
-                margin: EdgeInsets.all(6.0),
+                margin: const EdgeInsets.all(6.0),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8.0),
-                  image: DecorationImage(
+                  image: const DecorationImage(
                     image: AssetImage('assets/images/fruits.png'),
                     fit: BoxFit.fill,
                   ),
@@ -71,7 +71,7 @@ class PromoItem extends StatelessWidget {
               aspectRatio: 16 / 9,
               autoPlayCurve: Curves.fastOutSlowIn,
               enableInfiniteScroll: true,
-              autoPlayAnimationDuration: Duration(milliseconds: 800),
+              autoPlayAnimationDuration: const Duration(milliseconds: 800),
               viewportFraction: 0.8,
             ),
           ),

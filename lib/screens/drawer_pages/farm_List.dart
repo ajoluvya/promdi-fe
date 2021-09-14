@@ -23,38 +23,36 @@ class _FarmListState extends State<FarmList> {
   @override
   void initState() {
     super.initState();
-    this.loadJsonData();
+    loadJsonData();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('My Farms'),
+        title: const Text('My Farms'),
       ),
-      body: Container(
-        child: ListView.builder(
-            shrinkWrap: true,
-            itemCount: farmData.length,
-            itemBuilder: (context, index) {
-              return GestureDetector(
-                child: Card(
-                  child: ListTile(
-                    title: Text(farmData[index]['name']),
-                    subtitle: Text(farmData[index]['province']),
-                  ),
+      body: ListView.builder(
+          shrinkWrap: true,
+          itemCount: farmData.length,
+          itemBuilder: (context, index) {
+            return GestureDetector(
+              child: Card(
+                child: ListTile(
+                  title: Text(farmData[index]['name']),
+                  subtitle: Text(farmData[index]['province']),
                 ),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            FarmDetails(farmDetail: farmData[index])),
-                  );
-                },
-              );
-            }),
-      ),
+              ),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          FarmDetails(farmDetail: farmData[index])),
+                );
+              },
+            );
+          }),
     );
   }
 }

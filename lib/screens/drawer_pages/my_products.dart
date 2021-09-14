@@ -3,9 +3,9 @@ import 'package:flutter/services.dart';
 
 import 'dart:convert';
 
-import 'package:promdi_fe/screens/e_commerce/eWidgets/productCard.dart';
+import 'package:promdi_fe/screens/e_commerce/eWidgets/product_Card.dart';
 import 'package:promdi_fe/screens/e_commerce/product_detail.dart';
-import 'package:promdi_fe/widgets/floatingActionButton.dart';
+import 'package:promdi_fe/widgets/floating_action_button.dart';
 
 class Product {
   String? id;
@@ -52,7 +52,7 @@ class _MyProductsState extends State<MyProducts> {
   @override
   void initState() {
     super.initState();
-    this.productJsonData();
+    productJsonData();
   }
 
   // late Future<Product> futureAlbum;
@@ -72,13 +72,14 @@ class _MyProductsState extends State<MyProducts> {
         iconData: Icons.add,
       ),
       appBar: AppBar(
-        title: Text('My Products'),
+        title: const Text('My Products'),
       ),
-      body: Container(
+      body: SizedBox(
         height: size.height * 0.8,
         child: GridView.builder(
-            gridDelegate:
-                SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2),
+            // ignore: unnecessary_null_comparison
             itemCount: productData == null ? 0 : productData.length,
             itemBuilder: (context, index) {
               return ProductCard(

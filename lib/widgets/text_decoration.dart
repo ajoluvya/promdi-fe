@@ -6,8 +6,8 @@ InputDecoration buildInputDecoration(String hintText, IconData icon) {
     labelStyle: TextStyle(color: outLineBorder),
     labelText: hintText,
     hintText: hintText,
-    prefixIcon: Icon(icon, color: Color.fromARGB(50, 62, 72, 1)),
-    contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+    prefixIcon: Icon(icon, color: const Color.fromARGB(50, 62, 72, 1)),
+    contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
     border: OutlineInputBorder(borderRadius: BorderRadius.circular(5.0)),
     focusedBorder: OutlineInputBorder(
       borderSide: BorderSide(color: outLineBorder),

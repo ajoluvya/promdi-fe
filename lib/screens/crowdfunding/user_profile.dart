@@ -13,20 +13,19 @@ class PartnerProfile extends StatefulWidget {
 class _PartnerProfileState extends State<PartnerProfile> {
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        title: Text('Name'),
+        title: const Text('Name'),
       ),
       body: Column(
         children: [
-          ProfileCover(profileimage: 'assets/images/carrot.png'),
+          const ProfileCover(profileimage: 'assets/images/carrot.png'),
           ProfileTile(
             icon: Icons.contact_page,
             onClick: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => ContactInfo()),
+                MaterialPageRoute(builder: (context) => const ContactInfo()),
               );
             },
             text: 'Contact Info',

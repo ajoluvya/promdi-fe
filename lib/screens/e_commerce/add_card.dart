@@ -18,72 +18,72 @@ class _AddCardState extends State<AddCard> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Add CArd'),
+        title: const Text('Add CArd'),
       ),
-      body: Container(
-        child: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Column(
-            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              TextFormField(
-                autofocus: false,
-                validator: (value) => value!.isEmpty ? 'Card Number' : null,
-                onSaved: (value) => cardnumber = value!,
-                decoration: buildInputDecoration(
-                    'Enter Card Number', Icons.card_giftcard),
-              ),
-              SizedBox(height: 10),
-              Row(
-                children: [
-                  Expanded(
-                    child: TextFormField(
-                      autofocus: false,
-                      validator: (value) =>
-                          value!.isEmpty ? 'ExpDate(MM/YY)' : null,
-                      onSaved: (value) => expireDate = value!,
-                      decoration:
-                          buildInputDecoration('Exp Date', Icons.card_giftcard),
-                    ),
+      body: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Column(
+          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            TextFormField(
+              autofocus: false,
+              validator: (value) => value!.isEmpty ? 'Card Number' : null,
+              onSaved: (value) => cardnumber = value!,
+              decoration: buildInputDecoration(
+                  'Enter Card Number', Icons.card_giftcard),
+            ),
+            const SizedBox(height: 10),
+            Row(
+              children: [
+                Expanded(
+                  child: TextFormField(
+                    autofocus: false,
+                    validator: (value) =>
+                        value!.isEmpty ? 'ExpDate(MM/YY)' : null,
+                    onSaved: (value) => expireDate = value!,
+                    decoration:
+                        buildInputDecoration('Exp Date', Icons.card_giftcard),
                   ),
-                  Expanded(
-                    child: TextFormField(
-                      autofocus: false,
-                      validator: (value) => value!.isEmpty ? 'CVV' : null,
-                      onSaved: (value) => cvv = value!,
-                      decoration:
-                          buildInputDecoration('CVV', Icons.card_giftcard),
-                    ),
+                ),
+                Expanded(
+                  child: TextFormField(
+                    autofocus: false,
+                    validator: (value) => value!.isEmpty ? 'CVV' : null,
+                    onSaved: (value) => cvv = value!,
+                    decoration:
+                        buildInputDecoration('CVV', Icons.card_giftcard),
                   ),
-                ],
-              ),
-              SizedBox(height: 10),
-              TextFormField(
-                autofocus: false,
-                validator: (value) => value!.isEmpty ? 'Country' : null,
-                onSaved: (value) => country = value!,
-                decoration:
-                    buildInputDecoration('Enter country', Icons.card_giftcard),
-              ),
-              SizedBox(height: 10),
-              TextFormField(
-                autofocus: false,
-                validator: (value) => value!.isEmpty ? 'Post Code' : null,
-                onSaved: (value) => postCode = value!,
-                decoration: buildInputDecoration(
-                    'Enter Post Code', Icons.card_giftcard),
-              ),
-              SizedBox(height: 10),
-              CustomButton(
-                title: 'Save and Continue',
-                customcolor: greenCustom,
-                onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => CheckOutPage()));
-                },
-              )
-            ],
-          ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 10),
+            TextFormField(
+              autofocus: false,
+              validator: (value) => value!.isEmpty ? 'Country' : null,
+              onSaved: (value) => country = value!,
+              decoration:
+                  buildInputDecoration('Enter country', Icons.card_giftcard),
+            ),
+            const SizedBox(height: 10),
+            TextFormField(
+              autofocus: false,
+              validator: (value) => value!.isEmpty ? 'Post Code' : null,
+              onSaved: (value) => postCode = value!,
+              decoration:
+                  buildInputDecoration('Enter Post Code', Icons.card_giftcard),
+            ),
+            const SizedBox(height: 10),
+            CustomButton(
+              title: 'Save and Continue',
+              customcolor: greenCustom,
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const CheckOutPage()));
+              },
+            )
+          ],
         ),
       ),
     );

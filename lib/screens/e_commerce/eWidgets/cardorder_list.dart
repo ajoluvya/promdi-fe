@@ -3,7 +3,7 @@ import 'package:promdi_fe/helpers/style.dart';
 import 'package:promdi_fe/screens/e_commerce/order_detail.dart';
 import 'package:intl/intl.dart';
 
-final oCcy = new NumberFormat("#,##0.0", "en_US");
+final oCcy = NumberFormat("#,##0.0", "en_US");
 
 class OrderCard extends StatelessWidget {
   final String orderstatus;
@@ -30,7 +30,7 @@ class OrderCard extends StatelessWidget {
           child: GestureDetector(
             child: Column(
               children: [
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: numberButton(
@@ -41,7 +41,7 @@ class OrderCard extends StatelessWidget {
                     cost,
                   ),
                 ),
-                SizedBox(width: 20),
+                const SizedBox(width: 20),
               ],
             ),
             onTap: () {
@@ -49,7 +49,7 @@ class OrderCard extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) =>
-                        OrderDetail(transactionID: '${transactionID}'),
+                        OrderDetail(transactionID: transactionID),
                   ));
             },
           ),
@@ -72,26 +72,26 @@ class OrderCard extends StatelessWidget {
         children: [
           Text(
             text1,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 13,
               fontWeight: FontWeight.bold,
             ),
           ),
           Text(
             text2,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 13,
             ),
           ),
           Text(
             text3,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 13,
             ),
           ),
           Text(
             text4,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 13,
             ),
           ),

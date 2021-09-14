@@ -8,22 +8,10 @@
       "division": "central",
       "municipality": "central",
       "province": "central",
-      "crops":[{
-        "id": "0",
-        "name": "Rice",
-        "description": "up land rice"
-      },
-      {
-        "id": "1",
-        "name": "Wheat",
-        "description": "central wheat"
-      },
-      {
-        "id": "2",
-        "name": "Maize",
-        "description": "yellow hard grain maize"
-      }
-    ]
+      "equipment": "tractors, cultivators",
+      "area": "20 hect",
+      "baranguay": "South West"
+      
   },
   {
     "id": "1",
@@ -33,22 +21,9 @@
   "division": "East",
   "municipality": "East",
   "province": "East",
-  "crops":[{
-    "id": "0",
-    "name": "Rice",
-    "description": "up land rice"
-  },
-  {
-    "id": "1",
-    "name": "Carrots",
-    "description": "With yellow inner root"
-  },
-  {
-    "id": "2",
-    "name": "Vegetables",
-    "description": "Greens, green papper "
-  }
-]
+  "equipment": "tractors, mowers, planters",
+      "area": "25 hect",
+      "baranguay": "South West"
 
 },
 {
@@ -59,22 +34,10 @@
   "division": "central",
   "municipality": "central",
   "province": "central",
-  "crops":[{
-    "id": "0",
-    "name": "Rice",
-    "description": "up land rice"
-  },
-  {
-    "id": "1",
-    "name": "Coffee",
-    "description": "central Coffee"
-  },
-  {
-    "id": "2",
-    "name": "SimSim",
-    "description": "yellow hard grain sim sim"
-  }
-]
+  "equipment": "tractors, sparyers",
+      "area": "30 hect",
+      "baranguay": "South West"
+  
 }
     
   

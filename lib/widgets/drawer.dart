@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:promdi_fe/helpers/style.dart';
-import 'package:promdi_fe/screens/drawer_pages/farm_List.dart';
+import 'package:promdi_fe/screens/drawer_pages/farm_list.dart';
 import 'package:promdi_fe/screens/drawer_pages/my_products.dart';
 import 'package:promdi_fe/screens/drawer_pages/store.dart';
 
@@ -11,14 +11,14 @@ class AppDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Drawer(
       child: Material(
-        color: lightBlue,
+        color: light,
         child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
             _createHeader(),
             Divider(
               height: 2,
-              color: light,
+              color: lightBlue,
             ),
             _createDrawerItem(
               icon: Icons.fence,
@@ -26,18 +26,20 @@ class AppDrawer extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => FarmList()),
+                  MaterialPageRoute(builder: (context) => const FarmList()),
                 );
               },
             ),
-            Divider(),
+            Divider(
+              color: dark,
+            ),
             _createDrawerItem(
               icon: Icons.store,
               text: 'My Stores',
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => MyStore()),
+                  MaterialPageRoute(builder: (context) => const MyStore()),
                 );
               },
             ),
@@ -47,10 +49,12 @@ class AppDrawer extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => MyProducts()),
+                    MaterialPageRoute(builder: (context) => const MyProducts()),
                   );
                 }),
-            Divider(),
+            Divider(
+              color: dark,
+            ),
             _createDrawerItem(
               icon: Icons.chat,
               text: 'Chats',
@@ -70,26 +74,26 @@ class AppDrawer extends StatelessWidget {
   _createHeader() {
     return DrawerHeader(
         margin: EdgeInsets.zero,
-        padding: EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
         child: Container(
-          padding: EdgeInsets.symmetric(vertical: 40),
+          padding: const EdgeInsets.symmetric(vertical: 40),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              CircleAvatar(
+              const CircleAvatar(
                 radius: 30,
                 backgroundImage: AssetImage('assets/images/carrot.png'),
               ),
-              SizedBox(width: 10),
+              const SizedBox(width: 10),
               Column(
                 children: [
                   Text(
                     'Mateo John',
-                    style: TextStyle(fontSize: 15, color: light),
+                    style: TextStyle(fontSize: 15, color: lightBlue),
                   ),
                   Text(
                     'mateojohn@gmail.com',
-                    style: TextStyle(fontSize: 12, color: light),
+                    style: TextStyle(fontSize: 12, color: lightBlue),
                   ),
                 ],
               )
@@ -107,13 +111,13 @@ class AppDrawer extends StatelessWidget {
         children: <Widget>[
           Icon(
             icon,
-            color: light,
+            color: lightBlue,
           ),
           Padding(
-            padding: EdgeInsets.only(left: 8.0),
+            padding: const EdgeInsets.only(left: 8.0),
             child: Text(
               text,
-              style: TextStyle(color: light),
+              style: TextStyle(color: lightBlue),
             ),
           )
         ],

@@ -19,7 +19,7 @@ class _MyOrderState extends State<MyOrder> {
             automaticallyImplyLeading: false,
             flexibleSpace: Column(
               mainAxisAlignment: MainAxisAlignment.end,
-              children: [
+              children: const [
                 TabBar(
                   tabs: [
                     Tab(
@@ -36,20 +36,18 @@ class _MyOrderState extends State<MyOrder> {
               ],
             ),
           ),
-          body: Container(
-            child: TabBarView(
-              children: [
-                OrderList(
-                  status: 'Completed',
-                ),
-                OrderList(
-                  status: 'Progress',
-                ),
-                OrderList(
-                  status: 'Canceled',
-                ),
-              ],
-            ),
+          body: const TabBarView(
+            children: [
+              OrderList(
+                status: 'Completed',
+              ),
+              OrderList(
+                status: 'Progress',
+              ),
+              OrderList(
+                status: 'Canceled',
+              ),
+            ],
           ),
         ),
       ),

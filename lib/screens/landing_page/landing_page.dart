@@ -10,7 +10,6 @@ import 'package:promdi_fe/screens/signup/signup_page.dart';
 import 'package:promdi_fe/widgets/card.dart';
 import 'package:promdi_fe/widgets/weather.dart';
 import 'package:http/http.dart' as http;
-// import 'package:geolocator/geolocator.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({Key? key}) : super(key: key);
@@ -20,21 +19,11 @@ class LandingPage extends StatefulWidget {
 }
 
 class _LandingPageState extends State<LandingPage> {
-  // Geolocator geolocator = Geolocator();
-  // late Position userLocation;
-
   @override
   void initState() {
+    // ignore: todo
     // TODO: implement initState
     super.initState();
-    // _getLocation().then((position) {
-    //   // userLocation = position;
-    // });
-    // this._getLocation().then((value) {
-    //   setState(() {
-    //     // userLocation = value;
-    //   });
-    // });
   }
 
   @override
@@ -42,8 +31,9 @@ class _LandingPageState extends State<LandingPage> {
     final height = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: lightBlue,
         centerTitle: true,
-        title: Text('Promdi App'),
+        title: const Text('Promdi App'),
         leading: ClipOval(
           child: Image.asset(
             'assets/icons/logo.png',
@@ -58,30 +48,31 @@ class _LandingPageState extends State<LandingPage> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Container(
-              padding: EdgeInsets.symmetric(
+              padding: const EdgeInsets.symmetric(
                 horizontal: 20,
                 vertical: 5,
               ),
               decoration: BoxDecoration(
                 color: lightBlue,
-                borderRadius: BorderRadius.only(
+                borderRadius: const BorderRadius.only(
                   bottomLeft: Radius.circular(100),
                   bottomRight: Radius.circular(100),
                 ),
               ),
               child: Padding(
-                padding: EdgeInsets.all(10),
+                padding: const EdgeInsets.all(10),
                 child: FutureBuilder(
                   builder: (context, AsyncSnapshot snapshot) {
                     if (snapshot.data != null) {
                       Weather _weather = snapshot.data;
+                      // ignore: unnecessary_null_comparison
                       if (_weather == null) {
-                        return Text("Error getting weater");
+                        return const Text("Error getting weater");
                       } else {
                         return weatherBox(_weather);
                       }
                     } else {
-                      return CircularProgressIndicator(
+                      return const CircularProgressIndicator(
                         strokeWidth: 1,
                       );
                     }
@@ -90,18 +81,17 @@ class _LandingPageState extends State<LandingPage> {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Expanded(
               child: Container(
-                  child: Container(
                 height: height,
                 color: light,
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
@@ -115,7 +105,7 @@ class _LandingPageState extends State<LandingPage> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
-                                            CrowdfundingPage()),
+                                            const CrowdfundingPage()),
                                   );
                                 },
                                 bottom: 0,
@@ -142,7 +132,8 @@ class _LandingPageState extends State<LandingPage> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => Ecommerce()),
+                                        builder: (context) =>
+                                            const Ecommerce()),
                                   );
                                 },
                                 bottom: 0,
@@ -161,7 +152,7 @@ class _LandingPageState extends State<LandingPage> {
                           )
                         ],
                       ),
-                      SizedBox(height: 5),
+                      const SizedBox(height: 5),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
@@ -170,9 +161,7 @@ class _LandingPageState extends State<LandingPage> {
                               CustomCard(
                                 text: 'E-Learning',
                                 image: 'assets/images/online-learning.png',
-                                onClick: () {
-                                  print('E-Learning');
-                                },
+                                onClick: () {},
                                 top: 0,
                                 right: 0,
                                 bottomtext: 0,
@@ -191,9 +180,7 @@ class _LandingPageState extends State<LandingPage> {
                               CustomCard(
                                 text: 'AGRI-INSURANCE',
                                 image: 'assets/images/chat.png',
-                                onClick: () {
-                                  print('Support');
-                                },
+                                onClick: () {},
                                 top: 0,
                                 left: 0,
                                 bottomtext: 0,
@@ -210,7 +197,7 @@ class _LandingPageState extends State<LandingPage> {
                           )
                         ],
                       ),
-                      SizedBox(height: 40),
+                      const SizedBox(height: 40),
                       Text(
                         'Helping farmers one click at a time',
                         style: TextStyle(color: dark, fontSize: 15),
@@ -230,7 +217,7 @@ class _LandingPageState extends State<LandingPage> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => LoginScreen()),
+                                    builder: (context) => const LoginScreen()),
                               );
                             },
                             child: Text(
@@ -240,7 +227,7 @@ class _LandingPageState extends State<LandingPage> {
                               ),
                             ),
                           ),
-                          SizedBox(width: 20),
+                          const SizedBox(width: 20),
                           OutlinedButton(
                             style: OutlinedButton.styleFrom(
                               side: BorderSide(
@@ -252,7 +239,7 @@ class _LandingPageState extends State<LandingPage> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => SignUp()),
+                                    builder: (context) => const SignUp()),
                               );
                             },
                             child: Text(
@@ -275,7 +262,7 @@ class _LandingPageState extends State<LandingPage> {
                     ],
                   ),
                 ),
-              )),
+              ),
             ),
           ],
         ),
@@ -293,7 +280,7 @@ class _LandingPageState extends State<LandingPage> {
               'http://openweathermap.org/img/w/${_weather.icon}',
               height: MediaQuery.of(context).size.height * 0.07,
             ),
-            Text("${_weather.description}",
+            Text(_weather.description,
                 style: TextStyle(color: light, fontSize: 15)),
           ],
         ),
@@ -301,8 +288,8 @@ class _LandingPageState extends State<LandingPage> {
           children: [
             Text("${_weather.temp}°C",
                 style: TextStyle(color: light, fontSize: 20)),
-            SizedBox(height: 10),
-            Text('${DateFormat.yMMMd().format(DateTime.now())}',
+            const SizedBox(height: 10),
+            Text(DateFormat.yMMMd().format(DateTime.now()),
                 style: TextStyle(
                   color: light,
                 )),
@@ -325,23 +312,11 @@ class _LandingPageState extends State<LandingPage> {
 
     if (response.statusCode == 200) {
       weather = Weather.fromJson(jsonDecode(response.body));
-      print('Success 200');
-      // print(userLocation);
       return weather;
     } else {
+      // ignore: todo
       // TODO: THROW error here
 
     }
   }
-
-  // Future<Position> _getLocation() async {
-  //   var currentLocation;
-  //   try {
-  //     currentLocation = await Geolocator.getCurrentPosition(
-  //         desiredAccuracy: LocationAccuracy.best);
-  //   } catch (e) {
-  //     currentLocation = null;
-  //   }
-  //   return currentLocation;
-  // }
 }

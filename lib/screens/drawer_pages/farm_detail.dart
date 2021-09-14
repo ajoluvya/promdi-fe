@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:promdi_fe/screens/drawer_pages/crop_List.dart';
+import 'package:promdi_fe/screens/drawer_pages/crop_list.dart';
 import 'package:promdi_fe/screens/drawer_pages/farm_profile.dart';
 
 class FarmDetails extends StatefulWidget {
@@ -24,7 +24,7 @@ class _FarmDetailsState extends State<FarmDetails> {
             automaticallyImplyLeading: false,
             flexibleSpace: Column(
               mainAxisAlignment: MainAxisAlignment.end,
-              children: [
+              children: const [
                 TabBar(
                   tabs: [
                     Tab(
@@ -38,13 +38,11 @@ class _FarmDetailsState extends State<FarmDetails> {
               ],
             ),
           ),
-          body: Container(
-            child: TabBarView(
-              children: [
-                FarmProfile(farmDetail: widget.farmDetail),
-                CropList(),
-              ],
-            ),
+          body: TabBarView(
+            children: [
+              FarmProfile(farmDetail: widget.farmDetail),
+              const CropList(),
+            ],
           ),
         ),
       ),

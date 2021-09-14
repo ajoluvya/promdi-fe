@@ -2,6 +2,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 class DatePicker extends StatefulWidget {
+  const DatePicker({Key? key}) : super(key: key);
+
   @override
   _DatePickerState createState() => _DatePickerState();
 }
@@ -14,10 +16,11 @@ class _DatePickerState extends State<DatePicker> {
         initialDate: currentDate,
         firstDate: DateTime(2021),
         lastDate: DateTime(2050));
-    if (pickedDate != null && pickedDate != currentDate)
+    if (pickedDate != null && pickedDate != currentDate) {
       setState(() {
         currentDate = pickedDate;
       });
+    }
   }
 
   @override
@@ -36,14 +39,14 @@ class _DatePickerState extends State<DatePicker> {
         children: <Widget>[
           ElevatedButton.icon(
             onPressed: () => _selectDate(context),
-            icon: Icon(Icons.calendar_today),
-            label: Text('Date Of Birth'),
+            icon: const Icon(Icons.calendar_today),
+            label: const Text('Date Of Birth'),
           ),
-          SizedBox(width: 20),
+          const SizedBox(width: 20),
           Text(
               '${currentDate.day}/${currentDate.month}/${currentDate.year}'
                   .toString(),
-              style: TextStyle(fontSize: 15)),
+              style: const TextStyle(fontSize: 15)),
         ],
       ),
     );

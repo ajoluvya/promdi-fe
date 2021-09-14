@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:promdi_fe/helpers/style.dart';
 import 'package:promdi_fe/screens/e_commerce/cart_list.dart';
-import 'package:promdi_fe/screens/e_commerce/myOrder.dart';
+import 'package:promdi_fe/screens/e_commerce/my_order.dart';
 import 'package:promdi_fe/screens/e_commerce/shop.dart';
 import 'package:promdi_fe/widgets/drawer.dart';
 
@@ -34,16 +34,16 @@ class _EcommerceState extends State<Ecommerce> {
       appBar: AppBar(
         title: Text(_title),
       ),
-      drawer: AppDrawer(),
+      drawer: const AppDrawer(),
       body: Center(
         child: _pages.elementAt(_selectedIndex),
       ),
-      bottomNavigationBar: new Theme(
+      bottomNavigationBar: Theme(
         data: Theme.of(context).copyWith(canvasColor: lightBlue),
         child: BottomNavigationBar(
           currentIndex: _selectedIndex,
           onTap: _onItemTapped,
-          items: <BottomNavigationBarItem>[
+          items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               icon: Icon(Icons.shop_2),
               label: 'shop',

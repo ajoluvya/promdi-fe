@@ -10,13 +10,11 @@ class FloatingButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: FloatingActionButton(
-        backgroundColor: lightBlue,
-        onPressed: onClicked,
-        tooltip: 'Increment',
-        child: Icon(iconData),
-      ),
+    return FloatingActionButton(
+      backgroundColor: lightBlue,
+      onPressed: onClicked,
+      tooltip: 'Increment',
+      child: Icon(iconData),
     );
   }
 }

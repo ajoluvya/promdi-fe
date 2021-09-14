@@ -19,15 +19,15 @@ class _CheckOutPageState extends State<CheckOutPage> {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        title: Text('Checkout'),
+        title: const Text('Checkout'),
       ),
       body: Container(
         color: lightGrey,
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Padding(
-                padding: const EdgeInsets.all(10.0),
+              const Padding(
+                padding: EdgeInsets.all(10.0),
                 child: Text('Destination'),
               ),
               Padding(
@@ -37,7 +37,7 @@ class _CheckOutPageState extends State<CheckOutPage> {
                     padding: const EdgeInsets.all(10.0),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
+                      children: const [
                         Text('Cecilia chapman 711-2280 Nulla St.'),
                         Text('Manakato Mississippi 96522.'),
                         Text('255 553-7652')
@@ -47,7 +47,7 @@ class _CheckOutPageState extends State<CheckOutPage> {
                 ),
               ),
               Container(
-                padding: EdgeInsets.all(10.0),
+                padding: const EdgeInsets.all(10.0),
                 child: Column(
                   children: [
                     Card(
@@ -58,32 +58,32 @@ class _CheckOutPageState extends State<CheckOutPage> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Icon(Icons.watch),
-                                Text('Fri, Jun 17,2020-12.30'),
+                                const Icon(Icons.watch),
+                                const Text('Fri, Jun 17,2020-12.30'),
                                 SizedBox(
                                   width: size.width * 0.25,
                                 ),
-                                Icon(Icons.skip_next)
+                                const Icon(Icons.skip_next)
                               ],
                             ),
-                            SizedBox(height: 20),
+                            const SizedBox(height: 20),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Icon(Icons.watch_rounded),
-                                Text('Pick Up Time 30-40 Min'),
+                                const Icon(Icons.watch_rounded),
+                                const Text('Pick Up Time 30-40 Min'),
                                 SizedBox(
                                   width: size.width * 0.25,
                                 ),
-                                Icon(Icons.skip_next)
+                                const Icon(Icons.skip_next)
                               ],
                             ),
                           ],
                         ),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
+                    const Padding(
+                      padding: EdgeInsets.all(8.0),
                       child: Text('Total'),
                     ),
                     Card(
@@ -91,15 +91,15 @@ class _CheckOutPageState extends State<CheckOutPage> {
                         padding: const EdgeInsets.all(8.0),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
+                          children: const [
                             Text('Total'),
                             Text('0.78'),
                           ],
                         ),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
+                    const Padding(
+                      padding: EdgeInsets.all(8.0),
                       child: Text('Payment Method'),
                     ),
                     Card(
@@ -144,7 +144,7 @@ class _CheckOutPageState extends State<CheckOutPage> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => Payment()),
+                                    builder: (context) => const Payment()),
                               );
                             },
                             child: Padding(
@@ -160,18 +160,18 @@ class _CheckOutPageState extends State<CheckOutPage> {
                         ],
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
+                    const Padding(
+                      padding: EdgeInsets.all(8.0),
                       child: Text('Promo Code'),
                     ),
                     Card(
                       child: Row(
                         children: [
-                          Icon(Icons.badge),
+                          const Icon(Icons.badge),
                           SizedBox(
                             width: size.width * 0.08,
                           ),
-                          Text('Add Promo Code'),
+                          const Text('Add Promo Code'),
                           SizedBox(
                             width: size.width * 0.25,
                           ),
@@ -182,9 +182,9 @@ class _CheckOutPageState extends State<CheckOutPage> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => Payment()));
+                                        builder: (context) => const Payment()));
                               },
-                              icon: Icon(Icons.skip_next),
+                              icon: const Icon(Icons.skip_next),
                             ),
                           ),
                         ],
@@ -197,7 +197,7 @@ class _CheckOutPageState extends State<CheckOutPage> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => Payment()));
+                                  builder: (context) => const Payment()));
                         },
                         title: 'Place Order',
                         customcolor: greenCustom,

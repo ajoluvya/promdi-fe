@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_new
+
 import 'package:flutter/material.dart';
 import 'package:promdi_fe/helpers/style.dart';
 
@@ -12,7 +14,7 @@ class ProfileCover extends StatelessWidget {
       decoration: new BoxDecoration(
         gradient: new RadialGradient(
             colors: [greenCustom, light],
-            center: Alignment(1.0, 0.0),
+            center: const Alignment(1.0, 0.0),
             radius: 1.6,
             tileMode: TileMode.clamp),
       ),
@@ -30,7 +32,7 @@ class ProfileCover extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Column(
-                        children: [
+                        children: const [
                           Text('Wallet Balance:'),
                           Text('P 10,000'),
                         ],
@@ -41,7 +43,7 @@ class ProfileCover extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Column(
-                        children: [
+                        children: const [
                           Text('Investment'),
                           Text('P 15,000'),
                         ],
@@ -75,7 +77,7 @@ class ProfileCover extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Column(
-                        children: [
+                        children: const [
                           Text('Jaime Dela Cruz'),
                           Text('Jamesdc@gmail.com'),
                           Text('Rookie investor'),
