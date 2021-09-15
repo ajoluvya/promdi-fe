@@ -94,14 +94,9 @@ class _InvestAmountState extends State<InvestAmount> {
                 visible: _isVisible,
                 child: Center(
                   child: CustomButton(
-                    onTap: () {
-                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                        content: Text('Success'),
-                        duration: Duration(seconds: 6),
-                      ));
-                    },
-                    title: 'Procceed',
                     customcolor: greenCustom,
+                    title: 'Procceed',
+                    onTap: () => showSimpleDialog(context),
                   ),
                 ),
               ),
@@ -111,4 +106,24 @@ class _InvestAmountState extends State<InvestAmount> {
       ),
     );
   }
+
+  void showSimpleDialog(BuildContext context) => showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          Size size = MediaQuery.of(context).size;
+          return SimpleDialog(
+            children: [
+              Container(
+                height: size.height * 0.15,
+                color: greenCustom,
+                alignment: Alignment.center,
+                child: Text(
+                  'Success',
+                  style: TextStyle(color: light, fontSize: 20),
+                ),
+              ),
+            ],
+          );
+        },
+      );
 }
