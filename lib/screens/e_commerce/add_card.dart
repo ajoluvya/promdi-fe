@@ -30,7 +30,7 @@ class _AddCardState extends State<AddCard> {
               validator: (value) => value!.isEmpty ? 'Card Number' : null,
               onSaved: (value) => cardnumber = value!,
               decoration: buildInputDecoration(
-                  'Enter Card Number', Icons.card_giftcard),
+                  'Enter Card Number', Icons.card_giftcard, outLineBorder),
             ),
             const SizedBox(height: 10),
             Row(
@@ -41,8 +41,8 @@ class _AddCardState extends State<AddCard> {
                     validator: (value) =>
                         value!.isEmpty ? 'ExpDate(MM/YY)' : null,
                     onSaved: (value) => expireDate = value!,
-                    decoration:
-                        buildInputDecoration('Exp Date', Icons.card_giftcard),
+                    decoration: buildInputDecoration(
+                        'Exp Date', Icons.card_giftcard, outLineBorder),
                   ),
                 ),
                 Expanded(
@@ -50,8 +50,8 @@ class _AddCardState extends State<AddCard> {
                     autofocus: false,
                     validator: (value) => value!.isEmpty ? 'CVV' : null,
                     onSaved: (value) => cvv = value!,
-                    decoration:
-                        buildInputDecoration('CVV', Icons.card_giftcard),
+                    decoration: buildInputDecoration(
+                        'CVV', Icons.card_giftcard, outLineBorder),
                   ),
                 ),
               ],
@@ -61,16 +61,16 @@ class _AddCardState extends State<AddCard> {
               autofocus: false,
               validator: (value) => value!.isEmpty ? 'Country' : null,
               onSaved: (value) => country = value!,
-              decoration:
-                  buildInputDecoration('Enter country', Icons.card_giftcard),
+              decoration: buildInputDecoration(
+                  'Enter country', Icons.card_giftcard, outLineBorder),
             ),
             const SizedBox(height: 10),
             TextFormField(
               autofocus: false,
               validator: (value) => value!.isEmpty ? 'Post Code' : null,
               onSaved: (value) => postCode = value!,
-              decoration:
-                  buildInputDecoration('Enter Post Code', Icons.card_giftcard),
+              decoration: buildInputDecoration(
+                  'Enter Post Code', Icons.card_giftcard, outLineBorder),
             ),
             const SizedBox(height: 10),
             CustomButton(

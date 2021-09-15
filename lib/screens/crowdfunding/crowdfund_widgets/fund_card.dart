@@ -15,6 +15,7 @@ class CrowdFundCard extends StatefulWidget {
   final String roi;
   final String about;
   final VoidCallback onClick;
+  final VoidCallback onClickInvest;
   const CrowdFundCard(
       {Key? key,
       required this.padLeft,
@@ -28,7 +29,8 @@ class CrowdFundCard extends StatefulWidget {
       required this.roi,
       required this.investment,
       required this.about,
-      required this.onClick})
+      required this.onClick,
+      required this.onClickInvest})
       : super(key: key);
 
   @override
@@ -189,7 +191,7 @@ class _CrowdFundCardState extends State<CrowdFundCard> {
                 SizedBox(width: size.width * 0.16),
                 Expanded(
                   child: TextButton(
-                      onPressed: () {},
+                      onPressed: widget.onClickInvest,
                       child: Text(
                         'INVEST',
                         style: TextStyle(color: light),

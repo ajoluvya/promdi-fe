@@ -53,8 +53,8 @@ class _AddCropState extends State<AddCrop> {
                     validator: (value) =>
                         value!.isEmpty ? 'Please enter Crop name' : null,
                     onSaved: (value) => cropname = value!,
-                    decoration:
-                        buildInputDecoration('Enter Crop Name', Icons.crop),
+                    decoration: buildInputDecoration(
+                        'Enter Crop Name', Icons.crop, outLineBorder),
                   ),
                   const SizedBox(height: 10.0),
                   TextFormField(
@@ -62,15 +62,15 @@ class _AddCropState extends State<AddCrop> {
                     validator: (value) =>
                         value!.isEmpty ? 'Please enter quantity' : null,
                     onSaved: (value) => quantity = value!,
-                    decoration: buildInputDecoration(
-                        'Enter quantity', Icons.production_quantity_limits),
+                    decoration: buildInputDecoration('Enter quantity',
+                        Icons.production_quantity_limits, outLineBorder),
                   ),
                   const SizedBox(height: 10.0),
                   TextFormField(
                     autofocus: false,
                     onSaved: (value) => unity = value!,
-                    decoration:
-                        buildInputDecoration('Enter unity Cost', Icons.ac_unit),
+                    decoration: buildInputDecoration(
+                        'Enter unity Cost', Icons.ac_unit, outLineBorder),
                   ),
                   const SizedBox(height: 10),
                   TextFormField(
@@ -80,7 +80,7 @@ class _AddCropState extends State<AddCrop> {
                         value!.isEmpty ? 'Please enter land Size' : null,
                     onSaved: (value) => landSize = value!,
                     decoration: buildInputDecoration(
-                        'Enter Land Size', Icons.landscape),
+                        'Enter Land Size', Icons.landscape, outLineBorder),
                   ),
                   const SizedBox(height: 10),
                   Center(

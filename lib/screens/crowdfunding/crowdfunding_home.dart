@@ -4,7 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:promdi_fe/helpers/style.dart';
 import 'package:promdi_fe/screens/crowdfunding/crowdfund_widgets/fund_card.dart';
+import 'package:promdi_fe/screens/crowdfunding/invest_amount.dart';
+import 'package:promdi_fe/screens/crowdfunding/terms_and_conditions.dart';
 import 'package:promdi_fe/screens/crowdfunding/user_profile.dart';
+import 'package:promdi_fe/widgets/custom_button.dart';
 import 'package:promdi_fe/widgets/drawer.dart';
 
 class CrowdfundingPage extends StatefulWidget {
@@ -15,6 +18,17 @@ class CrowdfundingPage extends StatefulWidget {
 }
 
 class _CrowdState extends State<CrowdfundingPage> {
+  bool checkBoxValue = false;
+  bool _isVisible = false;
+  onRememberMeChanged(bool? newValue) => setState(() {
+        checkBoxValue = newValue!;
+
+        if (checkBoxValue) {
+          _isVisible = !_isVisible;
+        } else {
+          _isVisible = !_isVisible;
+        }
+      });
   // Fetch content from the json file
   List partnerData = [];
 
@@ -76,10 +90,18 @@ class _CrowdState extends State<CrowdfundingPage> {
                               builder: (context) => const PartnerProfile()),
                         );
                       },
+                      onClickInvest: () => showSimpleDialog(context),
                     );
                   }))
         ],
       )),
     );
   }
+
+  void showSimpleDialog(BuildContext context) => showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return const TermsAndConditions();
+        },
+      );
 }

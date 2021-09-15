@@ -127,8 +127,8 @@ class _SignUpState extends State<SignUp> {
                     validator: (value) =>
                         value!.isEmpty ? 'Please enter First name' : null,
                     onSaved: (value) => firstname = value!,
-                    decoration:
-                        buildInputDecoration('Enter Firstname', Icons.person),
+                    decoration: buildInputDecoration(
+                        'Enter Firstname', Icons.person, outLineBorder),
                   ),
                   const SizedBox(height: 10.0),
                   TextFormField(
@@ -136,16 +136,16 @@ class _SignUpState extends State<SignUp> {
                     validator: (value) =>
                         value!.isEmpty ? 'Please enter Last Name' : null,
                     onSaved: (value) => lastname = value!,
-                    decoration:
-                        buildInputDecoration('Enter Lastname', Icons.person),
+                    decoration: buildInputDecoration(
+                        'Enter Lastname', Icons.person, outLineBorder),
                   ),
                   const SizedBox(height: 10.0),
                   TextFormField(
                     autofocus: false,
                     // validator: (value) => value!.isEmpty ? 'Please enter Middle name' : null,
                     onSaved: (value) => middlename = value!,
-                    decoration:
-                        buildInputDecoration('Enter Middlename', Icons.person),
+                    decoration: buildInputDecoration(
+                        'Enter Middlename', Icons.person, outLineBorder),
                   ),
                   const SizedBox(height: 2.0),
                   Row(
@@ -187,8 +187,8 @@ class _SignUpState extends State<SignUp> {
                       LengthLimitingTextInputFormatter(10),
                       FilteringTextInputFormatter.allow(RegExp(r'[0-9]'))
                     ],
-                    decoration:
-                        buildInputDecoration('Enter number', Icons.dialpad),
+                    decoration: buildInputDecoration(
+                        'Enter number', Icons.dialpad, outLineBorder),
                   ),
                   const SizedBox(height: 10.0),
                   TextFormField(
@@ -196,8 +196,8 @@ class _SignUpState extends State<SignUp> {
                     validator: (value) =>
                         value!.contains('@') ? 'Please Email' : null,
                     onSaved: (value) => email = value!,
-                    decoration:
-                        buildInputDecoration('Enter Email', Icons.email),
+                    decoration: buildInputDecoration(
+                        'Enter Email', Icons.email, outLineBorder),
                   ),
                   const SizedBox(height: 10.0),
                   TextFormField(
@@ -205,8 +205,8 @@ class _SignUpState extends State<SignUp> {
                     validator: (value) =>
                         value!.isEmpty ? 'Please enter password' : null,
                     onSaved: (value) => password = value!,
-                    decoration:
-                        buildInputDecoration('Enter Password', Icons.lock),
+                    decoration: buildInputDecoration(
+                        'Enter Password', Icons.lock, outLineBorder),
                   ),
                   const SizedBox(height: 10.0),
                   TextFormField(
@@ -214,8 +214,8 @@ class _SignUpState extends State<SignUp> {
                     validator: (value) =>
                         value!.isEmpty ? 'Please enter password' : null,
                     onSaved: (value) => confirmpassword = value!,
-                    decoration:
-                        buildInputDecoration('Confirm Password', Icons.lock),
+                    decoration: buildInputDecoration(
+                        'Confirm Password', Icons.lock, outLineBorder),
                   ),
                   const SizedBox(height: 15.0),
                   Row(

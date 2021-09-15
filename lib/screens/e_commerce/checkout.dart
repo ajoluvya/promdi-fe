@@ -113,10 +113,8 @@ class _CheckOutPageState extends State<CheckOutPage> {
                               validator: (value) =>
                                   value!.isEmpty ? 'ApplePay' : null,
                               onSaved: (value) => applepay = value!,
-                              decoration: buildInputDecoration(
-                                'Apple Pay',
-                                Icons.card_giftcard,
-                              ),
+                              decoration: buildInputDecoration('Apple Pay',
+                                  Icons.card_giftcard, outLineBorder),
                             ),
                           ),
                           Padding(
@@ -127,10 +125,8 @@ class _CheckOutPageState extends State<CheckOutPage> {
                               validator: (value) =>
                                   value!.isEmpty ? 'Visa' : null,
                               onSaved: (value) => visa = value!,
-                              decoration: buildInputDecoration(
-                                'Visa ***586',
-                                Icons.card_giftcard,
-                              ),
+                              decoration: buildInputDecoration('Visa ***586',
+                                  Icons.card_giftcard, outLineBorder),
                             ),
                           ),
                           OutlinedButton(
