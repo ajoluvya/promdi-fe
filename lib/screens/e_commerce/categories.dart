@@ -39,7 +39,7 @@ class _CategoriesState extends State<Categories> {
       child: GridView.builder(
         physics: const NeverScrollableScrollPhysics(),
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 4,
+          crossAxisCount: 5,
         ),
         // ignore: unnecessary_null_comparison
         itemCount: categoryData == null ? 0 : categoryData.length,

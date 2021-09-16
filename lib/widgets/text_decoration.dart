@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:promdi_fe/helpers/style.dart';
 
 InputDecoration buildInputDecoration(
-    String hintText, IconData? icon, Color color) {
+    String hintText, IconData icon, Color color) {
   return InputDecoration(
     labelStyle: TextStyle(color: color),
     labelText: hintText,

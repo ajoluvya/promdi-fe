@@ -34,6 +34,8 @@ class Ecard extends StatelessWidget {
                 text,
                 style:
                     const TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
+                overflow: TextOverflow.fade,
+                softWrap: false,
               ),
             ),
           ],

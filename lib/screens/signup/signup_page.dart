@@ -9,8 +9,6 @@ import 'package:promdi_fe/widgets/date_picker.dart';
 import 'package:promdi_fe/widgets/text_decoration.dart';
 import 'package:image_picker/image_picker.dart';
 
-final formKey = GlobalKey<FormState>();
-
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);
 
@@ -19,6 +17,7 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
+  GlobalKey<FormState> formKey = GlobalKey<FormState>();
   late String firstname,
       lastname,
       mobileno,
@@ -40,7 +39,6 @@ class _SignUpState extends State<SignUp> {
         }
       });
 
-  // ignore: top_level_function_literal_block
   Future<void> doSignUp() async {
     // print(username);
     final form = formKey.currentState;
@@ -98,10 +96,10 @@ class _SignUpState extends State<SignUp> {
                         height: height * 0.04,
                         fit: BoxFit.cover,
                       ),
-                      const Text('Promdi App'),
+                      Text('Promdi App'),
                     ],
                   ),
-                  const SizedBox(height: 20.0),
+                  SizedBox(height: 20.0),
                   image != null
                       ? Center(
                           child: ClipOval(
@@ -113,15 +111,15 @@ class _SignUpState extends State<SignUp> {
                             ),
                           ),
                         )
-                      : const Center(child: Text('Profile Image')),
+                      : Center(child: Text('Profile Image')),
                   Center(
                     child: TextButton(
                         onPressed: () {
                           pickImage(ImageSource.gallery);
                         },
-                        child: const Text('Pick Profile Image')),
+                        child: Text('Pick Profile Image')),
                   ),
-                  const SizedBox(height: 15.0),
+                  SizedBox(height: 15.0),
                   TextFormField(
                     autofocus: false,
                     validator: (value) =>
@@ -130,7 +128,7 @@ class _SignUpState extends State<SignUp> {
                     decoration: buildInputDecoration(
                         'Enter Firstname', Icons.person, outLineBorder),
                   ),
-                  const SizedBox(height: 10.0),
+                  SizedBox(height: 10.0),
                   TextFormField(
                     autofocus: false,
                     validator: (value) =>
@@ -139,7 +137,7 @@ class _SignUpState extends State<SignUp> {
                     decoration: buildInputDecoration(
                         'Enter Lastname', Icons.person, outLineBorder),
                   ),
-                  const SizedBox(height: 10.0),
+                  SizedBox(height: 10.0),
                   TextFormField(
                     autofocus: false,
                     // validator: (value) => value!.isEmpty ? 'Please enter Middle name' : null,
@@ -147,17 +145,17 @@ class _SignUpState extends State<SignUp> {
                     decoration: buildInputDecoration(
                         'Enter Middlename', Icons.person, outLineBorder),
                   ),
-                  const SizedBox(height: 2.0),
+                  SizedBox(height: 2.0),
                   Row(
                     children: [
-                      const Text(
+                      Text(
                         "Sex",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
                         ),
                       ),
-                      const SizedBox(width: 40),
+                      SizedBox(width: 40),
                       DropdownButton<String>(
                         value: dropdownValue,
                         onChanged: (String? newValue) {
@@ -175,8 +173,8 @@ class _SignUpState extends State<SignUp> {
                       ),
                     ],
                   ),
-                  const DatePicker(),
-                  const SizedBox(height: 10),
+                  DatePicker(),
+                  SizedBox(height: 10),
                   TextFormField(
                     autofocus: false,
                     keyboardType: TextInputType.number,
@@ -190,7 +188,7 @@ class _SignUpState extends State<SignUp> {
                     decoration: buildInputDecoration(
                         'Enter number', Icons.dialpad, outLineBorder),
                   ),
-                  const SizedBox(height: 10.0),
+                  SizedBox(height: 10.0),
                   TextFormField(
                     autofocus: false,
                     validator: (value) =>
@@ -199,7 +197,7 @@ class _SignUpState extends State<SignUp> {
                     decoration: buildInputDecoration(
                         'Enter Email', Icons.email, outLineBorder),
                   ),
-                  const SizedBox(height: 10.0),
+                  SizedBox(height: 10.0),
                   TextFormField(
                     autofocus: false,
                     validator: (value) =>
@@ -208,7 +206,7 @@ class _SignUpState extends State<SignUp> {
                     decoration: buildInputDecoration(
                         'Enter Password', Icons.lock, outLineBorder),
                   ),
-                  const SizedBox(height: 10.0),
+                  SizedBox(height: 10.0),
                   TextFormField(
                     autofocus: false,
                     validator: (value) =>
@@ -217,14 +215,14 @@ class _SignUpState extends State<SignUp> {
                     decoration: buildInputDecoration(
                         'Confirm Password', Icons.lock, outLineBorder),
                   ),
-                  const SizedBox(height: 15.0),
+                  SizedBox(height: 15.0),
                   Row(
                     children: [
                       Checkbox(
                         value: checkBoxValue,
                         onChanged: onRememberMeChanged,
                       ),
-                      const Expanded(
+                      Expanded(
                           child: Text(
                               'I agree to terms of service and refund policy'))
                     ],
@@ -233,18 +231,17 @@ class _SignUpState extends State<SignUp> {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                            builder: (context) => const LoginScreen()),
+                        MaterialPageRoute(builder: (context) => LoginScreen()),
                       );
                     },
-                    child: const Center(
+                    child: Center(
                       child: Text(
                         'Already have account?',
                         style: TextStyle(color: Colors.blue),
                       ),
                     ),
                   ),
-                  const SizedBox(height: 10),
+                  SizedBox(height: 10),
                   Visibility(
                     visible: _isVisible,
                     child: Center(

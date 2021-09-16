@@ -120,7 +120,7 @@ class LoginScreen extends StatelessWidget {
                   onTap: () {
                     Navigator.pop(
                       context,
-                      MaterialPageRoute(builder: (context) => const SignUp()),
+                      MaterialPageRoute(builder: (context) => SignUp()),
                     );
                   },
                   child: CustomText(

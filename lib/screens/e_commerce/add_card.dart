@@ -37,13 +37,12 @@ class _AddCardState extends State<AddCard> {
               children: [
                 Expanded(
                   child: TextFormField(
-                    autofocus: false,
-                    validator: (value) =>
-                        value!.isEmpty ? 'ExpDate(MM/YY)' : null,
-                    onSaved: (value) => expireDate = value!,
-                    decoration: buildInputDecoration(
-                        'Exp Date', Icons.card_giftcard, outLineBorder),
-                  ),
+                      autofocus: false,
+                      validator: (value) =>
+                          value!.isEmpty ? 'ExpDate(MM/YY)' : null,
+                      onSaved: (value) => expireDate = value!,
+                      decoration: buildInputDecoration(
+                          'Exp Date', Icons.card_giftcard, outLineBorder)),
                 ),
                 Expanded(
                   child: TextFormField(

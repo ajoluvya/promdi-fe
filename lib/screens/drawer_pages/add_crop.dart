@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:promdi_fe/helpers/style.dart';
-import 'package:promdi_fe/screens/signup/signup_page.dart';
 import 'package:promdi_fe/widgets/custom_button.dart';
 import 'package:promdi_fe/widgets/text_decoration.dart';
+
+final formkey = GlobalKey<FormState>();
 
 class AddCrop extends StatefulWidget {
   const AddCrop({Key? key}) : super(key: key);
@@ -15,7 +16,7 @@ class _AddCropState extends State<AddCrop> {
   late String cropname, quantity, unity, landSize;
   // ignore: top_level_function_literal_block
   Future<void> doSave() async {
-    final form = formKey.currentState;
+    final form = formkey.currentState;
     if (form!.validate()) {
       form.save();
     } else {
@@ -34,7 +35,7 @@ class _AddCropState extends State<AddCrop> {
           child: Container(
             padding: const EdgeInsets.all(20.0),
             child: Form(
-              key: formKey,
+              key: formkey,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

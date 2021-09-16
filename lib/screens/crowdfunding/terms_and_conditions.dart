@@ -25,7 +25,7 @@ class _TermsAndConditionsState extends State<TermsAndConditions> {
   @override
   Widget build(BuildContext context) {
     return SimpleDialog(
-      title: const Text('Terms and Conditions'),
+      title: const Text('Risk Disclaimer'),
       children: [
         const SizedBox(
           height: 20,
@@ -34,7 +34,7 @@ class _TermsAndConditionsState extends State<TermsAndConditions> {
           child: Padding(
             padding: EdgeInsets.all(8.0),
             child: Text(
-              "Our general terms and conditions contain details on project agreements, reporting a project and what happens if you don't follow the conditions. These terms and conditions always apply, unless special clauses have been stipulated in your funding decision or the individual call.",
+              "The investments and services offered by us may not be suitable for all investors. Even though we have safeguards put in place, just like any other investments and business, agriculture has huge inherent risks. You may loss your commission and/or capital due to inforeseen events. If you understand this warning, please click agree and proceed.",
               style: TextStyle(
                 fontSize: 15,
               ),
@@ -83,7 +83,9 @@ class _TermsAndConditionsState extends State<TermsAndConditions> {
               Expanded(
                 child: CustomButton(
                   title: 'cancel',
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
                   customcolor: light,
                 ),
               ),

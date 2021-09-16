@@ -239,7 +239,7 @@ class _LandingPageState extends State<LandingPage> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => const SignUp()),
+                                    builder: (context) => SignUp()),
                               );
                             },
                             child: Text(
