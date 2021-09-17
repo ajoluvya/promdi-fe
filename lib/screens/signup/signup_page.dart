@@ -111,13 +111,18 @@ class _SignUpState extends State<SignUp> {
                             ),
                           ),
                         )
-                      : Center(child: Text('Profile Image')),
+                      : Center(
+                          child: ClipOval(
+                          child: Image.asset(
+                            'assets/images/fish.png',
+                            height: 100,
+                            width: 100,
+                          ),
+                        )),
                   Center(
                     child: TextButton(
-                        onPressed: () {
-                          pickImage(ImageSource.gallery);
-                        },
-                        child: Text('Pick Profile Image')),
+                        onPressed: () => showSimpleDialog(context),
+                        child: const Text('Pick Profile Image')),
                   ),
                   SizedBox(height: 15.0),
                   TextFormField(
@@ -260,4 +265,31 @@ class _SignUpState extends State<SignUp> {
       ),
     );
   }
+
+  void showSimpleDialog(BuildContext context) => showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return SimpleDialog(
+            title: const Center(child: Text('Pick Image')),
+            children: [
+              SizedBox(height: 5),
+              Center(
+                child: TextButton(
+                    onPressed: () {
+                      pickImage(ImageSource.gallery);
+                    },
+                    child: const Text('Gallery')),
+              ),
+              SizedBox(height: 5),
+              Center(
+                child: TextButton(
+                    onPressed: () {
+                      pickImage(ImageSource.camera);
+                    },
+                    child: const Text('Camera')),
+              ),
+            ],
+          );
+        },
+      );
 }
