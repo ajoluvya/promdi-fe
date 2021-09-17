@@ -112,16 +112,33 @@ class _InvestAmountState extends State<InvestAmount> {
   void showSimpleDialog(BuildContext context) => showDialog(
         context: context,
         builder: (BuildContext context) {
-          Size size = MediaQuery.of(context).size;
           return SimpleDialog(
+            title: const Center(child: Text('Successful Investing!')),
             children: [
-              Container(
-                height: size.height * 0.15,
-                color: greenCustom,
-                alignment: Alignment.center,
+              Center(
                 child: Text(
-                  'Success',
-                  style: TextStyle(color: light, fontSize: 20),
+                  'Congratulations!',
+                  style: TextStyle(color: greenCustom, fontSize: 20),
+                ),
+              ),
+              SizedBox(height: 10),
+              Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    'We have sent you a memorandum of agreement. Sign and send it back to us to proceed your transaction.',
+                    style: TextStyle(color: dark, fontSize: 15),
+                  ),
+                ),
+              ),
+              SizedBox(height: 10),
+              Expanded(
+                child: CustomButton(
+                  title: 'Okay',
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  customcolor: light,
                 ),
               ),
             ],
