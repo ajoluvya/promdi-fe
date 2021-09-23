@@ -2,9 +2,13 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:promdi_fe/helpers/style.dart';
 import 'package:promdi_fe/screens/crowdfunding/crowdfunding_home.dart';
 import 'package:promdi_fe/screens/e_commerce/e_commerce_page.dart';
+import 'package:promdi_fe/screens/insurance_chat/insurance_home.dart';
+import 'package:promdi_fe/screens/landing_page/help_page.dart';
+import 'package:promdi_fe/screens/landing_page/weather_page.dart';
 import 'package:promdi_fe/screens/login/login.dart';
 import 'package:promdi_fe/screens/signup/signup_page.dart';
 import 'package:promdi_fe/widgets/card.dart';
@@ -41,6 +45,16 @@ class _LandingPageState extends State<LandingPage> {
             height: height * 0.04,
           ),
         ),
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const HelpPage()),
+                );
+              },
+              icon: const Icon(Icons.help))
+        ],
       ),
       backgroundColor: light,
       body: SafeArea(
@@ -69,11 +83,50 @@ class _LandingPageState extends State<LandingPage> {
                       if (_weather == null) {
                         return const Text("Error getting weater");
                       } else {
-                        return weatherBox(_weather);
+                        return Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            IconButton(
+                                color: light,
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const SearchWeather()),
+                                  );
+                                },
+                                icon: Icon(Icons.arrow_back)),
+                            weatherBox(_weather),
+                            IconButton(
+                                color: light,
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const SearchWeather()),
+                                  );
+                                },
+                                icon: Icon(Icons.arrow_forward)),
+                          ],
+                        );
                       }
                     } else {
-                      return const CircularProgressIndicator(
-                        strokeWidth: 1,
+                      return GestureDetector(
+                        child: Transform.scale(
+                          scale: 0.2,
+                          child: const CircularProgressIndicator(
+                            strokeWidth: 5,
+                          ),
+                        ),
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const SearchWeather()),
+                          );
+                        },
                       );
                     }
                   },
@@ -180,7 +233,14 @@ class _LandingPageState extends State<LandingPage> {
                               CustomCard(
                                 text: 'AGRI-INSURANCE',
                                 image: 'assets/images/chat.png',
-                                onClick: () {},
+                                onClick: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const InsurancePage()),
+                                  );
+                                },
                                 top: 0,
                                 left: 0,
                                 bottomtext: 0,
@@ -272,7 +332,7 @@ class _LandingPageState extends State<LandingPage> {
 
   Widget weatherBox(Weather _weather) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         Column(
           children: [
@@ -281,7 +341,7 @@ class _LandingPageState extends State<LandingPage> {
               height: MediaQuery.of(context).size.height * 0.07,
             ),
             Text(_weather.description,
-                style: TextStyle(color: light, fontSize: 15)),
+                style: TextStyle(color: light, fontSize: 12)),
           ],
         ),
         Column(

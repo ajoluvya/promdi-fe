@@ -1,16 +1,16 @@
 class Weather {
-  final double temp;
-  final double feelsLike;
-  final double low;
-  final double high;
+  final double? temp;
+  final double? feelsLike;
+  final double? low;
+  final double? high;
   final String description;
   final String? icon;
 
   Weather({
-    required this.temp,
-    required this.feelsLike,
-    required this.low,
-    required this.high,
+    this.temp,
+    this.feelsLike,
+    this.low,
+    this.high,
     required this.description,
     this.icon,
   });

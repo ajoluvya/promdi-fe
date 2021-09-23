@@ -121,7 +121,7 @@ class _InvestAmountState extends State<InvestAmount> {
                   style: TextStyle(color: greenCustom, fontSize: 20),
                 ),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               Center(
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),

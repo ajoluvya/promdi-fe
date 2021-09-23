@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:promdi_fe/helpers/style.dart';
+import 'package:promdi_fe/screens/e_commerce/account.dart';
 import 'package:promdi_fe/screens/e_commerce/cart_list.dart';
 import 'package:promdi_fe/screens/e_commerce/my_order.dart';
 import 'package:promdi_fe/screens/e_commerce/shop.dart';
@@ -19,8 +20,7 @@ class _EcommerceState extends State<Ecommerce> {
     Shop(),
     CartList(),
     MyOrder(),
-    Text('Account'),
-    // ProductList(),
+    Account(),
   ];
   int _selectedIndex = 0;
   @override
