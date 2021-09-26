@@ -55,7 +55,8 @@ class _MyStoreState extends State<MyStore> {
               padding: const EdgeInsets.all(8.0),
               child: TextField(
                 autofocus: false,
-                decoration: buildInputDecoration('Search', Icons.search),
+                decoration:
+                    buildInputDecoration('Search', Icons.search, outLineBorder),
               ),
             ),
             Expanded(

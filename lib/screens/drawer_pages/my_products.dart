@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:promdi_fe/screens/drawer_pages/add_product.dart';
 
 import 'dart:convert';
 
@@ -64,10 +65,10 @@ class _MyProductsState extends State<MyProducts> {
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       floatingActionButton: FloatingButton(
         onClicked: () {
-          // Navigator.push(
-          //   context,
-          //   MaterialPageRoute(builder: (context) => AddProduct()),
-          // );
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => AddProduct()),
+          );
         },
         iconData: Icons.add,
       ),

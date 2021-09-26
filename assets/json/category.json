@@ -38,5 +38,15 @@
     "id": "c7",
     "image": "assets/images/milk.png",
     "name": "Dairy Food"
+  },
+  {
+    "id": "c8",
+    "image": "assets/images/fertilizer.png",
+    "name": "Fertilizers"
+  },
+  {
+    "id": "c9",
+    "image": "assets/images/tractor.png",
+    "name": "Machinery"
   }
 ]

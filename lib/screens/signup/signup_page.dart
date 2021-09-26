@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -9,7 +10,7 @@ import 'package:promdi_fe/widgets/date_picker.dart';
 import 'package:promdi_fe/widgets/text_decoration.dart';
 import 'package:image_picker/image_picker.dart';
 
-final formKey = GlobalKey<FormState>();
+import 'package:path_provider/path_provider.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);
@@ -19,7 +20,14 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
-  late String firstname,
+  GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  TextEditingController firstnameController = TextEditingController();
+  TextEditingController lastnameController = TextEditingController();
+  TextEditingController mobilenoController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController middlenameController = TextEditingController();
+  String? firstname,
       lastname,
       mobileno,
       middlename,
@@ -29,6 +37,10 @@ class _SignUpState extends State<SignUp> {
 
   bool checkBoxValue = false;
   bool _isVisible = false;
+  bool valueBuyer = false;
+  bool valueSeller = false;
+  bool valueFarmer = false;
+  bool valueInvestor = false;
   String dropdownValue = 'Male';
   onRememberMeChanged(bool? newValue) => setState(() {
         checkBoxValue = newValue!;
@@ -40,14 +52,13 @@ class _SignUpState extends State<SignUp> {
         }
       });
 
-  // ignore: top_level_function_literal_block
   Future<void> doSignUp() async {
     // print(username);
     final form = formKey.currentState;
     if (form!.validate()) {
       form.save();
       // check confirm password
-      if (password.endsWith(confirmpassword)) {
+      if (password!.endsWith(confirmpassword!)) {
         // create auth provider
       } else {
         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
@@ -77,6 +88,94 @@ class _SignUpState extends State<SignUp> {
     }
   }
 
+  late File jsonUser;
+  late Directory dir;
+  String fileName = "userReg.json";
+  bool fileExists = false;
+  List fileContent = [];
+
+  void createFile(List content, Directory dir, String fileName) {
+    print('create file');
+    File file = File(dir.path + "/" + fileName);
+    file.createSync();
+    fileExists = true;
+    file.writeAsStringSync(json.encode(content));
+  }
+
+  void writeFile(
+    String keyfirstname,
+    String valuefirstname,
+    String keylastname,
+    String valuelastname,
+    String keymobileno,
+    String valuemobile,
+    String keymiddlename,
+    String valuemiddlename,
+    String keypassword,
+    String valuepassword,
+    String keyemail,
+    String valueemail,
+    String keyvalueInvestor,
+    bool valueInvestor,
+    String keyvalueBuyer,
+    bool valueBuyer,
+    String keyvalueFarmer,
+    bool valueFarmer,
+    String keydropdownValue,
+    String dropdownValue,
+    String keyvalueSeller,
+    bool valueSeller,
+  ) {
+    doSignUp();
+    print('write to file');
+    List content = [
+      {
+        keyfirstname: valuefirstname,
+        keylastname: valuelastname,
+        keymobileno: valuemobile,
+        keymiddlename: valuemiddlename,
+        keypassword: valuepassword,
+        keyemail: valueemail,
+        keyvalueBuyer: valueBuyer,
+        keydropdownValue: dropdownValue,
+        keyvalueSeller: valueSeller,
+        keyvalueFarmer: valueFarmer,
+        keyvalueInvestor: valueInvestor,
+      }
+    ];
+
+    if (fileExists) {
+      print('File Exists');
+      List jsonFileContent = json.decode(jsonUser.readAsStringSync());
+      jsonFileContent.addAll(content);
+      jsonUser.writeAsStringSync(json.encode(jsonFileContent));
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        backgroundColor: Colors.green,
+        content: Text('Success'),
+        duration: Duration(seconds: 6),
+        behavior: SnackBarBehavior.floating,
+      ));
+    } else {
+      print('file does not exist');
+      createFile(content, dir, fileName);
+    }
+    this.setState(() {
+      fileContent = json.decode(jsonUser.readAsStringSync());
+    });
+  }
+
+  void initState() {
+    super.initState();
+    getApplicationDocumentsDirectory().then((Directory directory) {
+      dir = directory;
+      jsonUser = File(dir.path + "/" + fileName);
+      fileExists = jsonUser.existsSync();
+      if (fileExists) {
+        setState(() => fileContent = json.decode(jsonUser.readAsStringSync()));
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
@@ -98,10 +197,10 @@ class _SignUpState extends State<SignUp> {
                         height: height * 0.04,
                         fit: BoxFit.cover,
                       ),
-                      const Text('Promdi App'),
+                      Text('Promdi App'),
                     ],
                   ),
-                  const SizedBox(height: 20.0),
+                  SizedBox(height: 20.0),
                   image != null
                       ? Center(
                           child: ClipOval(
@@ -113,41 +212,53 @@ class _SignUpState extends State<SignUp> {
                             ),
                           ),
                         )
-                      : const Center(child: Text('Profile Image')),
+                      : Center(
+                          child: ClipOval(
+                          child: Container(
+                            height: 100,
+                            width: 100,
+                            color: lightGrey,
+                            child: IconButton(
+                                iconSize: 40,
+                                onPressed: () => showSimpleDialog(context),
+                                icon: Icon(Icons.add_a_photo)),
+                          ),
+                        )),
                   Center(
                     child: TextButton(
-                        onPressed: () {
-                          pickImage(ImageSource.gallery);
-                        },
+                        onPressed: () => showSimpleDialog(context),
                         child: const Text('Pick Profile Image')),
                   ),
-                  const SizedBox(height: 15.0),
+                  SizedBox(height: 15.0),
                   TextFormField(
+                    controller: firstnameController,
                     autofocus: false,
                     validator: (value) =>
                         value!.isEmpty ? 'Please enter First name' : null,
                     onSaved: (value) => firstname = value!,
-                    decoration:
-                        buildInputDecoration('Enter Firstname', Icons.person),
+                    decoration: buildInputDecoration(
+                        'Enter Firstname', Icons.person, outLineBorder),
                   ),
-                  const SizedBox(height: 10.0),
+                  SizedBox(height: 10.0),
                   TextFormField(
+                    controller: lastnameController,
                     autofocus: false,
                     validator: (value) =>
                         value!.isEmpty ? 'Please enter Last Name' : null,
                     onSaved: (value) => lastname = value!,
-                    decoration:
-                        buildInputDecoration('Enter Lastname', Icons.person),
+                    decoration: buildInputDecoration(
+                        'Enter Lastname', Icons.person, outLineBorder),
                   ),
-                  const SizedBox(height: 10.0),
+                  SizedBox(height: 10.0),
                   TextFormField(
+                    controller: middlenameController,
                     autofocus: false,
                     // validator: (value) => value!.isEmpty ? 'Please enter Middle name' : null,
                     onSaved: (value) => middlename = value!,
-                    decoration:
-                        buildInputDecoration('Enter Middlename', Icons.person),
+                    decoration: buildInputDecoration(
+                        'Enter Middlename', Icons.person, outLineBorder),
                   ),
-                  const SizedBox(height: 2.0),
+                  SizedBox(height: 2.0),
                   Row(
                     children: [
                       const Text(
@@ -157,7 +268,7 @@ class _SignUpState extends State<SignUp> {
                           fontSize: 20,
                         ),
                       ),
-                      const SizedBox(width: 40),
+                      SizedBox(width: 40),
                       DropdownButton<String>(
                         value: dropdownValue,
                         onChanged: (String? newValue) {
@@ -175,9 +286,116 @@ class _SignUpState extends State<SignUp> {
                       ),
                     ],
                   ),
-                  const DatePicker(),
-                  const SizedBox(height: 10),
+                  DatePicker(),
+                  SizedBox(height: 10),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(
+                        child: ListTile(
+                          onTap: () {
+                            setState(() {
+                              valueBuyer = !valueBuyer;
+                            });
+                          },
+                          leading: Checkbox(
+                            value: valueBuyer,
+                            onChanged: (valueBuyer) {
+                              setState(() {
+                                this.valueBuyer = valueBuyer!;
+                              });
+                            },
+                          ),
+                          title: const Text(
+                            'Buyer',
+                            style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: ListTile(
+                          onTap: () {
+                            setState(() {
+                              valueSeller = !valueSeller;
+                            });
+                          },
+                          leading: Checkbox(
+                            value: valueSeller,
+                            onChanged: (valueSeller) {
+                              setState(() {
+                                this.valueSeller = valueSeller!;
+                              });
+                            },
+                          ),
+                          title: const Text(
+                            'Seller',
+                            style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(
+                        child: ListTile(
+                          onTap: () {
+                            setState(() {
+                              valueFarmer = !valueFarmer;
+                            });
+                          },
+                          leading: Checkbox(
+                            value: valueFarmer,
+                            onChanged: (valueFarmer) {
+                              setState(() {
+                                this.valueFarmer = valueFarmer!;
+                              });
+                            },
+                          ),
+                          title: const Text(
+                            'Farmer',
+                            style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: ListTile(
+                          onTap: () {
+                            setState(() {
+                              valueInvestor = !valueInvestor;
+                            });
+                          },
+                          leading: Checkbox(
+                            value: valueInvestor,
+                            onChanged: (valueInvestor) {
+                              setState(() {
+                                this.valueInvestor = valueInvestor!;
+                              });
+                            },
+                          ),
+                          title: const Text(
+                            'Investor',
+                            style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                   TextFormField(
+                    controller: mobilenoController,
                     autofocus: false,
                     keyboardType: TextInputType.number,
                     validator: (value) =>
@@ -187,44 +405,46 @@ class _SignUpState extends State<SignUp> {
                       LengthLimitingTextInputFormatter(10),
                       FilteringTextInputFormatter.allow(RegExp(r'[0-9]'))
                     ],
-                    decoration:
-                        buildInputDecoration('Enter number', Icons.dialpad),
+                    decoration: buildInputDecoration(
+                        'Enter number', Icons.dialpad, outLineBorder),
                   ),
-                  const SizedBox(height: 10.0),
+                  SizedBox(height: 10.0),
                   TextFormField(
+                    controller: emailController,
                     autofocus: false,
                     validator: (value) =>
-                        value!.contains('@') ? 'Please Email' : null,
+                        value!.isEmpty ? 'Please Email' : null,
                     onSaved: (value) => email = value!,
-                    decoration:
-                        buildInputDecoration('Enter Email', Icons.email),
+                    decoration: buildInputDecoration(
+                        'Enter Email', Icons.email, outLineBorder),
                   ),
-                  const SizedBox(height: 10.0),
+                  SizedBox(height: 10.0),
                   TextFormField(
+                    controller: passwordController,
                     autofocus: false,
                     validator: (value) =>
                         value!.isEmpty ? 'Please enter password' : null,
                     onSaved: (value) => password = value!,
-                    decoration:
-                        buildInputDecoration('Enter Password', Icons.lock),
+                    decoration: buildInputDecoration(
+                        'Enter Password', Icons.lock, outLineBorder),
                   ),
-                  const SizedBox(height: 10.0),
+                  SizedBox(height: 10.0),
                   TextFormField(
                     autofocus: false,
                     validator: (value) =>
                         value!.isEmpty ? 'Please enter password' : null,
                     onSaved: (value) => confirmpassword = value!,
-                    decoration:
-                        buildInputDecoration('Confirm Password', Icons.lock),
+                    decoration: buildInputDecoration(
+                        'Confirm Password', Icons.lock, outLineBorder),
                   ),
-                  const SizedBox(height: 15.0),
+                  SizedBox(height: 15.0),
                   Row(
                     children: [
                       Checkbox(
                         value: checkBoxValue,
                         onChanged: onRememberMeChanged,
                       ),
-                      const Expanded(
+                      Expanded(
                           child: Text(
                               'I agree to terms of service and refund policy'))
                     ],
@@ -233,23 +453,47 @@ class _SignUpState extends State<SignUp> {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                            builder: (context) => const LoginScreen()),
+                        MaterialPageRoute(builder: (context) => LoginScreen()),
                       );
                     },
-                    child: const Center(
+                    child: Center(
                       child: Text(
                         'Already have account?',
                         style: TextStyle(color: Colors.blue),
                       ),
                     ),
                   ),
-                  const SizedBox(height: 10),
+                  SizedBox(height: 10),
                   Visibility(
                     visible: _isVisible,
                     child: Center(
                       child: CustomButton(
-                        onTap: doSignUp,
+                        onTap: () {
+                          writeFile(
+                            "firstName",
+                            firstnameController.text,
+                            'lastName',
+                            lastnameController.text,
+                            'middleName',
+                            middlenameController.text,
+                            'mobileno',
+                            mobilenoController.text,
+                            'password',
+                            passwordController.text,
+                            'email',
+                            emailController.text,
+                            'investor',
+                            valueInvestor,
+                            'buyer',
+                            valueBuyer,
+                            'farmer',
+                            valueFarmer,
+                            'gender',
+                            dropdownValue,
+                            'seller',
+                            valueSeller,
+                          );
+                        },
                         title: 'Sign Up',
                         customcolor: greenCustom,
                       ),
@@ -263,4 +507,31 @@ class _SignUpState extends State<SignUp> {
       ),
     );
   }
+
+  void showSimpleDialog(BuildContext context) => showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return SimpleDialog(
+            title: const Center(child: Text('Pick Image')),
+            children: [
+              SizedBox(height: 5),
+              Center(
+                child: TextButton(
+                    onPressed: () {
+                      pickImage(ImageSource.gallery);
+                    },
+                    child: const Text('Gallery')),
+              ),
+              SizedBox(height: 5),
+              Center(
+                child: TextButton(
+                    onPressed: () {
+                      pickImage(ImageSource.camera);
+                    },
+                    child: const Text('Camera')),
+              ),
+            ],
+          );
+        },
+      );
 }

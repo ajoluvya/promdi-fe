@@ -14,8 +14,8 @@ class _DatePickerState extends State<DatePicker> {
     final DateTime? pickedDate = await showDatePicker(
         context: context,
         initialDate: currentDate,
-        firstDate: DateTime(2021),
-        lastDate: DateTime(2050));
+        firstDate: DateTime(1921),
+        lastDate: currentDate);
     if (pickedDate != null && pickedDate != currentDate) {
       setState(() {
         currentDate = pickedDate;
