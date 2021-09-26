@@ -9,6 +9,7 @@ class ChatPage extends StatefulWidget {
 }
 
 class _ChatPageState extends State<ChatPage> {
+  final bool _show = true;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -25,34 +26,11 @@ class _ChatPageState extends State<ChatPage> {
             sender(),
             SizedBox(height: 10),
             receiver(),
-            SizedBox(height: size.height * 0.61),
-            ListTile(
-              title: const TextField(
-                decoration: InputDecoration(
-                  fillColor: Colors.white,
-                  filled: true,
-                  focusColor: Colors.white,
-                  hintText: 'message ........',
-                  hintStyle: TextStyle(
-                    color: Colors.black,
-                    fontSize: 18,
-                    fontStyle: FontStyle.italic,
-                  ),
-                  // border: InputBorder.none,
-                ),
-                style: TextStyle(
-                  color: Colors.black,
-                ),
-              ),
-              trailing: IconButton(
-                color: lightBlue,
-                onPressed: () {},
-                icon: const Icon(Icons.send),
-              ),
-            ),
+            SizedBox(height: 10),
           ],
         ),
       ),
+      bottomSheet: _showBottomSheet(),
     );
   }
 
@@ -111,5 +89,44 @@ class _ChatPageState extends State<ChatPage> {
         ),
       ),
     );
+  }
+
+  Widget? _showBottomSheet() {
+    Size size = MediaQuery.of(context).size;
+    if (_show) {
+      return BottomSheet(
+        onClosing: () {},
+        builder: (context) {
+          return ListTile(
+            tileColor: lightBlue,
+            title: const TextField(
+              decoration: InputDecoration(
+                fillColor: Colors.white,
+                filled: true,
+                focusColor: Colors.white,
+                hintText: 'message ........',
+                hintStyle: TextStyle(
+                  color: Colors.black,
+                  fontSize: 18,
+                  fontStyle: FontStyle.italic,
+                ),
+                // border: InputBorder.none,
+              ),
+              style: TextStyle(
+                color: Colors.black,
+              ),
+            ),
+            trailing: IconButton(
+              iconSize: 35,
+              color: light,
+              onPressed: () {},
+              icon: const Icon(Icons.send),
+            ),
+          );
+        },
+      );
+    } else {
+      return null;
+    }
   }
 }

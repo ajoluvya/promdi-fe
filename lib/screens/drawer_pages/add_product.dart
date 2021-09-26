@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:promdi_fe/helpers/style.dart';
 import 'package:promdi_fe/widgets/custom_button.dart';
 import 'package:promdi_fe/widgets/text_decoration.dart';
@@ -49,6 +50,62 @@ class _AddProductState extends State<AddProduct> {
       // ignore: avoid_print
       print('Failed to pick image: $e');
     }
+  }
+
+  late File jsonUser;
+  late Directory dir;
+  String fileName = "Product.json";
+  bool fileExists = false;
+  List fileContent = [];
+
+  void createFile(List content, Directory dir, String fileName) {
+    print('create file');
+    File file = File(dir.path + "/" + fileName);
+    file.createSync();
+    fileExists = true;
+    file.writeAsStringSync(json.encode(content));
+  }
+
+  void writeFile(
+    String keyname,
+    String valuename,
+    String keycategory,
+    String valuecategory,
+  ) {
+    doSave();
+    print('write to file');
+    // List<Product> content = [];
+    List content = [
+      {
+        keyname: valuename,
+        keycategory: valuecategory,
+      }
+    ];
+
+    if (fileExists) {
+      print('File Exists');
+      List jsonFileContent = json.decode(jsonUser.readAsStringSync());
+      jsonFileContent.addAll(content);
+      jsonUser.writeAsStringSync(json.encode(jsonFileContent));
+    } else {
+      print('file does not exist');
+      createFile(content, dir, fileName);
+    }
+    this.setState(() {
+      fileContent = json.decode(jsonUser.readAsStringSync());
+    });
+  }
+
+  void initState() {
+    super.initState();
+    getApplicationDocumentsDirectory().then((Directory directory) {
+      dir = directory;
+      jsonUser = File(dir.path + "/" + fileName);
+      fileExists = jsonUser.existsSync();
+      if (fileExists) {
+        setState(() => fileContent = json.decode(jsonUser.readAsStringSync()));
+      }
+    });
   }
 
   @override

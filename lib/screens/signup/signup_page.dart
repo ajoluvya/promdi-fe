@@ -115,6 +115,16 @@ class _SignUpState extends State<SignUp> {
     String valuepassword,
     String keyemail,
     String valueemail,
+    String keyvalueInvestor,
+    bool valueInvestor,
+    String keyvalueBuyer,
+    bool valueBuyer,
+    String keyvalueFarmer,
+    bool valueFarmer,
+    String keydropdownValue,
+    String dropdownValue,
+    String keyvalueSeller,
+    bool valueSeller,
   ) {
     doSignUp();
     print('write to file');
@@ -126,6 +136,11 @@ class _SignUpState extends State<SignUp> {
         keymiddlename: valuemiddlename,
         keypassword: valuepassword,
         keyemail: valueemail,
+        keyvalueBuyer: valueBuyer,
+        keydropdownValue: dropdownValue,
+        keyvalueSeller: valueSeller,
+        keyvalueFarmer: valueFarmer,
+        keyvalueInvestor: valueInvestor,
       }
     ];
 
@@ -134,6 +149,12 @@ class _SignUpState extends State<SignUp> {
       List jsonFileContent = json.decode(jsonUser.readAsStringSync());
       jsonFileContent.addAll(content);
       jsonUser.writeAsStringSync(json.encode(jsonFileContent));
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        backgroundColor: Colors.green,
+        content: Text('Success'),
+        duration: Duration(seconds: 6),
+        behavior: SnackBarBehavior.floating,
+      ));
     } else {
       print('file does not exist');
       createFile(content, dir, fileName);
@@ -320,31 +341,6 @@ class _SignUpState extends State<SignUp> {
                       ),
                     ],
                   ),
-                  TextFormField(
-                    controller: mobilenoController,
-                    autofocus: false,
-                    keyboardType: TextInputType.number,
-                    validator: (value) =>
-                        value!.isEmpty ? 'Please enter number' : null,
-                    onSaved: (value) => mobileno = value!,
-                    inputFormatters: [
-                      LengthLimitingTextInputFormatter(10),
-                      FilteringTextInputFormatter.allow(RegExp(r'[0-9]'))
-                    ],
-                    decoration: buildInputDecoration(
-                        'Enter number', Icons.dialpad, outLineBorder),
-                  ),
-                  SizedBox(height: 10.0),
-                  TextFormField(
-                    controller: emailController,
-                    autofocus: false,
-                    validator: (value) =>
-                        value!.isEmpty ? 'Please Email' : null,
-                    onSaved: (value) => email = value!,
-                    decoration: buildInputDecoration(
-                        'Enter Email', Icons.email, outLineBorder),
-                  ),
-                  SizedBox(height: 10.0),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -398,6 +394,31 @@ class _SignUpState extends State<SignUp> {
                       ),
                     ],
                   ),
+                  TextFormField(
+                    controller: mobilenoController,
+                    autofocus: false,
+                    keyboardType: TextInputType.number,
+                    validator: (value) =>
+                        value!.isEmpty ? 'Please enter number' : null,
+                    onSaved: (value) => mobileno = value!,
+                    inputFormatters: [
+                      LengthLimitingTextInputFormatter(10),
+                      FilteringTextInputFormatter.allow(RegExp(r'[0-9]'))
+                    ],
+                    decoration: buildInputDecoration(
+                        'Enter number', Icons.dialpad, outLineBorder),
+                  ),
+                  SizedBox(height: 10.0),
+                  TextFormField(
+                    controller: emailController,
+                    autofocus: false,
+                    validator: (value) =>
+                        value!.isEmpty ? 'Please Email' : null,
+                    onSaved: (value) => email = value!,
+                    decoration: buildInputDecoration(
+                        'Enter Email', Icons.email, outLineBorder),
+                  ),
+                  SizedBox(height: 10.0),
                   TextFormField(
                     controller: passwordController,
                     autofocus: false,
@@ -461,6 +482,16 @@ class _SignUpState extends State<SignUp> {
                             passwordController.text,
                             'email',
                             emailController.text,
+                            'investor',
+                            valueInvestor,
+                            'buyer',
+                            valueBuyer,
+                            'farmer',
+                            valueFarmer,
+                            'gender',
+                            dropdownValue,
+                            'seller',
+                            valueSeller,
                           );
                         },
                         title: 'Sign Up',
